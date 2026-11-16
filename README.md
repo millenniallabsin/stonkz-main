@@ -22,3 +22,7 @@ Note: on a free GitHub account, Pages only works from a public repository, so th
 ## Still placeholder
 
 Course pages, app, report page and LinkedIn links show a "not live yet" message.
+
+## Stonkzz Daily (stonkzz.com redesign)
+
+The Stonkzz Daily landing page lives in `daily/`. On GitHub Pages it opens at `<pages-url>/daily/`. It's one self-contained `index.html` plus two icons. The Subscribe buttons show a placeholder until Razorpay is connected, and the footer's Terms, Privacy, Refunds and Disclaimer links point to pages that don't exist yet.
