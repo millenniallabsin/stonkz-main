@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Stonkzz School</title>
+<meta name="description" content="Stonkzz School teaches the subject school left out: money.">
+<meta name="theme-color" content="#070708">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/journey.css">
+</head>
+<body class="loading">
+<canvas id="world" aria-hidden="true"></canvas>
+
+<a id="brand" href="#top" aria-label="Stonkzz School, back to the start">
+  <svg id="mark" viewBox="60 55 550 690" aria-hidden="true"><defs>
+    <linearGradient id="lgG" x1="523" y1="232" x2="377" y2="434" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3BEE72"/><stop offset=".55" stop-color="#25E065"/><stop offset="1" stop-color="#12A845"/></linearGradient>
+    <linearGradient id="lgR" x1="377" y1="434" x2="231" y2="635" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#C21B1B"/><stop offset=".45" stop-color="#FF4747"/><stop offset="1" stop-color="#D42A2A"/></linearGradient>
+    <linearGradient id="lgW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DDDDD6"/></linearGradient>
+    <linearGradient id="lgC" x1="82" y1="224" x2="432" y2="76" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E4E4DE"/></linearGradient>
+    <linearGradient id="lgT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D57E"/><stop offset="1" stop-color="#C9962A"/></linearGradient>
+  </defs>
+  <path d="M257 205H480L440 320H257A57.5 57.5 0 0 1 257 205Z" fill="url(#lgW)"/>
+  <path d="M360 545H505A60 60 0 0 1 505 665H276L300 600Z" fill="url(#lgW)"/>
+  <g stroke-linejoin="round" stroke-width="14">
+    <path d="M480 203L567 262L421 463.5L333.5 404Z" fill="url(#lgG)" stroke="url(#lgG)"/>
+    <path d="M333.5 404L421 463.5L275 665L187 605Z" fill="url(#lgR)" stroke="url(#lgR)"/>
+  </g>
+  <path d="M326 399L344.5 411.5L356.5 407.6L352.1 426.4L371.1 412.7L362 438L377.3 433.8L403.4 410.5L374 467.8L404.5 442.6L406 453.3L428.5 468.6" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M527 227.5L574 162.8" stroke="#25E065" stroke-width="7" stroke-linecap="round"/>
+  <path d="M585 148L582.5 174L560.7 158.2Z" fill="#25E065" stroke="#25E065" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M227.5 640L176.5 710.5" stroke="#E0262B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M165 726L189.1 715.8L167.3 700Z" fill="#E0262B" stroke="#E0262B" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M190 226L197 266Q282 286 356 204L352 158Q300 198 244 214Z" fill="#E9E9E3"/>
+  <path d="M82 232L226 106L432 84L287 214Z" fill="#C9C9C1"/>
+  <path d="M82 224L226 98L432 76L287 206Z" fill="url(#lgC)"/>
+  <path d="M256 150L150 168L142 256" fill="none" stroke="#E2B23E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="142" cy="260" r="9" fill="#E2B23E"/>
+  <path d="M130 264H154L161 338Q139 350 118 340Z" fill="url(#lgT)"/>
+</svg>
+  <span id="word">Stonkzz School</span>
+</a>
+<p id="cue" class="mono" aria-hidden="true"><span>Scroll</span><i></i></p>
+<p id="hint" class="mono" aria-hidden="true">Move it &middot; tap to turn it over</p>
+<a id="nav" href="#school">See the courses</a>
+
+<!-- the lines drawn inside the 3D scene, as text for screen readers and search -->
+<div class="sr" id="top">
+  <h1>Stonkzz School</h1>
+  <p>Twelve years of school.</p>
+  <p>Maths, Science, History, Commerce.</p>
+  <p>One thing nobody taught us.</p>
+  <p>How to manage money.</p>
+  <p>That's what we want to change.</p>
+</div>
+<div id="track"></div>
+
+<main id="flow">
+  <section class="sec" id="price" aria-labelledby="h-price">
+    <h2 class="big rv" id="h-price"><span>Not knowing</span><b class="red">has a price.</b></h2>
+    <ul class="cndl">
+      <li class="rv" style="--i:0"><i class="cd"></i><p>Salary in.<br>Salary out.</p></li>
+      <li class="rv" style="--i:1"><i class="cd"></i><p>A policy an<br>uncle picked.</p></li>
+      <li class="rv" style="--i:2"><i class="cd"></i><p>Minimum due,<br>every month.</p></li>
+      <li class="rv" style="--i:3"><i class="cd"></i><p>A tip from a<br>WhatsApp group.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec" id="stock" aria-label="How a stock works">
+    <div class="step rv"><h2 class="big"><span>A company is</span><b>100 pieces.</b></h2><div class="art" data-blocks="1"></div></div>
+    <div class="step flip rv"><h2 class="big"><span>Buy one.</span><b>Now it&rsquo;s yours.</b></h2><div class="art" data-blocks="2"></div></div>
+    <div class="step rv"><h2 class="big"><span>It grows or falls</span><b>with the company.</b></h2><div class="art" data-blocks="3"></div></div>
+  </section>
+
+  <section class="sec" id="race" aria-label="Try one lesson: The Race">
+    <div class="card glass race rv">
+    <p class="mono lab">Play &middot; Module 4</p>
+    <h2>Try one lesson. <b>Right now.</b></h2>
+    <p class="sub">Priya starts investing at 25. Karthik starts at 35. Same amount every month. Both stop at 60.</p>
+    <div class="row"><label class="mono" for="amt">Monthly amount</label><output id="amtOut" for="amt">&#8377;5,000</output></div>
+    <input type="range" id="amt" min="1000" max="25000" step="500" value="5000">
+    <p class="mono q">Who ends with more?</p>
+    <div class="who">
+      <button type="button" data-who="priya" aria-pressed="false"><b>Priya</b><span>Starts at 25</span></button>
+      <button type="button" data-who="karthik" aria-pressed="false"><b>Karthik</b><span>Starts at 35</span></button>
+    </div>
+    <button type="button" class="btn" id="raceGo">Start the race <i>&rarr;</i></button>
+    <div class="lanes">
+      <div class="lane"><span class="nm">Priya</span><span class="bar"><i id="bP"></i></span><b id="vP">&#8377;0</b><small id="iP">put in &#8377;0</small></div>
+      <div class="lane"><span class="nm">Karthik</span><span class="bar"><i id="bK"></i></span><b id="vK">&#8377;0</b><small id="iK">put in &#8377;0</small></div>
+      <p class="mono age">Age <b id="ageV">25</b></p>
+    </div>
+    <div class="res" id="raceRes" aria-live="polite">
+      <img src="assets/m-compounder.webp" alt="The Compounder medal" width="52" height="52">
+      <p><b id="resHead">Priya. Her first ten years did most of the work.</b><span>Starting early beats starting big. This game gives the Compounder medal inside the course.</span></p>
+    </div>
+    <p class="fine" id="raceFine">Example only. &#8377;5,000 a month at 12% a year. Not a promise of returns.</p>
+  </div>
+  </section>
+
+  <section class="sec" id="school" aria-label="The school">
+    <div class="card school rv">
+    <h2><span>Not just a course.</span> <b>A school.</b></h2>
+    <p class="sub">A lesson, then a game that checks you understood it. Then the next one.</p>
+    <div class="courses">
+      <article class="glass course"><p class="mono lab">Course 01</p><h3>Personal Finance Mastery</h3><p>13 modules. Budgeting, insurance, tax, investing, debt and the mindset that holds it together.</p><a class="btn" href="#" data-pending="The Personal Finance course page">Open the course <i>&rarr;</i></a></article>
+      <article class="glass course"><p class="mono lab">Course 02</p><h3>A to Z of the Stock Market</h3><p>14 modules. How markets work, reading a business, reading a chart, managing risk.</p><a class="btn" href="#" data-pending="The Stock Market course page">Open the course <i>&rarr;</i></a></article>
+    </div>
+    <p class="mono facts"><span>2 courses</span><span>27 modules</span><span>29 games</span><span>A medal for each</span></p>
+  </div>
+  </section>
+</main>
+<div id="track2"></div>
+<div class="sr">
+  <p>Same salary. Same person. Different ending. Salary in, plan first. Insurance for cover, investing separate. Card paid in full. A rule written before the fall.</p>
+</div>
+
+<section class="panel" id="pEnd" aria-label="Where to start">
+  <div class="card end">
+    <h2><span>Start</span> <b>where you are.</b></h2>
+    <div class="doors">
+      <a class="glass door" href="#" data-pending="The Personal Finance course page"><span class="mono">01</span><b>Personal Finance Mastery</b><em>New to all of this. Start here.</em><i>&rarr;</i></a>
+      <a class="glass door" href="#" data-pending="The Stock Market course page"><span class="mono">02</span><b>A to Z of the Stock Market</b><em>Ready to understand the market.</em><i>&rarr;</i></a>
+      <a class="glass door" href="#" data-pending="The app"><span class="mono">03</span><b>The Stonkzz School app</b><em>Lessons and games on your phone.</em><i>&rarr;</i></a>
+      <a class="glass door" href="#" data-pending="The report page"><span class="mono">04</span><b>The Stonkzz Daily</b><em>The pre-market report, every morning.</em><i>&rarr;</i></a>
+    </div>
+    <ul class="social">
+      <li><a href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="https://www.instagram.com/stonkzz._/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://x.com/stonkz_daily" target="_blank" rel="noopener">X</a></li>
+      <li><a href="#" data-pending="The LinkedIn page">LinkedIn</a></li>
+    </ul>
+    <p class="tag">Learn better. Invest smarter. <b>Build wealth with confidence.</b></p>
+    <p class="disc">Educational content only. Nothing on this site is investment advice.</p>
+    <p class="mono foot"><span>Contact: thestonkzz@gmail.com</span><span>&copy; 2026 Stonkzz School</span></p>
+  </div>
+</section>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="nojs">Stonkzz School. Twelve years of school, and one thing nobody taught us: how to manage money. That's what we want to change.</p></noscript>
+<script type="module" src="js/world.js"></script>
+</body>
+</html>
