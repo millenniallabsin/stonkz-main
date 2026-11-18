@@ -12,6 +12,7 @@
 </head>
 <body class="loading">
 <canvas id="world" aria-hidden="true"></canvas>
+<div id="topbar" aria-hidden="true"></div>
 
 <a id="brand" href="#top" aria-label="Stonkzz School, back to the start">
   <svg id="mark" viewBox="60 55 550 690" aria-hidden="true"><defs>
@@ -48,7 +49,7 @@
 <!-- the lines drawn inside the 3D scene, as text for screen readers and search -->
 <div class="sr" id="top">
   <h1>Stonkzz School</h1>
-  <p>Twelve years of school. Maths, Science, History, Commerce.</p>
+  <p>Twelve years of school. We learnt to find the value of x.</p>
   <p>Nobody taught us how to manage money.</p>
   <p>That's what we want to change.</p>
 </div>
@@ -58,178 +59,225 @@
   <div class="card">
     <p class="sub">Money lessons in simple Tamil, from your first salary to the stock market.</p>
     <div class="btns"><a class="btn" href="#" data-pending="The Personal Finance course page">Personal Finance <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Stock Market course page">Stock Market <i>&rarr;</i></a></div>
-    <p class="mono strip"><span>Level 1 and Level 2</span><span>Lessons in Tamil</span><span>No tips, no shortcuts</span></p>
   </div>
 </section>
 <div id="track"></div>
 
 <main id="flow">
-  <!-- 1 · recognition -->
-  <section class="sec" id="recog" aria-labelledby="h-recog">
-    <h2 class="big rv" id="h-recog"><span>Financial education</span><b>should not begin with a mistake.</b></h2>
-    <div class="qs">
-      <article class="q rv" style="--i:0"><img src="assets/i-envelope.webp" alt="" width="220" height="220" loading="lazy"><p class="mono">01 &middot; Income</p><h3>&ldquo;Where did my salary go?&rdquo;</h3><p>Budgeting, emergency funds, debt and the habits that shape money.</p></article>
-      <article class="q rv" style="--i:1"><img src="assets/i-umbrella.webp" alt="" width="220" height="220" loading="lazy"><p class="mono">02 &middot; Protection</p><h3>&ldquo;What am I actually buying?&rdquo;</h3><p>Insurance, tax and the trade-offs inside financial products.</p></article>
-      <article class="q rv" style="--i:2"><img src="assets/i-coin-tree.webp" alt="" width="220" height="220" loading="lazy"><p class="mono">03 &middot; Investing</p><h3>&ldquo;Why am I choosing this?&rdquo;</h3><p>Weighing a choice with evidence, context and your own risk.</p></article>
+  <!-- 2.1 · the belief -->
+  <section class="sec belief" id="belief" aria-labelledby="h-belief">
+    <div class="bgrid">
+      <h2 class="disp rv" id="h-belief">Financial education should not begin with a <em>mistake.</em></h2>
+      <p class="bpara rv" style="--d:.15s">The first salary lands. The bank suggests a policy. A friend says start a SIP. Someone forwards a stock tip. Most of us learn money by getting one of these wrong. <b>It shouldn&rsquo;t take a loss to learn.</b></p>
     </div>
-    <p class="aside rv">There&rsquo;s no shortage of information. What&rsquo;s missing is order.</p>
   </section>
 
-  <!-- 2 · try a lesson -->
-  <section class="sec" id="try" aria-labelledby="h-try">
-    <h2 class="big rv" id="h-try"><span>Try a lesson.</span><b>Right now.</b></h2>
-    <p class="lede rv">Two small pieces from the courses. Play with them, or keep scrolling.</p>
-    <div class="demos">
+  <!-- 2.2 · three questions, one at a time -->
+  <section class="qs" id="qs" aria-labelledby="h-qs">
+    <div class="qpin">
+      <h2 class="h2 rv" id="h-qs">Every salary asks <b>three questions.</b></h2>
+      <div class="qgrid">
+        <article class="qbox rv" style="--i:0">
+          <div class="scene inc" aria-hidden="true">
+            <svg class="flowlines" viewBox="0 0 100 70" preserveAspectRatio="none"><path d="M42 36 C52 36 54 16 62 14"/><path d="M42 36 C58 36 66 14 84 14"/><path d="M42 38 C52 40 54 52 62 54"/><path d="M42 38 C60 40 68 54 84 54"/></svg>
+            <img class="s-env" src="assets/s-envelope.webp" alt="" loading="lazy">
+            <figure style="--x:55%;--y:0%"><img src="assets/s-house.webp" alt="" loading="lazy"><figcaption>Rent</figcaption></figure>
+            <figure style="--x:78%;--y:0%"><img src="assets/s-groceries.webp" alt="" loading="lazy"><figcaption>Groceries</figcaption></figure>
+            <figure style="--x:55%;--y:56%"><img src="assets/s-phone.webp" alt="" loading="lazy"><figcaption>EMI</figcaption></figure>
+            <figure style="--x:78%;--y:56%"><img src="assets/s-tickets.webp" alt="" loading="lazy"><figcaption>Outings</figcaption></figure>
+          </div>
+          <p class="qn">Income</p>
+          <h3>&ldquo;Where did my salary go?&rdquo;</h3>
+          <p>Budgets, emergency funds, EMIs and credit cards. Know where every rupee goes before the month ends.</p>
+        </article>
+        <article class="qbox rv" style="--i:1">
+          <div class="scene pro" aria-hidden="true">
+            <img class="s-umb" src="assets/s-umbrella.webp" alt="" loading="lazy">
+            <figure style="--x:2%;--y:58%"><img src="assets/s-medicine.webp" alt="" loading="lazy"><figcaption>Health</figcaption></figure>
+            <figure style="--x:80%;--y:4%"><img src="assets/s-house.webp" alt="" loading="lazy"><figcaption>Home</figcaption></figure>
+            <figure style="--x:80%;--y:58%"><img src="assets/s-briefcase.webp" alt="" loading="lazy"><figcaption>Income</figcaption></figure>
+          </div>
+          <p class="qn">Protection</p>
+          <h3>&ldquo;What am I actually buying?&rdquo;</h3>
+          <p>Health cover, life cover and tax. Know what a policy really gives you before you sign.</p>
+        </article>
+        <article class="qbox rv" style="--i:2">
+          <div class="scene inv" aria-hidden="true">
+            <div class="beam"><i class="post"></i><div class="arm">
+              <figure class="pan l"><img src="assets/s-phone.webp" alt="" loading="lazy"><figcaption>A forwarded tip</figcaption></figure>
+              <figure class="pan r"><img src="assets/s-coin-tree.webp" alt="" loading="lazy"><figcaption>A reason of your own</figcaption></figure>
+            </div></div>
+          </div>
+          <p class="qn">Investing</p>
+          <h3>&ldquo;Why am I choosing this?&rdquo;</h3>
+          <p>SIPs, funds and stocks, picked for a reason that&rsquo;s yours, not a forwarded tip.</p>
+        </article>
+      </div>
+      <p class="qend rv">Stonkzz School answers all three, in order, in Tamil.</p>
+    </div>
+  </section>
+
+  <!-- 2.3 · try a lesson -->
+  <section class="sec try" id="try" aria-labelledby="h-try">
+    <div class="tryhead">
+      <h2 class="disp rv" id="h-try">Try a lesson. <em class="g">Right now.</em></h2>
+      <p class="lede rv" style="--d:.1s">Two short games from inside the courses. Play one, or keep scrolling.</p>
+    </div>
+    <div class="games">
       <div class="card glass race rv">
-    <p class="mono lab"><span class="lvl">Level 1</span> Module 4 &middot; The Race</p>
-    <h3 class="ct">Who ends with more?</h3>
-    <p class="sub">Priya starts investing at 25. Karthik starts at 35. Same amount every month. Both stop at 60.</p>
-    <div class="row"><label class="mono" for="amt">Monthly amount</label><output id="amtOut" for="amt">&#8377;5,000</output></div>
-    <input type="range" id="amt" min="1000" max="25000" step="500" value="5000">
-    <p class="mono q">Your guess</p>
-    <div class="who">
-      <button type="button" data-who="priya" aria-pressed="false"><b>Priya</b><span>Starts at 25</span></button>
-      <button type="button" data-who="karthik" aria-pressed="false"><b>Karthik</b><span>Starts at 35</span></button>
-    </div>
-    <button type="button" class="btn" id="raceGo">Start the race <i>&rarr;</i></button>
-    <div class="lanes">
-      <div class="lane"><span class="nm">Priya</span><span class="bar"><i id="bP"></i></span><b id="vP">&#8377;0</b><small id="iP">put in &#8377;0</small></div>
-      <div class="lane"><span class="nm">Karthik</span><span class="bar"><i id="bK"></i></span><b id="vK">&#8377;0</b><small id="iK">put in &#8377;0</small></div>
-      <p class="mono age">Age <b id="ageV">25</b></p>
-    </div>
-    <div class="res gold" id="raceRes" aria-live="polite">
-      <img src="assets/m-compounder.webp" alt="The Compounder medal" width="52" height="52">
-      <p><b id="resHead">Priya. Her first ten years did most of the work.</b><span>Starting early beats starting big. <b class="gtag">Compounder medal</b> earned in the course for this game.</span></p>
-    </div>
-    <p class="fine" id="raceFine">Example only. &#8377;5,000 a month at 12% a year. Not a promise of returns.</p>
-  </div>
-      <div class="card glass stockdemo rv" id="stock">
-        <p class="mono lab"><span class="lvl gold">Level 2</span> How a stock works</p>
-        <h3 class="ct">A company is 100 pieces.</h3>
-        <div class="steps3">
-          <figure><div class="art" data-blocks="1"></div><figcaption><b>A company is 100 pieces.</b></figcaption></figure>
-          <figure><div class="art" data-blocks="2"></div><figcaption><b>Buy one. Now it&rsquo;s yours.</b></figcaption></figure>
-          <figure><div class="art" data-blocks="3"></div><figcaption><b>It grows or falls with the company.</b></figcaption></figure>
+        <p class="mono lab">Game 1 &middot; The Race</p>
+        <h3 class="ct">Who ends with more?</h3>
+        <p class="sub">Priya invests every month from 25. Karthik invests the same from 35. Both stop at 60. Pick who you think wins.</p>
+        <div class="row"><label class="mono" for="amt">Monthly amount</label><output id="amtOut" for="amt">&#8377;5,000</output></div>
+        <input type="range" id="amt" min="1000" max="25000" step="500" value="5000">
+        <div class="who">
+          <button type="button" data-who="priya" aria-pressed="false"><b>Priya</b><span>Starts at 25</span></button>
+          <button type="button" data-who="karthik" aria-pressed="false"><b>Karthik</b><span>Starts at 35</span></button>
         </div>
+        <button type="button" class="btn" id="raceGo">Start the race <i>&rarr;</i></button>
+        <div class="lanes">
+          <div class="lane"><span class="nm">Priya</span><span class="bar"><i id="bP"></i></span><b id="vP">&#8377;0</b><small id="iP">put in &#8377;0</small></div>
+          <div class="lane"><span class="nm">Karthik</span><span class="bar"><i id="bK"></i></span><b id="vK">&#8377;0</b><small id="iK">put in &#8377;0</small></div>
+          <p class="mono age">Age <b id="ageV">25</b></p>
+        </div>
+        <div class="res" id="raceRes" aria-live="polite">
+          <p><b id="resHead">Priya ends with 3.4 times as much.</b><span>She invested for ten more years, and those first ten did most of the work. That&rsquo;s compounding.</span></p>
+        </div>
+        <p class="fine" id="raceFine">Example only. &#8377;5,000 a month at 12% a year. Not a promise of returns.</p>
+      </div>
+      <div class="card glass pgame rv" style="--d:.12s">
+        <p class="mono lab">Game 2 &middot; Pattern Spotter</p>
+        <h3 class="ct">Can you name the shape?</h3>
+        <p class="sub">A practice chart draws itself, week by week. Name the pattern before it finishes. This is the same game you play in the Stock Market course.</p>
+        <div class="gbox" id="gameBox">
+          <svg class="gprev" viewBox="0 0 400 220" aria-hidden="true">
+            <g class="grid"><path d="M0 40H400M0 90H400M0 140H400M0 190H400"/></g>
+            <path class="gline" d="M10 180 L55 150 L90 110 L120 135 L160 70 L200 120 L235 105 L270 140 L300 128 L340 175 L390 200"/>
+            <path class="gneck" d="M110 132 L310 132"/>
+          </svg>
+          <button type="button" class="btn" id="gamePlay">Play the game <i>&rarr;</i></button>
+        </div>
+        <p class="fine">Practice charts, not real stocks. Not a prediction.</p>
       </div>
     </div>
   </section>
 
-  <!-- 3 · how we teach -->
-  <section class="sec" id="teach" aria-labelledby="h-teach">
-    <h2 class="big rv" id="h-teach"><span>Not a bundle of videos.</span><b>A way to learn.</b></h2>
+  <!-- 2.4 · how you learn -->
+  <section class="sec learn" id="learn" aria-labelledby="h-learn">
+    <h2 class="disp c rv" id="h-learn">Not a bundle of videos. <em class="g">A way to learn.</em></h2>
     <p class="ta rv" lang="ta">&#2986;&#2979;&#2980;&#3021;&#2980;&#3016;&#2986;&#3021; &#2986;&#3009;&#2992;&#3007;&#2984;&#3021;&#2980;&#3009;&#2965;&#3018;&#2995;&#3021;&#2995;&#3009;&#2990;&#3021; &#2965;&#2994;&#3021;&#2997;&#3007;, &#2980;&#2990;&#3007;&#2996;&#3007;&#2994;&#3021;.</p>
-    <p class="lede rv">Free videos answer one question. A course puts the answers in order, in Tamil, with examples you already live with.</p>
-    <ol class="wpc">
-      <li class="rv" style="--i:0"><span class="mono">01</span><b>Watch.</b><p>Short lessons in simple Tamil, with examples from Indian life.</p></li>
-      <li class="rv" style="--i:1"><span class="mono">02</span><b>Practise.</b><p>Build a budget for your own salary. Read a real company&rsquo;s statements. Spot a pattern on a chart.</p></li>
-      <li class="rv" style="--i:2"><span class="mono">03</span><b>Check.</b><p>Every module ends in an interactive challenge, with unlimited attempts and an explanation for every answer.</p></li>
-    </ol>
-    <p class="cert rv"><i class="seal" aria-hidden="true"></i>Score 60/100 or more for a Stonkzz School certificate of completion. Learn on the app for Android, iPhone or the web.</p>
-    <ul class="prin rv">
-      <li><b>Simple</b>Explained so a beginner can follow.</li>
-      <li><b>Structured</b>The right order, basics first.</li>
-      <li><b>Practical</b>You learn by doing.</li>
-      <li><b>Independent</b>Think for yourself, not from forwarded tips.</li>
-      <li><b>Honest</b>Risk is a subject, not a footnote.</li>
-      <li><b>Local</b>Indian examples, from CIBIL scores to tax rules.</li>
-    </ul>
-    <p class="motto rv">Simplicity, not exclusivity.</p>
+    <div class="load">
+      <div class="track"><i class="fill"></i></div>
+      <ol class="stops">
+        <li class="stop" data-at="0"><i class="dot"></i><b>Start</b><p>Day one, from the basics.</p></li>
+        <li class="stop" data-at=".25"><i class="dot"></i><span class="mono">01</span><b>Watch</b><p>Short lessons in simple Tamil, with examples from everyday Indian life.</p></li>
+        <li class="stop" data-at=".5"><i class="dot"></i><span class="mono">02</span><b>Practise</b><p>Budget your own salary. Read a real company&rsquo;s accounts. Name a pattern on a chart.</p></li>
+        <li class="stop" data-at=".75"><i class="dot"></i><span class="mono">03</span><b>Check</b><p>Every module ends in a challenge. Unlimited attempts, and the reason behind every answer.</p></li>
+        <li class="stop gold" data-at=".999"><i class="dot"></i><span class="mono">Reward</span><b>Certificate</b><p>Score 60 out of 100 for your Stonkzz School certificate of completion.</p></li>
+      </ol>
+    </div>
+    <p class="mono appline rv">On the Stonkzz School app &middot; Android, iPhone and web</p>
   </section>
 
-  <!-- 4 · the teacher -->
-  <section class="sec" id="teacher" aria-labelledby="h-teacher">
-    <div class="tgrid">
-      <div class="vid rv"><video src="assets/teacher.mp4" poster="assets/teacher-poster.jpg" controls playsinline preload="none" aria-label="A short teaching clip from Stonkzz with Prasanna Priyan"></video></div>
-      <div class="tcopy rv">
-        <h2 class="big left" id="h-teacher"><span>Meet your</span><b>teacher.</b></h2>
-        <p class="who2">Prasanna Priyan &middot; Founder, Stonkzz and Stonkzz School</p>
-        <p class="lede left">Prasanna explains money and markets in simple Tamil, with real Indian examples and honest trade-offs. No tips, no shortcuts, no promises of returns. Just clear explanations, in the right order, so you can make your own decisions with confidence.</p>
-        <p class="mono creds">NISM-certified &middot; Research Analyst (Series XV) &middot; Equity Derivatives (Series VIII)</p>
-        <a class="btn ghost" href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">See Stonkzz on YouTube <i>&nearr;</i></a>
+  <!-- 2.5 · trailer, then the teacher -->
+  <section class="sec teacher" id="teacher" aria-labelledby="h-teacher">
+    <div class="vid rv"><video src="assets/teacher.mp4" poster="assets/teacher-poster.jpg" controls playsinline preload="none" aria-label="A short teaching clip from Stonkzz with Prasanna Priyan"></video></div>
+    <div class="who3">
+      <div class="rv">
+        <p class="mono" id="h-teacher">Meet your teacher</p>
+        <h2 class="name">Prasanna Priyan</h2>
+        <p class="role">Founder, Stonkzz and Stonkzz School</p>
+      </div>
+      <div class="rv" style="--d:.1s">
+        <p class="lede left">Prasanna explains money and markets in plain Tamil, with Indian examples and the trade-offs left in. He doesn&rsquo;t give tips or calls, and he doesn&rsquo;t promise returns. He teaches the reasoning, in the right order, so the decision stays yours.</p>
+        <a class="btn ghost" href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">Watch Stonkzz on YouTube <i>&nearr;</i></a>
       </div>
     </div>
   </section>
 
-  <!-- 5 · the courses -->
-  <section class="sec" id="courses" aria-labelledby="h-courses">
-    <h2 class="big rv" id="h-courses"><span>Start with Level 1.</span><b>Go deeper with Level 2.</b></h2>
-    <p class="lede rv">Each course is sold on its own. Start with the one that answers your questions now.</p>
+  <!-- 2.6 · the courses -->
+  <section class="sec courses" id="courses" aria-labelledby="h-courses">
+    <h2 class="disp c rv" id="h-courses">Start with Level 1. <em class="gd">Go deeper with Level 2.</em></h2>
     <div class="cgrid">
-      <article class="course glass rv">
-        <div class="obj" data-obj="piggy" data-glb="" aria-label="A piggy bank in 3D. Drag to turn it." role="img"><canvas></canvas><span class="mono drag">Drag to turn</span></div>
+      <article class="course rv">
+        <div class="art3" aria-hidden="true"><i class="halo"></i><img src="assets/c-piggy.webp" alt="" width="640" height="656" loading="lazy"></div>
         <span class="lvl">Level 1</span>
         <h3>Personal Finance Mastery</h3>
-        <p>Earning, budgeting, protection, investing, debt and goal planning.</p>
-        <p class="fy"><b>This is for you if</b> you earn money and want a better system for managing it.</p>
+        <p>Earning, budgeting, insurance, tax, debt, investing and goals, in the order life asks for them.</p>
+        <p class="fy"><b>For you if</b> you earn every month but can&rsquo;t say where it goes.</p>
         <p class="mono meta">Tamil &middot; 14 modules &middot; 76 lessons &middot; Lifetime access</p>
         <p class="price">&#8377;2,999 <small>+ GST</small></p>
-        <a class="btn" href="#" data-pending="The Personal Finance course page">Explore Personal Finance <i>&rarr;</i></a>
+        <div class="cbtns"><a class="btn" href="#" data-pending="The Personal Finance course page">See the course <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Notify me sign-up">Notify me</a></div>
+        <p class="opens">Enrolment opens January 2027</p>
       </article>
-      <article class="course glass rv">
-        <div class="obj" data-obj="bullbear" data-glb="" aria-label="A bull and a bear in 3D. Drag to turn them." role="img"><canvas></canvas><span class="mono drag">Drag to turn</span></div>
+      <article class="course rv" style="--d:.1s">
+        <div class="art3 wide" aria-hidden="true"><i class="halo"></i><img src="assets/c-bullbear.webp" alt="" width="760" height="497" loading="lazy"></div>
         <span class="lvl gold">Level 2</span>
         <h3>A to Z of the Stock Market</h3>
-        <p>How markets work, how to study a business, read a chart and manage risk.</p>
-        <p class="fy"><b>This is for you if</b> you know your money basics and want to understand investing and trading.</p>
-        <p class="mono meta">Tamil &middot; 15 modules &middot; 81 lessons &middot; FA + TA + Risk</p>
+        <p>How the market works, how to study a business, how to read a chart and how to manage risk.</p>
+        <p class="fy"><b>For you if</b> your basics are sorted and you want to understand the market before you put money in.</p>
+        <p class="mono meta">Tamil &middot; 15 modules &middot; 81 lessons &middot; Lifetime access</p>
         <p class="price">&#8377;4,999 <small>+ GST</small></p>
-        <a class="btn" href="#" data-pending="The Stock Market course page">Explore the Stock Market <i>&rarr;</i></a>
+        <div class="cbtns"><a class="btn" href="#" data-pending="The Stock Market course page">See the course <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Notify me sign-up">Notify me</a></div>
+        <p class="opens">Enrolment opens January 2027</p>
       </article>
     </div>
-    <p class="aside rv">Not sure? Start with Personal Finance. Comfortable with the basics already? Go to the Stock Market.</p>
+    <p class="aside rv">New to money? Start with Level 1.</p>
+    <p class="soonrow rv"><span class="mono">Coming next in Level 2</span><span>Mutual Funds Mastery</span><span>Options Trading 101</span></p>
   </section>
-</main>
-<div id="track2"></div>
-<div class="sr">
-  <p>Same salary. Same person. Different ending. Salary in, plan first. Insurance for cover, investing separate. Card paid in full. A rule written before the fall.</p>
-</div>
 
-<div id="flow2">
-  <!-- 6 · the bookend and the doors -->
-  <section class="sec" id="start" aria-labelledby="h-start">
-    <h2 class="big rv" id="h-start"><span>Twelve years of school.</span><b>One day, money will be one of the lessons.</b></h2>
-    <p class="lede rv">Until then, start here.</p>
-    <div class="doors rv">
-      <a class="glass door" href="#" data-pending="The Personal Finance course page"><span class="mono">01</span><b>Personal Finance Mastery <em class="lvl">Level 1</em></b><em>New to all of this? Start here.</em><i>&rarr;</i></a>
-      <a class="glass door" href="#" data-pending="The Stock Market course page"><span class="mono">02</span><b>A to Z of the Stock Market <em class="lvl gold">Level 2</em></b><em>Ready to understand the market.</em><i>&rarr;</i></a>
-      <a class="glass door second" href="#" data-pending="The app"><span class="mono">03</span><b>The Stonkzz School app</b><em>Lessons and challenges on your phone.</em><i>&rarr;</i></a>
-      <a class="glass door second" href="#" data-pending="The report page"><span class="mono">04</span><b>The Stonkzz Daily</b><em>The pre-market report, every morning.</em><i>&rarr;</i></a>
-    </div>
-    <p class="mono soonh rv">Coming next</p>
-    <div class="soon rv">
-      <article class="glass"><span class="lvl gold">Level 2 &middot; Coming soon</span><h3>Mutual Funds Mastery</h3><p>Fund categories, SIPs, asset allocation and the questions to ask before you pick a fund.</p></article>
-      <article class="glass"><span class="lvl gold">Level 2 &middot; Coming soon</span><h3>Options Trading 101</h3><p>A risk-first introduction to how options work and the mistakes beginners make.</p></article>
+  <!-- 2.7 · same salary: the section holds still while four candles turn -->
+  <section class="same" id="same" aria-labelledby="h-same">
+    <div class="pin">
+      <canvas id="ssCanvas" aria-hidden="true"></canvas>
+      <h2 class="ss-h" id="h-same"><span><i>Same salary.</i> <i>Same person.</i></span><b>Different ending.</b></h2>
+      <ul class="ss-grid">
+        <li class="ss-i"><i class="ss-c"></i><p class="ss-a">Salary in. Gone by the 20th.</p><p class="ss-b">Salary in. Plan first.</p></li>
+        <li class="ss-i"><i class="ss-c"></i><p class="ss-a">A policy an uncle suggested.</p><p class="ss-b">Insurance to protect. Investments to grow.</p></li>
+        <li class="ss-i"><i class="ss-c"></i><p class="ss-a">Minimum due, every month.</p><p class="ss-b">Card paid in full, every month.</p></li>
+        <li class="ss-i"><i class="ss-c"></i><p class="ss-a">Bought on a WhatsApp tip.</p><p class="ss-b">Exit decided before buying.</p></li>
+      </ul>
+      <p class="ss-end">The only thing that changed is what they learnt.</p>
     </div>
   </section>
 
-  <!-- 7 · questions -->
-  <section class="sec" id="faq" aria-labelledby="h-faq">
-    <h2 class="big rv" id="h-faq"><span>Questions?</span><b>Clear answers.</b></h2>
-    <div class="acc rv">
-      <details open><summary>I&rsquo;m new to money management. Where do I start?</summary><p>Personal Finance Mastery. It builds the foundations before the stock market.</p></details>
-      <details><summary>Do I need to buy both courses?</summary><p>No. There is no bundle at the moment. Each course is bought separately.</p></details>
-      <details><summary>Are the lessons in Tamil?</summary><p>Yes. Every lesson is taught in Tamil with Indian examples. The app and site are in Tamil and English.</p></details>
-      <details><summary>When do I get access?</summary><p>As soon as your payment is confirmed. Log in to the Stonkzz School app (Android, iOS or web) with the phone number you paid with. Access is lifetime, including future updates.</p></details>
-      <details><summary>Can I learn on my phone?</summary><p>Yes, on Android, iPhone or the web. You can use your account on up to 2 devices.</p></details>
-      <details><summary>Do I get a certificate?</summary><p>Yes. Score 60/100 or more across the module challenges and the final assessment for a Stonkzz School certificate of completion. It is not a NISM, SEBI or other official qualification.</p></details>
-      <details><summary>Do you give stock recommendations?</summary><p>No. Stonkzz School teaches. It does not give personal investment advice or trading calls.</p></details>
-      <details><summary>Why pay for a course when Stonkzz has free videos?</summary><p>Free videos answer one question at a time. The course puts every subject in order, with practice and a challenge after each module.</p></details>
-      <details><summary>Are Mutual Funds, Options and live classes available?</summary><p>Not yet. Mutual Funds Mastery and Options Trading 101 are coming soon. Live classes and workshops are planned. None are included with a current purchase.</p></details>
-      <details><summary>How do I get help or a refund?</summary><p>Use Help inside the app or write to us, Monday to Saturday, 10 AM to 6 PM. Refunds follow our <a href="#" data-pending="The refund policy page">7-day refund policy</a>.</p></details>
+  <!-- 2.8 · the last push -->
+  <section class="sec last" id="last" aria-labelledby="h-last">
+    <h2 class="disp c xl rv" id="h-last">Learn money <em class="g">before money teaches you.</em></h2>
+    <p class="lede rv">Start with your salary, or start with the market.</p>
+    <div class="btns rv"><a class="btn" href="#" data-pending="The Personal Finance course page">Personal Finance <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Stock Market course page">Stock Market <i>&rarr;</i></a></div>
+    <p class="opens rv">Enrolment opens January 2027 &middot; <a href="#" data-pending="The Notify me sign-up">Notify me</a></p>
+  </section>
+
+  <!-- 2.9 · questions -->
+  <section class="sec faq" id="faq" aria-labelledby="h-faq">
+    <div class="fgrid">
+      <h2 class="disp rv" id="h-faq">Questions? <em class="g">Clear answers.</em></h2>
+      <div class="acc rv">
+        <details open><summary>I&rsquo;m new to money. Where do I start?</summary><p>Personal Finance Mastery. It sets up your money basics before you get to the stock market.</p></details>
+        <details><summary>Do I need to buy both courses?</summary><p>No. Each course is bought on its own, and there&rsquo;s no bundle right now.</p></details>
+        <details><summary>Are the lessons in Tamil?</summary><p>Yes, every lesson, with Indian examples. The app and site work in Tamil and English.</p></details>
+        <details><summary>When can I start?</summary><p>Enrolment opens in January 2027. Once you&rsquo;ve paid, log in to the Stonkzz School app with your phone number and start straight away. Access is lifetime, updates included.</p></details>
+        <details><summary>Can I learn on my phone?</summary><p>Yes, on Android, iPhone or the web.</p></details>
+        <details><summary>Do I get a certificate?</summary><p>Yes. Score 60 out of 100 across the module challenges and the final assessment for a Stonkzz School certificate of completion. It isn&rsquo;t a NISM, SEBI or other official qualification.</p></details>
+        <details><summary>Do you give stock tips?</summary><p>No. Stonkzz School teaches. No tips, no trading calls, no personal investment advice.</p></details>
+        <details><summary>Why pay when Stonkzz has free videos?</summary><p>A free video answers one question. A course takes you through the whole subject in order, with practice and a challenge after every module.</p></details>
+        <details><summary>Are Mutual Funds, Options or live classes available?</summary><p>Not yet. Mutual Funds Mastery and Options Trading 101 are coming soon. Nothing coming later is included in today&rsquo;s purchase.</p></details>
+        <details><summary>How do I get help or a refund?</summary><p>Use Help in the app, Monday to Saturday, 10 AM to 6 PM. Refunds follow our <a href="#" data-pending="The refund policy page">7-day refund policy</a>.</p></details>
+      </div>
     </div>
   </section>
 
-  <!-- 8 · footer -->
+  <!-- 3 · footer -->
   <footer class="sfoot" aria-label="Site footer">
     <div class="fwrap">
       <div class="fbrand">
         <p class="flogo"><img src="assets/logo.svg" alt="" width="22" height="28"> Stonkzz School</p>
         <p>Financial education, explained simply in Tamil.</p>
-        <p class="ftag">Learn better. Invest smarter. <b>Build wealth with confidence.</b></p>
+        <p class="ftag">Learn better. Invest smarter.</p>
       </div>
       <nav aria-label="Courses"><p class="mono">Courses</p><ul><li><a href="#" data-pending="The Personal Finance course page">Personal Finance Mastery</a></li><li><a href="#" data-pending="The Stock Market course page">A to Z of the Stock Market</a></li><li><span>Mutual Funds Mastery (soon)</span></li><li><span>Options Trading 101 (soon)</span></li></ul></nav>
-      <nav aria-label="Stonkzz"><p class="mono">Stonkzz</p><ul><li><a href="#" data-pending="The report page">The Stonkzz Daily</a></li><li><a href="#" data-pending="The app">The Stonkzz School app</a></li><li><a href="#" data-pending="The support page">Support</a></li></ul></nav>
+      <nav aria-label="Stonkzz"><p class="mono">Stonkzz</p><ul><li><a href="daily/">The Stonkzz Daily</a></li><li><a href="#" data-pending="The app">The Stonkzz School app</a></li><li><a href="#" data-pending="The support page">Support</a></li></ul></nav>
       <nav aria-label="Follow"><p class="mono">Follow</p><ul><li><a href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://www.instagram.com/stonkzz._/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://x.com/stonkz_daily" target="_blank" rel="noopener">X</a></li><li><a href="#" data-pending="The LinkedIn page">LinkedIn</a></li></ul></nav>
       <nav aria-label="Legal"><p class="mono">Legal</p><ul><li><a href="#" data-pending="The Terms of Use page">Terms of Use</a></li><li><a href="#" data-pending="The Privacy Policy page">Privacy Policy</a></li><li><a href="#" data-pending="The refund policy page">Refund Policy</a></li></ul></nav>
     </div>
@@ -238,7 +286,7 @@
       <p class="mono">&copy; 2026 Stonkzz School</p>
     </div>
   </footer>
-</div>
+</main>
 
 <div id="toast" role="status" aria-live="polite"></div>
 <noscript><p class="nojs">Stonkzz School. Twelve years of school, and nobody taught us how to manage money. That's what we want to change.</p></noscript>
