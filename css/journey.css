@@ -394,3 +394,64 @@ body.no3d #track,body.no3d #cue{display:none}
 @media (min-width:901px){.h1{white-space:nowrap}}
 @media (max-width:900px){.mentor{grid-template-columns:1fr}.mh{font-size:clamp(2rem,9vw,3rem)}}
 @media (max-width:900px){.panel2{flex:none}}
+
+/* ============================================================ build 6: type to the brand book, Ed 02 pp. 6-7 */
+@font-face{font-family:"Caveat";font-weight:600;font-display:swap;src:url(../fonts/caveat-latin-600-normal.woff2) format("woff2")}
+/* headlines: Bricolage 700, tracking -3% to -3.5%, leading 1.03, H1 78 / H2 59-67 / H3 21-42; silver, never flat white; a statement, then the green payoff */
+.disp,.h1,.h2,.mh,.ss-h,.name{font-weight:700;letter-spacing:-.035em;line-height:1.03}
+.disp{font-size:clamp(2.3rem,5.4vw,4.875rem)}
+.disp.xl{font-size:clamp(2.6rem,5.8vw,4.875rem)}
+.courses .disp{font-size:clamp(2rem,4.2vw,4.1rem)}
+.faq .disp{font-size:clamp(2.2rem,4.4vw,4.1rem)}
+.h1{font-size:clamp(2.1rem,4.6vw,4.1rem)}
+.h2{font-size:clamp(1.9rem,3.6vw,3.6rem)}
+.disp,.h1,.h2,.mh .mhl,.ss-h span{background:linear-gradient(180deg,#fff,#B4B4AC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.disp em,.h1 em,.h2 b,.ss-h b{-webkit-text-fill-color:currentColor}
+.disp em.g,.h1 em,.h2 b,.ss-h b{color:#3BEE72;text-shadow:0 0 26px rgba(37,224,101,.45)}
+.disp em.gd{color:#3BEE72}
+.belief .disp em{display:block;color:#FF4747;text-shadow:0 0 28px rgba(255,71,71,.5)}
+.qbox .qn{font-weight:700}
+.bpara{border-left-color:rgba(255,71,71,.7)}
+/* every section opens with a label */
+.eyebrow{display:flex;align-items:center;gap:12px;font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--muted2);margin-bottom:-6px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--g)}
+.c+.eyebrow,.sec>.eyebrow{justify-self:center}
+.belief .eyebrow{margin-bottom:18px}
+.ss-l{position:relative;justify-self:center;margin:0 0 14px}
+.same .pin{grid-template-rows:auto auto 1fr auto}
+
+/* the three questions: wide cards, picture left, words right, so the card fits a laptop screen */
+@media (min-width:901px){
+  .qring{width:min(880px,82vw)}
+  .qbox{display:grid;grid-template-columns:1.05fr 1fr;grid-template-rows:auto auto auto 1fr;column-gap:26px;align-items:start}
+  .qbox .scene{grid-row:1/5;align-self:center;aspect-ratio:16/11}
+  .qbox .qn{margin-top:4px}
+  .qbox h3{font-size:clamp(1.3rem,1.8vw,1.6rem)}
+  .qbox p:last-child{font-size:1.02rem}
+}
+.scene figure{width:22%}
+.scene figure img{max-height:76px}
+.inv .pan.l img{width:42%}
+.inv .pan.r img{width:72%}
+
+/* the loading line: five equal columns, centred, so both ends sit the same distance in */
+@media (min-width:901px){
+  .stops{grid-template-columns:repeat(5,1fr)}
+  .stop{align-items:center;text-align:center}
+  .stop p{max-width:24ch}
+  .stop .dot.coin{margin:-10px 0 0}
+}
+
+/* mentor: Vanakkam in a pen hand over the line, the name in a green gradient, the photo on the right */
+.mh{display:flex;flex-direction:column;align-items:flex-start;font-size:clamp(2.2rem,4.4vw,4.1rem)}
+.mh .hand{font:600 clamp(2.4rem,4.6vw,4.2rem)/.8 "Caveat",cursive;letter-spacing:0;color:var(--g1);transform:rotate(-6deg) translate(.15em,.2em);text-shadow:0 0 22px rgba(37,224,101,.35);position:relative;z-index:1}
+.mh .mhl{display:block}
+.mh b{display:block;font-weight:700;background:linear-gradient(100deg,#9CFFC0 0%,#43F27C 40%,#12A845 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 0 22px rgba(37,224,101,.3))}
+.mpic{width:100%;justify-self:stretch;filter:none;border-radius:22px;overflow:hidden;position:relative;aspect-ratio:1100/894}
+.mpic img{width:100%;height:100%;object-fit:cover}
+.mpic::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--night) 0%,rgba(7,7,8,0) 22%),linear-gradient(0deg,var(--night) 0%,rgba(7,7,8,0) 18%)}
+.mentor{grid-template-columns:1fr 1fr}
+@media (max-width:900px){.mentor{grid-template-columns:1fr}.mpic{order:-1;width:100%}}
+
+/* same salary labels stay readable over the towers */
+.ss-i p{text-shadow:0 2px 14px rgba(0,0,0,.9),0 0 2px rgba(0,0,0,.8)}
