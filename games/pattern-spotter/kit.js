@@ -13,7 +13,8 @@ const h = (tag, attrs={}, ...kids) => { const el=document.createElement(tag); fo
 SZ.h = h; SZ.$ = $; SZ.$$ = $$;
 
 /* ---------- formatting ---------- */
-const inr = n => (n<0?'-':'') + '₹' + Math.round(Math.abs(n)).toLocaleString('en-IN');
+/* website copy: the score is points, never rupees */
+const inr = n => { const v=Math.round(Math.abs(n)); return (n<0?'-':'') + v + (v===1?' point':' points'); };
 const lakh = n => { const a=Math.abs(n); if(a>=1e7) return '₹'+(n/1e7).toFixed(a>=1e8?1:2).replace(/\.?0+$/,'')+' cr'; if(a>=1e5) return '₹'+(n/1e5).toFixed(a>=1e6?1:2).replace(/\.?0+$/,'')+' lakh'; return inr(n); };
 const pct = (n,d=0) => (n).toFixed(d)+'%';
 SZ.fmt = { inr, lakh, pct };
@@ -94,7 +95,7 @@ function applyConfig(){ document.documentElement.setAttribute('data-chrome', SZ.
 SZ.colors = function(){ const cs=getComputedStyle(document.documentElement); const g=n=>cs.getPropertyValue(n).trim(); return { paper:g('--paper'), paperHi:g('--paper-hi'), ink:g('--ink'), ink2:g('--ink-2'), ink3:g('--ink-3'), line:g('--line'), line2:g('--line-2'), up:g('--up'), down:g('--down'), gold:g('--gold'), foil:g('--foil'), pf:g('--pf'), sm:g('--sm'), uv:SZ.isUV() }; };
 
 /* ---------- words the kit itself shows (games keep theirs in content.js) ---------- */
-const KIT_STRINGS = { en:{ close:'Close', soundOn:'Sound on', soundOff:'Sound off', earned:'Earned', earnedLong:'Coins earned this round', bestNote:'new best', tryAgain:'Try again', continue:'Continue', playAgain:'Play again', done:'Done', passed:'Passed', notYet:'Not passed yet', cleared:'Module cleared', goodAttempt:'Good attempt', newMedal:'New medal: ', medal:'Medal: ', noHost:'In the app, this button takes the learner back.', final:'Final assessment', module:'Module ', paused:'Paused' } };
+const KIT_STRINGS = { en:{ close:'Close', soundOn:'Sound on', soundOff:'Sound off', earned:'Score', earnedLong:'Points scored this round', bestNote:'new best', tryAgain:'Try again', continue:'Continue', playAgain:'Play again', done:'Done', passed:'Passed', notYet:'Not passed yet', cleared:'Module cleared', goodAttempt:'Good attempt', newMedal:'New medal: ', medal:'Medal: ', noHost:'In the app, this button takes the learner back.', final:'Final assessment', module:'Module ', paused:'Paused' } };
 SZ.t = (k) => { const L=SZ.config.lang||'en'; const extra=(window.STONKZZ_CONTENT&&window.STONKZZ_CONTENT.kitStrings)||{}; return (extra[L]&&extra[L][k]) || (KIT_STRINGS[L]&&KIT_STRINGS[L][k]) || KIT_STRINGS.en[k] || k; };
 
 /* ---------- sound: tiny WebAudio synth, no files ---------- */
@@ -268,14 +269,14 @@ function counter(){ return $('#sz-earned'); }
 function rollTo(target){ const box=counter(); const el=box&&box.querySelector('b'); if(!el) return; cancelAnimationFrame(capAnim); const from=displayed, t0=performance.now(), dur=520; const step=t=>{ const p=Math.max(0,Math.min(1,(t-t0)/dur)), e=1-Math.pow(1-p,3); displayed=from+(target-from)*e; el.textContent=inr(displayed); if(p<1) capAnim=requestAnimationFrame(step); else displayed=target; }; capAnim=requestAnimationFrame(step); box.classList.remove('bump'); void box.offsetWidth; box.classList.add('bump'); }
 function resetCounter(){ earnedTotal=0; displayed=0; pending=0; const b=counter(); if(b) b.querySelector('b').textContent=inr(0); }
 SZ.earn = function(amount, src, opts={}){
-  amount=Math.round(amount); if(!amount) return; earnedTotal+=amount; if(current) current.sess.earned+=amount;
+  amount = amount>0 ? 1 : 0; if(!amount) return; earnedTotal+=amount; if(current) current.sess.earned+=amount;
   emit('earn',{amount});
   const p=pointOf(src); if(!opts.silent) SZ.floater('+'+inr(amount), p);
   const target=counter(); const visible = target && target.offsetParent!==null;
   if(!visible||reduced()){ rollTo(earnedTotal); SZ.sfx('coin'); return; }
   const tr=target.getBoundingClientRect(); const tx=tr.right-24, ty=tr.top+tr.height/2;
   const n=Math.min(9, 2+Math.floor(amount/600)); pending+=amount;
-  for(let i=0;i<n;i++){ const coin=h('div',{class:'coin'},'₹'); fxLayer().append(coin); const sx=p.x+(Math.random()-.5)*40, sy=p.y+(Math.random()-.5)*30; const mx=sx+(tx-sx)*.3+(Math.random()-.5)*160, my=Math.min(sy,ty)-80-Math.random()*120; const d=620+i*55;
+  for(let i=0;i<n;i++){ const coin=h('div',{class:'coin'},'★'); fxLayer().append(coin); const sx=p.x+(Math.random()-.5)*40, sy=p.y+(Math.random()-.5)*30; const mx=sx+(tx-sx)*.3+(Math.random()-.5)*160, my=Math.min(sy,ty)-80-Math.random()*120; const d=620+i*55;
     coin.animate([{transform:`translate(${sx}px,${sy}px) scale(.3)`,opacity:0},{transform:`translate(${(sx+mx)/2}px,${my}px) scale(1.15) rotateY(180deg)`,opacity:1,offset:.45},{transform:`translate(${tx}px,${ty}px) scale(.55) rotateY(360deg)`,opacity:1}],{duration:d,delay:i*45,easing:'cubic-bezier(.45,.05,.55,.95)',fill:'both'}).onfinish=()=>{ coin.remove(); SZ.sfx('coin'); pending=Math.max(0, pending-amount/n); rollTo(Math.max(0, earnedTotal-pending)); };
   }
   SZ.haptic(12);
@@ -908,7 +909,7 @@ function showResult(def, sess, r){
   card.append(stars);
   if(lesson && r.max) card.append(h('div',{class:'verdict'+(r.passed?' pass':'')}, r.passed?SZ.t('passed'):SZ.t('notYet')));
   card.append(h('h3',{},r.title || (r.passed?SZ.t('cleared'):SZ.t('goodAttempt'))));
-  const earnedEl=h('div',{class:'earned'},'+₹0'); card.append(h('div',{}, earnedEl, h('span',{class:'earned-l'}, SZ.t('earnedLong') + (r.isBest && r.earned>0 && store.plays>1 ? ' · '+SZ.t('bestNote') : ''))));
+  const earnedEl=h('div',{class:'earned'},'+0 points'); card.append(h('div',{}, earnedEl, h('span',{class:'earned-l'}, SZ.t('earnedLong') + (r.isBest && r.earned>0 && store.plays>1 ? ' · '+SZ.t('bestNote') : ''))));
   if(r.text) card.append(h('p',{},r.text));
   if(r.stats && r.stats.length) card.append(h('div',{class:'stats'}, r.stats.map(([k,v])=>h('div',{class:'sz-stat'},h('small',{},k),h('b',{},String(v))))));
   if(b){ card.append(h('div',{class:'medal'}, h('div',{class:'win'}, h('img',{src:SZ.badgeArt(b),alt:b.name})))); card.append(h('div',{class:'medal-name'}, (r.newBadge?SZ.t('newMedal'):SZ.t('medal'))+b.name)); card.append(h('div',{class:'medal-how'}, b.how)); }

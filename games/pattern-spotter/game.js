@@ -73,7 +73,7 @@ SZ.register({
     const S = { i:0, streak:0, best:0, earn:0, correct:0, token:0, answered:false };
 
     const el=h('div',{class:'g-ps'});
-    const stRound=h('b',{},'1 / '+ROUNDS.length), stStreak=h('b',{},'0'), stEarn=h('b',{class:'gold'},'₹0');
+    const stRound=h('b',{},'1 / '+ROUNDS.length), stStreak=h('b',{},'0'), stEarn=h('b',{class:'gold'},'0 points');
     const cv=h('canvas',{'aria-label':'Price chart'}); const tag=h('div',{class:'tag'},''); const timer=h('div',{class:'ps-timer off'},h('i'));
     const box=h('div',{class:'chartbox'}, cv, tag, timer);
     const ctx=h('p',{class:'ps-ctx'}); const opts=h('div',{class:'ps-opts',role:'group','aria-label':'Answers'});
@@ -82,7 +82,7 @@ SZ.register({
     const next=h('button',{class:'sz-btn ps-next',hidden:true},'Next chart');
     el.append(
       h('p',{class:'sz-lede'},'Weeks of price draw live from the module’s pivot data. Name the shape inside twelve seconds. After each answer the construction lines appear, so you see why it is that pattern.'),
-      h('div',{class:'sz-hud'}, h('div',{class:'sz-stat'},h('small',{},'Chart'),stRound), h('div',{class:'sz-stat'},h('small',{},'Streak'),stStreak), h('div',{class:'sz-stat'},h('small',{},'Earned'),stEarn)),
+      h('div',{class:'sz-hud'}, h('div',{class:'sz-stat'},h('small',{},'Chart'),stRound), h('div',{class:'sz-stat'},h('small',{},'Streak'),stStreak), h('div',{class:'sz-stat'},h('small',{},'Score'),stEarn)),
       box, ctx, legend, opts, msg, why, h('div',{class:'sz-row'},next));
     root.append(el);
 
@@ -156,7 +156,7 @@ SZ.register({
       const r=ROUNDS[S.i]; const left=Math.max(0,Math.round(S.left??0)); const ok=i===r.ans;
       timer.classList.add('off'); tag.classList.remove('low');
       [...opts.querySelectorAll('.sz-opt')].forEach((b,j)=>{ b.disabled=true; if(j===r.ans) b.classList.add('ok'); else if(j===i) b.classList.add('no'); else b.classList.add('dim'); });
-      if(ok){ S.streak++; S.best=Math.max(S.best,S.streak); S.correct++; const bonus=S.streak>=5?600:S.streak>=3?300:0; const e=1000+left*100+bonus; S.earn+=e; api.earn(e, btn||box);
+      if(ok){ S.streak++; S.best=Math.max(S.best,S.streak); S.correct++; const bonus=S.streak>=5?600:S.streak>=3?300:0; const e=1000+left*100+bonus; S.earn+=1; api.earn(e, btn||box);
         msg.className='sz-msg good'; msg.innerHTML=''; msg.append(h('b',{},r.opts[r.ans]+'. '), `+${inr(e)} · ${left}s left`+(bonus?` · streak bonus ${inr(bonus)}`:''));
         if(S.streak===3) api.stamp('3 IN A ROW','gold'); else if(S.streak===5) api.stamp('5 IN A ROW','gold'); else api.sfx('cash'); api.haptic(15);
       } else { S.streak=0; api.sfx('wrong'); api.shake(box); api.haptic([20,40,20]); msg.className='sz-msg bad'; msg.innerHTML=''; msg.append(i<0?'Time. ':'Not quite. ', 'It’s ', h('b',{},r.opts[r.ans]), '.'); }
@@ -174,7 +174,7 @@ SZ.register({
       const n=ROUNDS.length, all=S.correct===n;
       api.done({ score:S.correct, max:n, badge:all, title: all?'Every pattern named':`${S.correct} of ${n} patterns named`,
         text:'The last two are placed back to back on purpose. Both rise. One has a flat ceiling and reads bullish, the other converges and reads bearish. Telling them apart is the whole module.',
-        stats:[['Named',`${S.correct} / ${n}`],['Best streak',S.best],['Earned',inr(S.earn)]] });
+        stats:[['Named',`${S.correct} / ${n}`],['Best streak',S.best],['Score',inr(S.earn)]] });
     });
     const onKey=e=>{ if(api.session.dead||document.querySelector('.result')) return; if(/^[1-4]$/.test(e.key)&&!S.answered){ const b=opts.querySelector(`.sz-opt[data-i="${+e.key-1}"]`); if(b) b.click(); } };
     window.addEventListener('keydown',onKey);

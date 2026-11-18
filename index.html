@@ -49,7 +49,7 @@
 <!-- the lines drawn inside the 3D scene, as text for screen readers and search -->
 <div class="sr" id="top">
   <h1>Stonkzz School</h1>
-  <p>Twelve years of school. We learnt to find the value of x.</p>
+  <p>Twelve years of school. Hundreds of exams. Thousands of marks.</p>
   <p>Nobody taught us how to manage money.</p>
   <p>That's what we want to change.</p>
 </div>
@@ -76,8 +76,8 @@
   <section class="qs" id="qs" aria-labelledby="h-qs">
     <div class="qpin">
       <h2 class="h2 rv" id="h-qs">Every salary asks <b>three questions.</b></h2>
-      <div class="qgrid">
-        <article class="qbox rv" style="--i:0">
+      <div class="qring"><div class="qspin">
+        <article class="qbox" style="--i:0">
           <div class="scene inc" aria-hidden="true">
             <svg class="flowlines" viewBox="0 0 100 70" preserveAspectRatio="none"><path d="M42 36 C52 36 54 16 62 14"/><path d="M42 36 C58 36 66 14 84 14"/><path d="M42 38 C52 40 54 52 62 54"/><path d="M42 38 C60 40 68 54 84 54"/></svg>
             <img class="s-env" src="assets/s-envelope.webp" alt="" loading="lazy">
@@ -90,7 +90,7 @@
           <h3>&ldquo;Where did my salary go?&rdquo;</h3>
           <p>Budgets, emergency funds, EMIs and credit cards. Know where every rupee goes before the month ends.</p>
         </article>
-        <article class="qbox rv" style="--i:1">
+        <article class="qbox" style="--i:1">
           <div class="scene pro" aria-hidden="true">
             <img class="s-umb" src="assets/s-umbrella.webp" alt="" loading="lazy">
             <figure style="--x:2%;--y:58%"><img src="assets/s-medicine.webp" alt="" loading="lazy"><figcaption>Health</figcaption></figure>
@@ -101,7 +101,7 @@
           <h3>&ldquo;What am I actually buying?&rdquo;</h3>
           <p>Health cover, life cover and tax. Know what a policy really gives you before you sign.</p>
         </article>
-        <article class="qbox rv" style="--i:2">
+        <article class="qbox" style="--i:2">
           <div class="scene inv" aria-hidden="true">
             <div class="beam"><i class="post"></i><div class="arm">
               <figure class="pan l"><img src="assets/s-phone.webp" alt="" loading="lazy"><figcaption>A forwarded tip</figcaption></figure>
@@ -112,7 +112,8 @@
           <h3>&ldquo;Why am I choosing this?&rdquo;</h3>
           <p>SIPs, funds and stocks, picked for a reason that&rsquo;s yours, not a forwarded tip.</p>
         </article>
-      </div>
+      </div></div>
+      <div class="qdots" aria-hidden="true"><i></i><i></i><i></i></div>
       <p class="qend rv">Stonkzz School answers all three, in order, in Tamil.</p>
     </div>
   </section>
@@ -120,44 +121,52 @@
   <!-- 2.3 · try a lesson -->
   <section class="sec try" id="try" aria-labelledby="h-try">
     <div class="tryhead">
-      <h2 class="disp rv" id="h-try">Try a lesson. <em class="g">Right now.</em></h2>
-      <p class="lede rv" style="--d:.1s">Two short games from inside the courses. Play one, or keep scrolling.</p>
+      <h2 class="h1 rv" id="h-try">Try a lesson. <em>Right now.</em></h2>
+      <p class="lede left rv" style="--d:.1s">Two short games from inside the courses. Play one, or keep scrolling.</p>
     </div>
-    <div class="games">
-      <div class="card glass race rv">
-        <p class="mono lab">Game 1 &middot; The Race</p>
-        <h3 class="ct">Who ends with more?</h3>
-        <p class="sub">Priya invests every month from 25. Karthik invests the same from 35. Both stop at 60. Pick who you think wins.</p>
-        <div class="row"><label class="mono" for="amt">Monthly amount</label><output id="amtOut" for="amt">&#8377;5,000</output></div>
-        <input type="range" id="amt" min="1000" max="25000" step="500" value="5000">
-        <div class="who">
-          <button type="button" data-who="priya" aria-pressed="false"><b>Priya</b><span>Starts at 25</span></button>
-          <button type="button" data-who="karthik" aria-pressed="false"><b>Karthik</b><span>Starts at 35</span></button>
-        </div>
-        <button type="button" class="btn" id="raceGo">Start the race <i>&rarr;</i></button>
-        <div class="lanes">
-          <div class="lane"><span class="nm">Priya</span><span class="bar"><i id="bP"></i></span><b id="vP">&#8377;0</b><small id="iP">put in &#8377;0</small></div>
-          <div class="lane"><span class="nm">Karthik</span><span class="bar"><i id="bK"></i></span><b id="vK">&#8377;0</b><small id="iK">put in &#8377;0</small></div>
-          <p class="mono age">Age <b id="ageV">25</b></p>
-        </div>
-        <div class="res" id="raceRes" aria-live="polite">
-          <p><b id="resHead">Priya ends with 3.4 times as much.</b><span>She invested for ten more years, and those first ten did most of the work. That&rsquo;s compounding.</span></p>
-        </div>
-        <p class="fine" id="raceFine">Example only. &#8377;5,000 a month at 12% a year. Not a promise of returns.</p>
+    <div class="win rv" id="gwin">
+      <div class="tabs" role="tablist" aria-label="Games">
+        <button type="button" role="tab" id="tab-race" aria-controls="p-race" aria-selected="true"><span class="mono">Level 1</span>The Race</button>
+        <button type="button" role="tab" id="tab-pat" aria-controls="p-pat" aria-selected="false" tabindex="-1"><span class="mono">Level 2</span>Pattern Spotter</button>
       </div>
-      <div class="card glass pgame rv" style="--d:.12s">
-        <p class="mono lab">Game 2 &middot; Pattern Spotter</p>
-        <h3 class="ct">Can you name the shape?</h3>
-        <p class="sub">A practice chart draws itself, week by week. Name the pattern before it finishes. This is the same game you play in the Stock Market course.</p>
-        <div class="gbox" id="gameBox">
-          <svg class="gprev" viewBox="0 0 400 220" aria-hidden="true">
-            <g class="grid"><path d="M0 40H400M0 90H400M0 140H400M0 190H400"/></g>
-            <path class="gline" d="M10 180 L55 150 L90 110 L120 135 L160 70 L200 120 L235 105 L270 140 L300 128 L340 175 L390 200"/>
-            <path class="gneck" d="M110 132 L310 132"/>
-          </svg>
-          <button type="button" class="btn" id="gamePlay">Play the game <i>&rarr;</i></button>
+      <div class="panel2 race" role="tabpanel" id="p-race" aria-labelledby="tab-race">
+        <div class="rcol">
+          <h3 class="ct">Who ends with more?</h3>
+          <p class="sub">Priya invests every month from 25. Karthik invests the same from 35. Both stop at 60. Pick who you think wins.</p>
+          <div class="row"><label class="mono" for="amt">Monthly amount</label><output id="amtOut" for="amt">&#8377;5,000</output></div>
+          <input type="range" id="amt" min="1000" max="25000" step="500" value="5000">
+          <div class="who">
+            <button type="button" data-who="priya" aria-pressed="false"><b>Priya</b><span>Starts at 25</span></button>
+            <button type="button" data-who="karthik" aria-pressed="false"><b>Karthik</b><span>Starts at 35</span></button>
+          </div>
+          <button type="button" class="btn" id="raceGo">Start the race <i>&rarr;</i></button>
         </div>
-        <p class="fine">Practice charts, not real stocks. Not a prediction.</p>
+        <div class="rcol">
+          <div class="lanes">
+            <div class="lane"><span class="nm">Priya</span><span class="bar"><i id="bP"></i></span><b id="vP">&#8377;0</b><small id="iP">put in &#8377;0</small></div>
+            <div class="lane"><span class="nm">Karthik</span><span class="bar"><i id="bK"></i></span><b id="vK">&#8377;0</b><small id="iK">put in &#8377;0</small></div>
+            <p class="mono age">Age <b id="ageV">25</b></p>
+          </div>
+          <div class="res" id="raceRes" aria-live="polite">
+            <p><b id="resHead">Priya ends with 3.4 times as much.</b><span>She invested for ten more years, and those first ten did most of the work. That&rsquo;s compounding.</span></p>
+          </div>
+          <p class="fine" id="raceFine">Example only. &#8377;5,000 a month at 12% a year. Not a promise of returns.</p>
+        </div>
+      </div>
+      <div class="panel2 pgame" role="tabpanel" id="p-pat" aria-labelledby="tab-pat" hidden>
+        <div class="gbox" id="gameBox">
+          <div class="gcover">
+            <h3 class="ct">Can you name the shape?</h3>
+            <p class="sub">A practice chart draws itself, week by week. Name the pattern before it finishes. It&rsquo;s the same game you play in the Stock Market course.</p>
+            <svg class="gprev" viewBox="0 0 400 220" aria-hidden="true">
+              <g class="grid"><path d="M0 40H400M0 90H400M0 140H400M0 190H400"/></g>
+              <path class="gline" d="M10 180 L55 150 L90 110 L120 135 L160 70 L200 120 L235 105 L270 140 L300 128 L340 175 L390 200"/>
+              <path class="gneck" d="M110 132 L310 132"/>
+            </svg>
+            <button type="button" class="btn" id="gamePlay">Play the game <i>&rarr;</i></button>
+            <p class="fine">Practice charts, not real stocks. Not a prediction.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -173,7 +182,7 @@
         <li class="stop" data-at=".25"><i class="dot"></i><span class="mono">01</span><b>Watch</b><p>Short lessons in simple Tamil, with examples from everyday Indian life.</p></li>
         <li class="stop" data-at=".5"><i class="dot"></i><span class="mono">02</span><b>Practise</b><p>Budget your own salary. Read a real company&rsquo;s accounts. Name a pattern on a chart.</p></li>
         <li class="stop" data-at=".75"><i class="dot"></i><span class="mono">03</span><b>Check</b><p>Every module ends in a challenge. Unlimited attempts, and the reason behind every answer.</p></li>
-        <li class="stop gold" data-at=".999"><i class="dot"></i><span class="mono">Reward</span><b>Certificate</b><p>Score 60 out of 100 for your Stonkzz School certificate of completion.</p></li>
+        <li class="stop gold" data-at=".999"><i class="dot coin">&#8377;</i><span class="mono">Reward</span><b>Certificate</b><p>Score 60 out of 100 for your Stonkzz School certificate of completion.</p></li>
       </ol>
     </div>
     <p class="mono appline rv">On the Stonkzz School app &middot; Android, iPhone and web</p>
@@ -182,44 +191,51 @@
   <!-- 2.5 · trailer, then the teacher -->
   <section class="sec teacher" id="teacher" aria-labelledby="h-teacher">
     <div class="vid rv"><video src="assets/teacher.mp4" poster="assets/teacher-poster.jpg" controls playsinline preload="none" aria-label="A short teaching clip from Stonkzz with Prasanna Priyan"></video></div>
-    <div class="who3">
-      <div class="rv">
-        <p class="mono" id="h-teacher">Meet your teacher</p>
-        <h2 class="name">Prasanna Priyan</h2>
+    <div class="mentor">
+      <div class="mtext rv">
+        <p class="mono" id="h-teacher">Vanakkam</p>
+        <h2 class="mh">Meet your mentor, <b>Prasanna Priyan.</b></h2>
         <p class="role">Founder, Stonkzz and Stonkzz School</p>
-      </div>
-      <div class="rv" style="--d:.1s">
         <p class="lede left">Prasanna explains money and markets in plain Tamil, with Indian examples and the trade-offs left in. He doesn&rsquo;t give tips or calls, and he doesn&rsquo;t promise returns. He teaches the reasoning, in the right order, so the decision stays yours.</p>
         <a class="btn ghost" href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">Watch Stonkzz on YouTube <i>&nearr;</i></a>
       </div>
+      <figure class="mpic rv" style="--d:.12s"><img src="assets/mentor.webp" alt="Prasanna Priyan, drawn in the Stonkzz engraved style" width="420" height="525" loading="lazy"></figure>
     </div>
   </section>
 
   <!-- 2.6 · the courses -->
   <section class="sec courses" id="courses" aria-labelledby="h-courses">
-    <h2 class="disp c rv" id="h-courses">Start with Level 1. <em class="gd">Go deeper with Level 2.</em></h2>
-    <div class="cgrid">
-      <article class="course rv">
+    <h2 class="disp c rv" id="h-courses">Start with Level 1. <em class="g">Go deeper with Level 2.</em></h2>
+    <div class="win gold rv" id="cwin">
+      <div class="tabs" role="tablist" aria-label="Courses">
+        <button type="button" role="tab" id="tab-pf" aria-controls="p-pf" aria-selected="true"><span class="mono">Level 1</span>Personal Finance Mastery</button>
+        <button type="button" role="tab" id="tab-sm" aria-controls="p-sm" aria-selected="false" tabindex="-1"><span class="mono">Level 2</span>A to Z of the Stock Market</button>
+      </div>
+      <article class="panel2 course" role="tabpanel" id="p-pf" aria-labelledby="tab-pf">
         <div class="art3" aria-hidden="true"><i class="halo"></i><img src="assets/c-piggy.webp" alt="" width="640" height="656" loading="lazy"></div>
-        <span class="lvl">Level 1</span>
-        <h3>Personal Finance Mastery</h3>
-        <p>Earning, budgeting, insurance, tax, debt, investing and goals, in the order life asks for them.</p>
-        <p class="fy"><b>For you if</b> you earn every month but can&rsquo;t say where it goes.</p>
-        <p class="mono meta">Tamil &middot; 14 modules &middot; 76 lessons &middot; Lifetime access</p>
-        <p class="price">&#8377;2,999 <small>+ GST</small></p>
-        <div class="cbtns"><a class="btn" href="#" data-pending="The Personal Finance course page">See the course <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Notify me sign-up">Notify me</a></div>
-        <p class="opens">Enrolment opens January 2027</p>
+        <div class="cinfo">
+          <span class="lvl">Level 1</span>
+          <h3>Personal Finance Mastery</h3>
+          <p>Earning, budgeting, insurance, tax, debt, investing and goals, in the order life asks for them.</p>
+          <p class="fy"><b>For you if</b> you earn every month but can&rsquo;t say where it goes.</p>
+          <p class="mono meta">Tamil &middot; 14 modules &middot; 76 lessons &middot; Lifetime access</p>
+          <p class="price">&#8377;2,999 <small>+ GST</small></p>
+          <div class="cbtns"><a class="btn" href="#" data-pending="The Personal Finance course page">See the course <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Notify me sign-up">Notify me</a></div>
+          <p class="opens">Enrolment opens January 2027</p>
+        </div>
       </article>
-      <article class="course rv" style="--d:.1s">
+      <article class="panel2 course" role="tabpanel" id="p-sm" aria-labelledby="tab-sm" hidden>
         <div class="art3 wide" aria-hidden="true"><i class="halo"></i><img src="assets/c-bullbear.webp" alt="" width="760" height="497" loading="lazy"></div>
-        <span class="lvl gold">Level 2</span>
-        <h3>A to Z of the Stock Market</h3>
-        <p>How the market works, how to study a business, how to read a chart and how to manage risk.</p>
-        <p class="fy"><b>For you if</b> your basics are sorted and you want to understand the market before you put money in.</p>
-        <p class="mono meta">Tamil &middot; 15 modules &middot; 81 lessons &middot; Lifetime access</p>
-        <p class="price">&#8377;4,999 <small>+ GST</small></p>
-        <div class="cbtns"><a class="btn" href="#" data-pending="The Stock Market course page">See the course <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Notify me sign-up">Notify me</a></div>
-        <p class="opens">Enrolment opens January 2027</p>
+        <div class="cinfo">
+          <span class="lvl gold">Level 2</span>
+          <h3>A to Z of the Stock Market</h3>
+          <p>How the market works, how to study a business, how to read a chart and how to manage risk.</p>
+          <p class="fy"><b>For you if</b> your basics are sorted and you want to understand the market before you put money in.</p>
+          <p class="mono meta">Tamil &middot; 15 modules &middot; 81 lessons &middot; Lifetime access</p>
+          <p class="price">&#8377;4,999 <small>+ GST</small></p>
+          <div class="cbtns"><a class="btn" href="#" data-pending="The Stock Market course page">See the course <i>&rarr;</i></a><a class="btn ghost" href="#" data-pending="The Notify me sign-up">Notify me</a></div>
+          <p class="opens">Enrolment opens January 2027</p>
+        </div>
       </article>
     </div>
     <p class="aside rv">New to money? Start with Level 1.</p>
@@ -252,11 +268,11 @@
   <!-- 2.9 · questions -->
   <section class="sec faq" id="faq" aria-labelledby="h-faq">
     <div class="fgrid">
-      <h2 class="disp rv" id="h-faq">Questions? <em class="g">Clear answers.</em></h2>
+      <div class="fhead rv"><h2 class="disp" id="h-faq">Questions? <em class="g">Clear answers.</em></h2><p class="lede left">Everything people ask before they join, answered here.</p></div>
       <div class="acc rv">
         <details open><summary>I&rsquo;m new to money. Where do I start?</summary><p>Personal Finance Mastery. It sets up your money basics before you get to the stock market.</p></details>
         <details><summary>Do I need to buy both courses?</summary><p>No. Each course is bought on its own, and there&rsquo;s no bundle right now.</p></details>
-        <details><summary>Are the lessons in Tamil?</summary><p>Yes, every lesson, with Indian examples. The app and site work in Tamil and English.</p></details>
+        <details><summary>Are the lessons in Tamil?</summary><p>Yes. Every lesson is taught in Tamil, with Indian examples. This website is in English.</p></details>
         <details><summary>When can I start?</summary><p>Enrolment opens in January 2027. Once you&rsquo;ve paid, log in to the Stonkzz School app with your phone number and start straight away. Access is lifetime, updates included.</p></details>
         <details><summary>Can I learn on my phone?</summary><p>Yes, on Android, iPhone or the web.</p></details>
         <details><summary>Do I get a certificate?</summary><p>Yes. Score 60 out of 100 across the module challenges and the final assessment for a Stonkzz School certificate of completion. It isn&rsquo;t a NISM, SEBI or other official qualification.</p></details>
