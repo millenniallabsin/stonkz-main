@@ -385,6 +385,83 @@ html:not(.sz-live) .when-live{display:none}
 }
 .stage .obj{height:auto}
 
+/* ==========================================================
+   v6 — motion first (opening, life map, rewrite), then static
+   ========================================================== */
+.opening{min-height:100svh;text-align:center}
+.open-grid{display:flex;flex-direction:column;align-items:center;width:100%}
+.opening h1{font-size:clamp(42px,6vw,84px);margin:22px auto 6px;max-width:20ch}
+.opening .pay{display:block}
+.open-pig{position:relative;width:min(260px,58vw);aspect-ratio:1;display:grid;place-items:center;margin:18px auto 6px}
+.open-pig .pattern{position:absolute;inset:0;opacity:.3;animation:spin 120s linear infinite}
+.open-pig .ring{position:absolute;inset:8%;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 60%,rgba(255,71,71,.5) 70%,rgba(242,198,109,.5) 80%,rgba(37,224,101,.9) 94%,transparent 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));filter:drop-shadow(0 0 10px rgba(37,224,101,.5));animation:spin 14s linear infinite}
+.open-pig .pig{position:relative;width:58%;height:auto;filter:drop-shadow(0 0 3px rgba(67,242,124,.4));transform-origin:50% 90%;animation:sway 4.5s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-6px)}}
+.scrollcue{display:inline-flex;align-items:center;gap:10px;margin-top:10px;font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.scrollcue span{display:inline-block;color:var(--green);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* life map: a game-level path the coin travels on scroll */
+.lifemap-sec{padding-top:clamp(40px,6vw,80px)}
+.lifemap{position:relative;max-width:980px;margin:0 auto;display:grid;gap:clamp(70px,9vw,120px);padding:30px 0}
+.lm-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.lm-base{fill:none;stroke:rgba(255,255,255,.12);stroke-width:3;stroke-dasharray:2 12;stroke-linecap:round}
+.lm-done{fill:none;stroke:url(#lmg);stroke-width:5;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(37,224,101,.35))}
+.lm-coin{position:absolute;left:0;top:0;z-index:3;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;display:grid;place-items:center;font:700 16px var(--title);color:var(--g-ink);
+  background:radial-gradient(circle at 35% 30%,#d9ffe5,var(--g-bright) 38%,var(--g-dark) 80%);box-shadow:0 0 0 2px rgba(3,32,11,.6),0 0 22px rgba(67,242,124,.7);will-change:transform}
+.lm-coin.red{background:radial-gradient(circle at 35% 30%,#ffe3e3,var(--r-bright) 40%,var(--r-dark) 85%);box-shadow:0 0 0 2px rgba(60,0,0,.5),0 0 22px rgba(255,71,71,.7);color:#2a0303}
+.lm-stop{position:relative;z-index:2;display:flex;align-items:center;gap:26px;width:min(470px,100%)}
+.lm-stop[data-side="r"]{justify-self:end;flex-direction:row-reverse;text-align:right}
+.lm-node{position:relative;flex:none;width:132px;height:132px;border-radius:50%;display:grid;place-items:center;background:#0b0e0c;border:1px solid var(--edge);box-shadow:0 0 0 8px var(--night),inset 0 1px 0 var(--hi);transition:border-color .5s,box-shadow .5s,transform .5s var(--ease)}
+.lm-node img{width:96px;height:96px;opacity:.35;filter:grayscale(.6);transition:opacity .5s,filter .5s}
+.lm-text{opacity:.3;transition:opacity .5s}
+.lm-age{display:inline-block;font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);margin-bottom:10px;transition:color .5s}
+.lm-text p{font:700 clamp(22px,2.6vw,32px)/1.15 var(--title);letter-spacing:-.025em;color:var(--paper)}
+.lm-stop.lit .lm-node{border-color:rgba(37,224,101,.5);box-shadow:0 0 0 8px var(--night),0 0 40px rgba(37,224,101,.25);transform:scale(1.04)}
+.lm-stop.lit .lm-node img{opacity:1;filter:brightness(1.25) drop-shadow(0 0 4px rgba(67,242,124,.5))}
+.lm-stop.lit .lm-text{opacity:1}
+.lm-stop.lit .lm-age{color:var(--green)}
+.lm-stop.warm.lit .lm-node{border-color:rgba(226,178,62,.55);box-shadow:0 0 0 8px var(--night),0 0 40px rgba(226,178,62,.22)}
+.lm-stop.warm.lit .lm-age{color:var(--gold-bright)}
+.lm-stop.hot.lit .lm-node{border-color:rgba(255,71,71,.6);box-shadow:0 0 0 8px var(--night),0 0 44px rgba(255,71,71,.3)}
+.lm-stop.hot.lit .lm-age{color:var(--r-bright)}
+.lm-end.lit .lm-node img{filter:grayscale(1) sepia(1) hue-rotate(-50deg) saturate(5) brightness(.9) drop-shadow(0 0 6px rgba(255,71,71,.6))}
+.lm-end .crack{position:absolute;left:46%;top:30%;width:22px;height:46px;opacity:0;transition:opacity .4s .3s;background:linear-gradient(115deg,transparent 45%,var(--r-bright) 46% 54%,transparent 55%) 0 0/100% 50% no-repeat,linear-gradient(65deg,transparent 45%,var(--r-bright) 46% 54%,transparent 55%) 0 100%/100% 50% no-repeat;filter:drop-shadow(0 0 4px rgba(255,71,71,.8))}
+.lm-end.lit .crack{opacity:1}
+.drops i{position:absolute;left:50%;top:-6px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9ffe5,var(--g-bright) 40%,var(--g-dark));opacity:0}
+.lit .drops i{animation:drop 1.4s ease-in infinite}
+.lit .drops i:nth-child(2){animation-delay:.45s;margin-left:-15px}
+.lit .drops i:nth-child(3){animation-delay:.9s;margin-left:2px}
+@keyframes drop{0%{transform:translateY(-30px);opacity:0}20%{opacity:1}70%{transform:translateY(46px);opacity:1}85%,100%{transform:translateY(52px) scale(.4);opacity:0}}
+.lm-close{text-align:center;font:700 clamp(36px,5.4vw,72px)/1.04 var(--title);letter-spacing:-.035em;margin-top:clamp(60px,8vw,100px)}
+.lm-close .pay{display:inline}
+
+/* the rewrite: course stages as the new, green path */
+.intro-head{text-align:left}
+.intro-head .price-line{margin-top:22px}
+.journey.green .rail i{background:linear-gradient(180deg,var(--g-dark),var(--green) 50%,var(--g-bright))}
+.journey.green .stop .dot{border-color:var(--muted2)}
+
+/* static zone */
+.faq-wrap{max-width:860px}
+#enroll .learn-h{margin-top:6px}
+#enroll .learn{grid-template-columns:1fr}
+
+@media (max-width:680px){
+  .opening h1{font-size:clamp(36px,10.5vw,50px)}
+  .lifemap{gap:64px}
+  .lm-stop,.lm-stop[data-side="r"]{gap:16px}
+  .lm-node{width:92px;height:92px;box-shadow:0 0 0 6px var(--night),inset 0 1px 0 var(--hi)}
+  .lm-node img{width:68px;height:68px}
+  .lm-text p{font-size:20px}
+  .lm-stop{width:100%}
+  .lm-stop[data-side="r"]{flex-direction:row;text-align:left;justify-self:start;padding-left:40px}
+  .lm-stop[data-side="l"]{padding-right:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  .lm-node img,.lm-text{opacity:1}
+}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -428,7 +505,7 @@ if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Stonkzz School, back to top"><img src="assets/logo.svg" alt="" width="27" height="34">Stonkzz <span>School</span></a>
     <nav class="nav-links" aria-label="Page">
-      <a class="hide-md" href="#play">Try a game</a>
+      <a class="hide-md" href="#play">Try a lesson</a>
       <a href="#curriculum">Curriculum</a>
       <a href="#faq">FAQs</a>
       <a class="btn btn-green btn-sm" href="#enroll" data-to-notify><span class="when-soon">Notify me</span><span class="when-live">Enroll now</span></a>
@@ -463,77 +540,7 @@ if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
   </div>
 </section>
 
-<!-- 2 · THE PROBLEM + WHAT YOU'LL LEARN (static) -->
-<section class="sec" id="learn">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="label" data-r>The gap</span>
-      <h2 data-r><span class="silver">A demat account is a tool.</span> <span class="pay">Understanding takes more.</span></h2>
-    </div>
-    <div class="split">
-      <div data-r>
-        <div class="note">
-          <img src="assets/person.webp" alt="Arjun, illustrated as a portrait on a banknote" width="132" height="132">
-          <div><small>Sounds like you?</small><b>Arjun</b><p>Has a demat account. Bought his first stock on a forwarded tip.</p><span class="serial">SZ · SM 02 · 000413</span></div>
-        </div>
-        <ul class="qs">
-          <li><b>01</b>What does this company actually do, and how does it make money?</li>
-          <li><b>02</b>What do its financial statements really say?</li>
-          <li><b>03</b>What is the chart showing, and what isn't it?</li>
-          <li><b>04</b>How much could you lose, and are you okay with that?</li>
-        </ul>
-      </div>
-      <div data-r>
-        <p class="learn-h">What you'll be able to do</p>
-        <ul class="learn">
-          <li><img src="assets/i1.webp" alt="" width="64" height="64"><div><b>How the market works</b><span>Shares, IPOs, NSE and BSE, demat and orders.</span></div></li>
-          <li><img src="assets/i2.webp" alt="" width="64" height="64"><div><b>Study a business</b><span>Business models, moats and promoters.</span></div></li>
-          <li><img src="assets/i3.webp" alt="" width="64" height="64"><div><b>Read the numbers</b><span>P&amp;L, balance sheet, cash flow and valuation.</span></div></li>
-          <li><img src="assets/i4.webp" alt="" width="64" height="64"><div><b>Read a chart</b><span>Trends, candles, patterns, indicators and their limits.</span></div></li>
-          <li><img src="assets/i5.webp" alt="" width="64" height="64"><div><b>Manage risk</b><span>Position size, the 1% rule, stop-loss and drawdowns.</span></div></li>
-          <li><img src="assets/i6.webp" alt="" width="64" height="64"><div><b>Build your process</b><span>Psychology, a trade journal and paper trading.</span></div></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3 · PLAY A REAL MODULE GAME (dynamic) -->
-<section class="sec" id="play">
-  <div class="wrap play">
-    <div>
-      <div class="sec-head" style="margin-bottom:0">
-        <span class="label" data-r>Try it</span>
-        <h2 data-r><span class="silver">Try a lesson.</span> <span class="pay">Right now.</span></h2>
-        <p class="lead" data-r>Every module ends in a game, not a dull quiz. This is the one after Module 9: a practice chart draws itself, week by week. Name the pattern before it finishes.</p>
-      </div>
-      <ul class="play-points" data-r>
-        <li><b>01</b>14 module games and a final assessment</li>
-        <li><b>02</b>Unlimited attempts, with the reason behind every answer</li>
-        <li><b>03</b>Score 60 out of 100 for your Stonkzz School certificate of completion</li>
-      </ul>
-      <div class="medals" data-r>
-        <img src="assets/m1.webp" alt="Wedge from Triangle medal" width="76" height="76"><img src="assets/m2.webp" alt="Trend Reader medal" width="76" height="76"><img src="assets/m3.webp" alt="Survivor medal" width="76" height="76">
-        <span>A medal for every game you ace.</span>
-      </div>
-      <div class="after-play" role="status">
-        <p>That's one module of fifteen. The rest are waiting.</p>
-        <a class="btn btn-green btn-sm" href="#enroll" data-to-notify><span class="when-soon">Notify me</span><span class="when-live">Enroll now</span> <span class="arw">→</span></a>
-      </div>
-    </div>
-    <div class="phone" data-r>
-      <div class="screen">
-        <button type="button" class="poster" data-game="play/pattern-spotter/index.html?mode=play&amp;chrome=none&amp;theme=dark&amp;sound=0" data-title="Pattern Spotter, the Module 9 game from A to Z of the Stock Market" aria-label="Play Pattern Spotter, the Module 9 game">
-          <img src="assets/game-poster.webp" alt="" width="390" height="760" loading="lazy">
-          <span class="cap"><span class="tag green" style="margin-bottom:10px">Tap to play</span><small>Module 9 game · practice charts, not real stocks</small><b>Pattern Spotter</b></span>
-        </button>
-      </div>
-      <span class="loading">Loading the game…</span>
-    </div>
-  </div>
-</section>
-
-<!-- 4 · THE JOURNEY (dynamic) -->
+<!-- 2 · THE PATH: curriculum (scroll-driven) -->
 <section class="sec" id="curriculum">
   <div class="wrap">
     <div class="sec-head">
@@ -554,32 +561,7 @@ if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
   </div>
 </section>
 
-<!-- 5 · YOUR MENTOR (static) -->
-<section class="sec" id="mentor">
-  <div class="wrap teach">
-    <div>
-      <span class="label" data-r>Your mentor</span>
-      <h2 data-r style="font-size:clamp(34px,4.6vw,62px);margin:18px 0 18px"><span class="silver">Education first.</span> <span class="pay">Your own judgement, always.</span></h2>
-      <p class="lead" data-r>Prasanna Priyan, founder of Stonkzz and Stonkzz School, explains markets in plain Tamil, with Indian examples and the trade-offs left in. He teaches the reasoning, in the right order, so the decision stays yours.</p>
-      <p class="approach" data-r>No tips. No calls. <span>Just teaching.</span></p>
-    </div>
-    <div data-r>
-      <button type="button" class="vframe" data-video="mentor" data-label="Prasanna Priyan teaching">
-        <img class="vposter" src="assets/mentor.webp" alt="" loading="lazy"><span class="grid"></span><span class="slats"></span>
-        <span class="vtag tag">Real lesson clip</span>
-        <span class="playring" aria-hidden="true"></span>
-        <span class="vname">Prasanna Priyan · Founder &amp; mentor</span>
-      </button>
-      <div class="creds">
-        <div><small>Certified</small><b>NISM</b><p>Research Analyst (Series XV)</p></div>
-        <div><small>In Tamil</small><b>Every lesson</b><p>Simple Tamil, Indian examples</p></div>
-        <div><small>Free on</small><b>YouTube</b><p><a href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">Watch Stonkzz ↗</a></p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6 · PRICE + FAQ (static) -->
+<!-- 3 · PRICE (static) -->
 <section class="sec" id="enroll">
   <div class="wrap buy">
     <div class="glass offer" data-r>
@@ -615,6 +597,105 @@ if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
       </div>
       <div class="waitnote"><b>On the Stonkzz School waitlist?</b> Check your WhatsApp or email for your founding-learner early access.</div>
     </div>
+    <div data-r>
+      <p class="learn-h">What you'll be able to do</p>
+      <ul class="learn">
+        <li><img src="assets/i1.webp" alt="" width="64" height="64"><div><b>How the market works</b><span>Shares, IPOs, NSE and BSE, demat and orders.</span></div></li>
+        <li><img src="assets/i2.webp" alt="" width="64" height="64"><div><b>Study a business</b><span>Business models, moats and promoters.</span></div></li>
+        <li><img src="assets/i3.webp" alt="" width="64" height="64"><div><b>Read the numbers</b><span>P&amp;L, balance sheet, cash flow and valuation.</span></div></li>
+        <li><img src="assets/i4.webp" alt="" width="64" height="64"><div><b>Read a chart</b><span>Trends, candles, patterns, indicators and their limits.</span></div></li>
+        <li><img src="assets/i5.webp" alt="" width="64" height="64"><div><b>Manage risk</b><span>Position size, the 1% rule, stop-loss and drawdowns.</span></div></li>
+        <li><img src="assets/i6.webp" alt="" width="64" height="64"><div><b>Build your process</b><span>Psychology, a trade journal and paper trading.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · THE GAP (static) -->
+<section class="sec" id="learn">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label" data-r>The gap</span>
+      <h2 data-r><span class="silver">A demat account is a tool.</span> <span class="pay">Understanding takes more.</span></h2>
+    </div>
+    <div class="split" data-r>
+      <div>
+        <div class="note">
+          <img src="assets/person.webp" alt="Arjun, illustrated as a portrait on a banknote" width="132" height="132">
+          <div><small>Sounds like you?</small><b>Arjun</b><p>Has a demat account. Bought his first stock on a forwarded tip.</p><span class="serial">SZ · SM 02 · 000413</span></div>
+        </div>
+      </div>
+      <div>
+        <ul class="qs" style="margin-top:0">
+          <li><b>01</b>What does this company actually do, and how does it make money?</li>
+          <li><b>02</b>What do its financial statements really say?</li>
+          <li><b>03</b>What is the chart showing, and what isn't it?</li>
+          <li><b>04</b>How much could you lose, and are you okay with that?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · HOW YOU LEARN: a real module game + your mentor (static) -->
+<section class="sec" id="play">
+  <div class="wrap play">
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="label" data-r>How you learn</span>
+        <h2 data-r><span class="silver">Try a lesson.</span> <span class="pay">Right now.</span></h2>
+        <p class="lead" data-r>Every module ends in a game, not a dull quiz. This is the one after Module 9: a practice chart draws itself, week by week. Name the pattern before it finishes.</p>
+      </div>
+      <ul class="play-points" data-r>
+        <li><b>01</b>14 module games and a final assessment</li>
+        <li><b>02</b>Unlimited attempts, with the reason behind every answer</li>
+        <li><b>03</b>Score 60 out of 100 for your Stonkzz School certificate of completion</li>
+      </ul>
+      <div class="medals" data-r>
+        <img src="assets/m1.webp" alt="Wedge from Triangle medal" width="76" height="76"><img src="assets/m2.webp" alt="Trend Reader medal" width="76" height="76"><img src="assets/m3.webp" alt="Survivor medal" width="76" height="76">
+        <span>A medal for every game you ace.</span>
+      </div>
+      <div class="after-play" role="status">
+        <p>That's one module of fifteen. The rest are waiting.</p>
+        <a class="btn btn-green btn-sm" href="#enroll" data-to-notify><span class="when-soon">Notify me</span><span class="when-live">Enroll now</span> <span class="arw">→</span></a>
+      </div>
+    </div>
+    <div class="phone" data-r>
+      <div class="screen">
+        <button type="button" class="poster" data-game="play/pattern-spotter/index.html?mode=play&amp;chrome=none&amp;theme=dark&amp;sound=0" data-title="Pattern Spotter, the Module 9 game from A to Z of the Stock Market" aria-label="Play Pattern Spotter, the Module 9 game">
+          <img src="assets/game-poster.webp" alt="" width="390" height="760" loading="lazy">
+          <span class="cap"><span class="tag green" style="margin-bottom:10px">Tap to play</span><small>Module 9 game · practice charts, not real stocks</small><b>Pattern Spotter</b></span>
+        </button>
+      </div>
+      <span class="loading">Loading the game…</span>
+    </div>
+  </div>
+  <div class="wrap teach" id="mentor" style="margin-top:clamp(80px,10vw,128px)">
+    <div>
+      <span class="label" data-r>Your mentor</span>
+      <h2 data-r style="font-size:clamp(34px,4.6vw,62px);margin:18px 0 18px"><span class="silver">Education first.</span> <span class="pay">Your own judgement, always.</span></h2>
+      <p class="lead" data-r>Prasanna Priyan, founder of Stonkzz and Stonkzz School, explains markets in plain Tamil, with Indian examples and the trade-offs left in. He teaches the reasoning, in the right order, so the decision stays yours.</p>
+      <p class="approach" data-r>No tips. No calls. <span>Just teaching.</span></p>
+    </div>
+    <div data-r>
+      <button type="button" class="vframe" data-video="mentor" data-label="Prasanna Priyan teaching">
+        <img class="vposter" src="assets/mentor.webp" alt="" loading="lazy"><span class="grid"></span><span class="slats"></span>
+        <span class="vtag tag">Real lesson clip</span>
+        <span class="playring" aria-hidden="true"></span>
+        <span class="vname">Prasanna Priyan · Founder &amp; mentor</span>
+      </button>
+      <div class="creds">
+        <div><small>Certified</small><b>NISM</b><p>Research Analyst (Series XV)</p></div>
+        <div><small>In Tamil</small><b>Every lesson</b><p>Simple Tamil, Indian examples</p></div>
+        <div><small>Free on</small><b>YouTube</b><p><a href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">Watch Stonkzz ↗</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · FAQ (static) -->
+<section class="sec" id="faq-sec">
+  <div class="wrap faq-wrap">
     <div id="faq">
       <span class="label" data-r>Questions</span>
       <h2 data-r style="font-size:clamp(30px,3.6vw,48px);margin:16px 0 26px"><span class="silver">Good questions.</span> <span class="pay">Straight answers.</span></h2>
@@ -714,10 +795,11 @@ if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
     if(prog) prog.style.transform = 'scaleX(' + (max > 0 ? y / max : 0).toFixed(4) + ')';
     if(pill && hero && buy){
       var b = buy.getBoundingClientRect();
-      var on = hero.getBoundingClientRect().bottom < 80 && !(b.top < innerHeight * .9 && b.bottom > 0) && modal.hidden;
+      var gate = $('#life') || hero; var on = gate.getBoundingClientRect().bottom < 80 && !(b.top < innerHeight * .9 && b.bottom > 0) && modal.hidden;
       pill.classList.toggle('on', on); pill.setAttribute('aria-hidden', on ? 'false' : 'true');
       $$('a,button', pill).forEach(function(el){ el.tabIndex = on ? 0 : -1; });
     }
+    lmUpdate();
     if(journey && rail){
       var r = journey.getBoundingClientRect(), mid = innerHeight * .62;
       var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
@@ -726,6 +808,36 @@ if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
       stops.forEach(function(s){ s.classList.toggle('lit', s.getBoundingClientRect().top + 30 < mid); });
     }
   }
+  /* ---------- life map: the coin follows the path as you scroll ---------- */
+  var lm = $('[data-lifemap]'), lmUpdate = function(){};
+  if(lm){
+    var lsvg = $('.lm-svg', lm), base = $('.lm-base', lm), done = $('.lm-done', lm), coin = $('.lm-coin', lm), lst = $$('.lm-stop', lm), L = 0, pts = [], redFrom = 1e9;
+    var build = function(){
+      var r = lm.getBoundingClientRect(); lsvg.setAttribute('viewBox', '0 0 ' + r.width + ' ' + r.height);
+      pts = lst.map(function(s){ var n = $('.lm-node', s).getBoundingClientRect(); return [n.left - r.left + n.width / 2, n.top - r.top + n.height / 2]; });
+      var d = 'M' + pts[0][0] + ' ' + Math.max(0, pts[0][1] - 90) + ' L' + pts[0][0] + ' ' + pts[0][1];
+      for(var i = 1; i < pts.length; i++){ var a = pts[i - 1], b = pts[i], my = (a[1] + b[1]) / 2; d += ' C' + a[0] + ' ' + my + ' ' + b[0] + ' ' + my + ' ' + b[0] + ' ' + b[1]; }
+      base.setAttribute('d', d); done.setAttribute('d', d); L = done.getTotalLength(); done.style.strokeDasharray = L + ' ' + L;
+      var hot = lst.findIndex(function(s){ return s.classList.contains('hot'); }); redFrom = hot > 0 ? (pts[hot - 1][1] + pts[hot][1]) / 2 : 1e9;
+      lmUpdate();
+    };
+    lmUpdate = function(){
+      if(!L) return;
+      var r = lm.getBoundingClientRect(), ty = innerHeight * .55 - r.top;
+      if(reduce) ty = 1e9;
+      var lo = 0, hi = L, len;
+      if(ty <= done.getPointAtLength(0).y) len = 0; else if(ty >= pts[pts.length - 1][1]) len = L;
+      else { for(var k = 0; k < 22; k++){ var m = (lo + hi) / 2; if(done.getPointAtLength(m).y < ty) lo = m; else hi = m; } len = lo; }
+      var p = done.getPointAtLength(len);
+      done.style.strokeDashoffset = (L - len).toFixed(1);
+      coin.style.transform = 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px)';
+      coin.classList.toggle('red', p.y > redFrom);
+      lst.forEach(function(s, i){ s.classList.toggle('lit', p.y >= pts[i][1] - 4); });
+    };
+    build(); addEventListener('resize', build); addEventListener('load', build);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+  }
+
   var tick = false;
   addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(function(){ tick = false; onScroll(); }); } }, {passive:true});
   addEventListener('resize', onScroll);
