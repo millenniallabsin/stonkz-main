@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="690" viewBox="60 55 550 690" role="img" aria-label="Stonkzz School">
+  <defs>
+    <linearGradient id="lgG" x1="523" y1="232" x2="377" y2="434" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3BEE72"/><stop offset=".55" stop-color="#25E065"/><stop offset="1" stop-color="#12A845"/></linearGradient>
+    <linearGradient id="lgR" x1="377" y1="434" x2="231" y2="635" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#C21B1B"/><stop offset=".45" stop-color="#FF4747"/><stop offset="1" stop-color="#D42A2A"/></linearGradient>
+    <linearGradient id="lgW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DDDDD6"/></linearGradient>
+    <linearGradient id="lgC" x1="82" y1="224" x2="432" y2="76" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E4E4DE"/></linearGradient>
+    <linearGradient id="lgT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D57E"/><stop offset="1" stop-color="#C9962A"/></linearGradient>
+  </defs>
+  <path d="M257 205H480L440 320H257A57.5 57.5 0 0 1 257 205Z" fill="url(#lgW)"/>
+  <path d="M360 545H505A60 60 0 0 1 505 665H276L300 600Z" fill="url(#lgW)"/>
+  <g stroke-linejoin="round" stroke-width="14">
+    <path d="M480 203L567 262L421 463.5L333.5 404Z" fill="url(#lgG)" stroke="url(#lgG)"/>
+    <path d="M333.5 404L421 463.5L275 665L187 605Z" fill="url(#lgR)" stroke="url(#lgR)"/>
+  </g>
+  <path d="M326 399L344.5 411.5L356.5 407.6L352.1 426.4L371.1 412.7L362 438L377.3 433.8L403.4 410.5L374 467.8L404.5 442.6L406 453.3L428.5 468.6" fill="none" stroke="#fff" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M527 227.5L574 162.8" stroke="#25E065" stroke-width="7" stroke-linecap="round"/>
+  <path d="M585 148L582.5 174L560.7 158.2Z" fill="#25E065" stroke="#25E065" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M227.5 640L176.5 710.5" stroke="#E0262B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M165 726L189.1 715.8L167.3 700Z" fill="#E0262B" stroke="#E0262B" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M190 226L197 266Q282 286 356 204L352 158Q300 198 244 214Z" fill="#E9E9E3"/>
+  <path d="M82 232L226 106L432 84L287 214Z" fill="#C9C9C1"/>
+  <path d="M82 224L226 98L432 76L287 206Z" fill="url(#lgC)"/>
+  <path d="M256 150L150 168L142 256" fill="none" stroke="#E2B23E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="142" cy="260" r="9" fill="#E2B23E"/>
+  <path d="M130 264H154L161 338Q139 350 118 340Z" fill="url(#lgT)"/>
+</svg>

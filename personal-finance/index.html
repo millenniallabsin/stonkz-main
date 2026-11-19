@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.add('js');</script>
+<script>/* local preview only: file:// blocks self-hosted fonts, so borrow Google Fonts */if(location.protocol==='file:'){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&family=Anek+Tamil:wght@500;700&display=swap';document.head.appendChild(l);}</script>
+<title>Personal Finance Mastery · Stonkzz School</title>
+<meta name="description" content="Budgeting, insurance, tax, credit, investing and goals, taught in simple Tamil. Level 1: 14 modules, 76 lessons, lifetime access. ₹2,999 + GST.">
+<meta name="theme-color" content="#070708">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stonkzz School">
+<meta property="og:title" content="Personal Finance Mastery · Stonkzz School">
+<meta property="og:description" content="Budgeting, insurance, tax, credit, investing and goals, taught in simple Tamil. Level 1: 14 modules, 76 lessons, lifetime access. ₹2,999 + GST.">
+<meta property="og:image" content="assets/hero.webp">
+<!-- TODO before launch: absolute og:image, og:url and canonical on the live domain -->
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preload" href="fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/hero.webp" as="image">
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:400 800;font-display:swap;src:url(fonts/BricolageGrotesque-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Bricolage Grotesque";font-weight:400 800;font-display:swap;src:url(fonts/BricolageGrotesque-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Hanken Grotesk";font-weight:100 900;font-display:swap;src:url(fonts/hanken-grotesk-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Anek Tamil";font-weight:100 800;font-display:swap;src:url(fonts/anek-tamil-tamil-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
+/* ==========================================================
+   STONKZZ SCHOOL — course sites v5
+   Design Language Ed. 02: a trading screen at night, big type
+   plain words, education first. Glass + light; printed art.
+   ========================================================== */
+:root{
+  --night:#070708;--night2:#0b0c0b;--paper:#F3F3EF;--muted:#9C9C95;--muted2:#6C6C66;
+  --green:#25E065;--g-bright:#43F27C;--g-dark:#12A845;--g-ink:#03200B;--gsoft:rgba(37,224,101,.1);
+  --red:#FF4747;--r-bright:#FF6E6E;--r-dark:#C21B1B;
+  --gold:#E2B23E;--gold-bright:#F6D57E;--gold-dark:#A8781A;
+  --glass:rgba(255,255,255,.045);--edge:rgba(255,255,255,.11);--hi:rgba(255,255,255,.16);--line:rgba(255,255,255,.08);
+  --title:'Bricolage Grotesque',system-ui,sans-serif;--body:'Hanken Grotesk',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;--tamil:'Anek Tamil','Hanken Grotesk',sans-serif;
+  --max:1180px;--px:clamp(20px,4.6vw,64px);--sec:clamp(72px,10vw,128px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{background:var(--night);color:var(--paper);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+img,svg,video,iframe{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul{list-style:none}
+p,li{text-wrap:pretty}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--px)}
+.ta{font-family:var(--tamil);font-weight:700;letter-spacing:0;text-transform:none}
+:focus-visible{outline:2px solid var(--green);outline-offset:4px;border-radius:10px}
+.skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--green);color:var(--g-ink);padding:10px 16px;border-radius:0 0 12px 0;font-weight:700}
+.skip:focus{left:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tbd{display:inline-block;color:var(--gold-bright);border:1px dashed rgba(246,213,126,.55);background:rgba(246,213,126,.08);border-radius:6px;padding:0 7px;font:500 .78em/1.7 var(--mono);letter-spacing:0;white-space:nowrap}
+
+/* ---------- atmosphere: light is the texture ---------- */
+.atmos{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(60vw 50vh at 8% 4%,rgba(37,224,101,.13),transparent 70%),
+             radial-gradient(50vw 45vh at 96% 100%,rgba(255,71,71,.07),transparent 70%),var(--night)}
+.grain{position:fixed;inset:-50%;z-index:-1;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+
+/* ---------- type ---------- */
+.label{display:inline-flex;align-items:center;gap:10px;font:500 12px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--green)}
+.label:before{content:"";width:22px;height:1px;background:currentColor;opacity:.7}
+h1,h2,h3{font-family:var(--title);font-weight:700;letter-spacing:-.03em;line-height:1.03;text-wrap:balance}
+.silver{background:linear-gradient(180deg,#FFFFFF 10%,#CFCFC7 60%,#A9A9A1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pay{display:block;color:var(--green);text-shadow:0 0 28px rgba(37,224,101,.25)}
+.pen{position:relative;white-space:nowrap}
+.pen svg{position:absolute;left:-3%;right:-3%;width:106%;bottom:-.16em;height:.32em;overflow:visible;pointer-events:none}
+.pen path{fill:none;stroke:var(--g-bright);stroke-width:5;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;filter:drop-shadow(0 0 6px rgba(67,242,124,.55))}
+.in .pen path,.pen.in path{animation:pen 1.1s .55s var(--ease) forwards}
+@keyframes pen{to{stroke-dashoffset:0}}
+.lead{color:var(--muted);font-size:clamp(17px,1.4vw,20px);line-height:1.6;max-width:56ch}
+.fine{font-size:13px;color:var(--muted2);line-height:1.6}
+.mono{font-family:var(--mono)}
+
+/* ---------- buttons, tags ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:54px;padding:0 28px;border-radius:999px;font:700 16px/1 var(--body);white-space:nowrap;transition:transform .25s var(--ease),box-shadow .25s,background .2s,border-color .2s,color .2s}
+.btn .arw{transition:transform .25s var(--ease)}
+.btn:hover .arw{transform:translateX(3px)}
+.btn-green{background:linear-gradient(180deg,var(--g-bright),var(--g-dark));color:var(--g-ink);box-shadow:0 10px 30px rgba(37,224,101,.22),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(37,224,101,.34),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn-white{background:var(--paper);color:#0a0a0a}
+.btn-white:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--edge);background:var(--glass);color:var(--paper)}
+.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.btn-sm{min-height:42px;padding:0 20px;font-size:14px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.glyph{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tag{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;border:1px solid var(--edge);color:var(--muted);background:var(--glass)}
+.tag.green{color:var(--green);border-color:rgba(37,224,101,.35);background:var(--gsoft)}
+.tag.green:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px rgba(37,224,101,.18)}
+.tag.gold{color:var(--gold-bright);border-color:rgba(226,178,62,.4);background:rgba(226,178,62,.08)}
+
+/* ---------- glass ---------- */
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,.85),inset 0 1px 0 var(--hi);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(7,7,8,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font:700 20px/1 var(--title);letter-spacing:-.03em;white-space:nowrap}
+.logo img{width:27px;height:34px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.logo span{color:var(--muted);font-weight:500}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:15px;color:var(--muted)}
+.nav-links a:not(.btn):hover{color:var(--paper)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--r-dark),var(--red) 18%,var(--gold) 45%,var(--green) 75%,var(--g-bright))}
+
+/* ---------- sections ---------- */
+.sec{position:relative;padding:var(--sec) 0}
+.sec-head{margin-bottom:clamp(36px,5vw,56px)}
+.sec-head h2{font-size:clamp(34px,4.6vw,62px);margin:18px 0 18px;max-width:17ch}
+.sec-head .lead{max-width:56ch}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:110px 0 70px;overflow:hidden;isolation:isolate}
+.hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-38%;height:60%;z-index:-1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(37,224,101,.28),rgba(18,168,69,.08) 55%,transparent);filter:blur(10px)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(30px,5vw,80px);align-items:center;width:100%}
+.hero h1{font-size:clamp(44px,6.4vw,84px);margin:22px 0 22px}
+.hero .lead{margin-bottom:30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.price-line{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:26px}
+.price-line strong{font:700 26px/1 var(--title);letter-spacing:-.02em}
+.price-line strong em{font-style:normal;font-size:.6em;color:var(--muted);font-weight:600;margin-left:4px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font:500 12px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts span{display:flex;align-items:center;gap:8px}
+.facts span:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+
+/* ring of light + printed ring + object */
+.stage{position:relative;aspect-ratio:1;width:min(100%,520px);margin-left:auto;display:grid;place-items:center}
+.stage .pattern{position:absolute;inset:4%;opacity:.28;animation:spin 120s linear infinite}
+.stage .ring{position:absolute;inset:9%;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0 55%,rgba(255,71,71,.0) 55%,rgba(255,71,71,.55) 66%,rgba(242,198,109,.55) 76%,rgba(37,224,101,.95) 92%,transparent 100%);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));
+  filter:drop-shadow(0 0 10px rgba(37,224,101,.55));animation:spin 14s linear infinite}
+.stage .ring.two{inset:16%;opacity:.35;animation-duration:22s;animation-direction:reverse}
+.stage .halo{position:absolute;inset:22%;border-radius:50%;background:radial-gradient(closest-side,rgba(37,224,101,.2),transparent)}
+.stage .obj{position:relative;width:56%;filter:drop-shadow(0 0 3px rgba(67,242,124,.45));animation:breathe 6s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes breathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
+.sparks i{position:absolute;bottom:18%;width:3px;height:3px;border-radius:50%;background:var(--g-bright);box-shadow:0 0 8px var(--g-bright);opacity:0;animation:rise 7s linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.9}100%{transform:translateY(-320px);opacity:0}}
+/* live chart inside ring (stock) */
+.chart{position:relative;width:62%;aspect-ratio:1.15}
+.chart svg{width:100%;height:100%;overflow:visible}
+.chart .c{opacity:0;transform-origin:center bottom;transform-box:fill-box}
+.chart .c.on{animation:candle .45s var(--ease) forwards}
+@keyframes candle{from{opacity:0;transform:scaleY(.2)}to{opacity:1;transform:scaleY(1)}}
+.chart .trend{fill:none;stroke:url(#tg);stroke-width:3;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000;filter:drop-shadow(0 0 8px rgba(67,242,124,.6))}
+.chart .trend.on{transition:stroke-dashoffset 2.6s var(--ease);stroke-dashoffset:0}
+
+/* ---------- SECTION 2: problem + learn ---------- */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.note{position:relative;display:grid;grid-template-columns:132px 1fr;gap:22px;align-items:center;padding:22px;border-radius:20px;background:var(--paper);color:#10180f;box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.note:before{content:"";position:absolute;inset:7px;border:1px solid rgba(18,168,69,.35);border-radius:15px;pointer-events:none}
+.note img{width:132px;height:auto}
+.note small{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#4b5a4b}
+.note b{display:block;font:700 30px/1.05 var(--title);letter-spacing:-.03em;margin:6px 0 6px;color:#0b120b}
+.note p{font-size:15px;color:#3a4339;line-height:1.5}
+.note .serial{display:block;margin-top:10px;font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--r-dark)}
+.qs{margin-top:22px;display:grid;gap:0}
+.qs li{display:flex;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);font-size:17px;color:#dfe2da}
+.qs li:first-child{border-top:1px solid var(--line)}
+.qs b{font:500 12px/1 var(--mono);color:var(--r-bright);letter-spacing:.1em;min-width:26px}
+.learn{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.learn li{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center;padding:16px 18px;border-radius:18px;background:var(--glass);border:1px solid var(--edge);box-shadow:inset 0 1px 0 var(--hi);transition:border-color .3s,transform .3s var(--ease)}
+.learn li:hover{border-color:rgba(37,224,101,.4);transform:translateY(-2px)}
+.learn img{width:64px;height:64px;filter:drop-shadow(0 0 3px rgba(67,242,124,.4))}
+.learn b{display:block;font:700 18px/1.2 var(--title);letter-spacing:-.02em;margin-bottom:4px}
+.learn span{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+.learn-h{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+
+/* ---------- SECTION 3: play a real module game ---------- */
+.play{display:grid;grid-template-columns:1fr auto;gap:clamp(30px,5vw,80px);align-items:center}
+.phone{position:relative;width:min(390px,86vw);aspect-ratio:390/760;border-radius:38px;padding:10px;background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.03));border:1px solid var(--edge);box-shadow:0 40px 90px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.6),0 0 80px rgba(37,224,101,.12)}
+.phone .screen{position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0b0d0c}
+.phone iframe{width:100%;height:100%;border:0;background:#0b0d0c}
+.phone .poster{position:absolute;inset:0;width:100%;height:100%;display:block;text-align:left}
+.phone .poster img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05)}
+.phone .poster:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,7,8,.1) 30%,rgba(7,7,8,.88))}
+.phone .go{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,var(--g-bright),var(--g-dark));box-shadow:0 0 0 10px rgba(37,224,101,.16),0 0 60px rgba(37,224,101,.5);animation:pulse 2.4s ease-in-out infinite}
+.phone .go:after{content:"";margin-left:6px;border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent var(--g-ink)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 10px rgba(37,224,101,.16),0 0 60px rgba(37,224,101,.45)}50%{box-shadow:0 0 0 18px rgba(37,224,101,.08),0 0 80px rgba(37,224,101,.6)}}
+.phone .cap{position:absolute;left:22px;right:22px;bottom:24px;z-index:2}
+.phone .cap small{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.phone .cap b{display:block;font:700 24px/1.1 var(--title);letter-spacing:-.02em;margin-top:6px}
+.phone .loading{position:absolute;inset:0;display:none;place-items:center;font:500 12px var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.phone.busy .loading{display:grid}
+.play-points{display:grid;gap:16px;margin:28px 0 30px}
+.play-points li{display:flex;gap:14px;align-items:flex-start;font-size:16px;color:#d9ddd5;line-height:1.5}
+.play-points b{font:500 12px/24px var(--mono);color:var(--green);min-width:26px}
+.medals{display:flex;gap:14px;align-items:center}
+.medals img{width:76px;height:76px;transition:transform .4s var(--ease)}
+.medals img:hover{transform:rotate(-8deg) scale(1.06)}
+.medals span{font-size:13px;color:var(--muted);max-width:22ch;line-height:1.5}
+.after-play{margin-top:22px;display:none;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 18px;border-radius:16px;border:1px solid rgba(37,224,101,.35);background:var(--gsoft)}
+.after-play.on{display:flex}
+.after-play p{font-size:15px;color:#dff7e6;flex:1 1 220px}
+
+/* ---------- SECTION 4: the journey ---------- */
+.journey{position:relative;display:grid;gap:14px;padding-left:64px;max-width:880px}
+.journey .rail{position:absolute;left:21px;top:10px;bottom:10px;width:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.journey .rail i{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:50% 0;transform:scaleY(var(--p,0));background:linear-gradient(180deg,var(--red),var(--gold) 35%,var(--green) 70%,var(--g-bright));box-shadow:0 0 12px rgba(37,224,101,.6)}
+.stop{position:relative;padding:22px 24px;border-radius:18px;background:var(--glass);border:1px solid var(--edge);box-shadow:inset 0 1px 0 var(--hi);transition:border-color .4s,background .4s}
+.stop .dot{position:absolute;left:-54px;top:24px;width:24px;height:24px;border-radius:50%;background:var(--night);border:2px solid var(--r-bright);box-shadow:0 0 0 5px var(--night);transition:border-color .4s,background .4s,box-shadow .4s}
+.stop.lit{border-color:rgba(37,224,101,.32)}
+.stop.lit .dot{border-color:var(--green);background:var(--green);box-shadow:0 0 0 5px var(--night),0 0 18px rgba(37,224,101,.8)}
+.stop .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.stop .n{font:500 12px/1 var(--mono);letter-spacing:.14em;color:var(--muted2);text-transform:uppercase}
+.stop.lit .n{color:var(--green)}
+.stop h3{font-size:clamp(20px,2vw,24px);margin:8px 0 8px;letter-spacing:-.02em}
+.stop p{font-size:15px;color:var(--muted);line-height:1.6}
+.stop .out{margin-top:10px;font-size:14px;color:#dff7e6;display:flex;gap:10px}
+.stop .out:before{content:"→";color:var(--green);font-weight:700}
+.stop.bonus{border-style:dashed}
+.totals{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-left:64px}
+
+/* ---------- SECTION 5: teacher ---------- */
+.teach{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center}
+.vframe{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;isolation:isolate;display:block;width:100%;text-align:left;
+  background:radial-gradient(ellipse at 50% 120%,rgba(37,224,101,.25),transparent 60%),#0a0d0b;border:1px solid var(--edge);box-shadow:0 30px 60px rgba(0,0,0,.85),inset 0 1px 0 var(--hi)}
+.vframe .slats{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(90deg,rgba(37,224,101,.0) 0 22px,rgba(37,224,101,.08) 22px 24px);-webkit-mask:linear-gradient(180deg,transparent,#000 40%,#000 70%,transparent);mask:linear-gradient(180deg,transparent,#000 40%,#000 70%,transparent)}
+.vframe .grid{position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px;-webkit-mask:linear-gradient(0deg,#000,transparent 70%);mask:linear-gradient(0deg,#000,transparent 70%)}
+.vframe .playring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:2px solid var(--green);display:grid;place-items:center;box-shadow:0 0 30px rgba(37,224,101,.45),inset 0 0 20px rgba(37,224,101,.2);transition:transform .3s var(--ease)}
+.vframe:hover .playring{transform:translate(-50%,-50%) scale(1.06)}
+.vframe .playring:after{content:"";margin-left:5px;border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--green)}
+.vframe .vtag{position:absolute;left:18px;top:16px}
+.vframe .vname{position:absolute;left:20px;bottom:16px;font:700 17px/1.2 var(--title)}
+.creds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.creds div{padding:18px;border-radius:18px;background:var(--glass);border:1px solid var(--edge);box-shadow:inset 0 1px 0 var(--hi)}
+.creds small{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.creds b{display:block;font:700 22px/1.1 var(--title);letter-spacing:-.02em;margin:8px 0 6px}
+.creds p{font-size:13px;color:var(--muted);line-height:1.5}
+.creds a{color:var(--green);font-weight:600}
+.approach{margin-top:20px;font:700 clamp(22px,2.3vw,30px)/1.15 var(--title);letter-spacing:-.03em}
+.approach span{color:var(--green)}
+
+/* ---------- SECTION 6: price + FAQ ---------- */
+.buy{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);align-items:start}
+.offer{position:relative;padding:clamp(26px,3vw,36px);overflow:hidden;isolation:isolate}
+.offer .rosette{position:absolute;right:-26%;top:-30%;width:78%;opacity:.22;z-index:-1;animation:spin 160s linear infinite}
+.offer .k{font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.offer h3{font-size:clamp(24px,2.4vw,30px);margin:10px 0 16px}
+.offer .price{font:700 clamp(48px,5vw,64px)/1 var(--title);letter-spacing:-.04em}
+.offer .price em{font-style:normal;font-size:.36em;color:var(--muted);font-weight:600;letter-spacing:0;margin-left:6px}
+.offer .gst{font-size:14px;color:var(--muted);margin-top:8px}
+.incl{display:grid;gap:12px;margin:24px 0}
+.incl li{display:flex;gap:12px;font-size:15px;color:#dfe2da;line-height:1.45}
+.incl .glyph{color:var(--green);margin-top:1px;width:18px;height:18px}
+.final{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid var(--line);margin-bottom:14px}
+.final span{font-size:14px;color:var(--muted);line-height:1.35}
+.final small{display:block;font-size:12px;color:var(--muted2)}
+.final strong{font:700 24px/1 var(--title);letter-spacing:-.02em;white-space:nowrap}
+html.sz-live .when-soon{display:none}
+html:not(.sz-live) .when-live{display:none}
+.opens{display:flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 18px;border-radius:999px;border:1px dashed rgba(37,224,101,.5);color:var(--green);font-weight:700;font-size:15px;margin-bottom:16px;text-align:center}
+.notify label{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.notify-row{display:flex;gap:8px}
+.inbox{flex:1;min-width:0;display:flex;align-items:center;border:1px solid var(--edge);border-radius:14px;background:rgba(0,0,0,.4);transition:border-color .2s,box-shadow .2s}
+.inbox:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(37,224,101,.15)}
+.inbox input{flex:1;min-width:0;width:100%;background:none;border:0;outline:0;color:var(--paper);font:500 16px var(--body);padding:15px 16px}
+.inbox input::placeholder{color:var(--muted2)}
+.notify .hint{display:block;font-size:12px;color:var(--muted2);margin-top:8px}
+.notify .err{display:none;font-size:12px;color:var(--r-bright);margin-top:8px}
+.notify.bad .inbox{border-color:var(--red)}
+.notify.bad .err{display:block}
+.notify.bad .hint{display:none}
+.nf-done{font-size:14px;color:var(--green);margin-top:10px;line-height:1.5}
+.nf-done:empty{display:none}
+.waitnote{margin-top:16px;padding:14px 16px;border-radius:14px;border:1px solid rgba(37,224,101,.28);background:var(--gsoft);font-size:14px;color:#dff7e6;line-height:1.55}
+.waitnote b{color:var(--green)}
+.secure{display:flex;justify-content:center;gap:8px;margin-top:12px;font-size:12px;color:var(--muted2)}
+.faq{display:grid;gap:10px}
+.faq details{border-radius:16px;background:var(--glass);border:1px solid var(--edge);transition:border-color .3s}
+.faq details[open]{border-color:rgba(37,224,101,.35)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;font:700 17px/1.35 var(--title);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"";flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--edge);background:linear-gradient(var(--green),var(--green)) center/10px 2px no-repeat,linear-gradient(var(--green),var(--green)) center/2px 10px no-repeat;transition:transform .3s var(--ease)}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq .a{padding:0 20px 18px;color:var(--muted);font-size:15px;line-height:1.65}
+.faq .a a{color:var(--green);font-weight:600}
+.faq-more{margin-top:16px;font-size:14px;color:var(--muted)}
+.faq-more a{color:var(--green);font-weight:600}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--line);padding:48px 0 120px}
+.foot .row{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.foot p{color:var(--muted);font-size:14px;margin-top:10px}
+.foot nav{display:flex;flex-wrap:wrap;gap:10px 24px;font:500 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#cfd3cb}
+.foot nav a:hover{color:var(--green)}
+.foot .disc{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted2);line-height:1.6;max-width:90ch}
+
+/* ---------- the one action: a single green pill that follows you down ---------- */
+.pill{position:fixed;left:50%;bottom:22px;z-index:70;transform:translate(-50%,140%);display:flex;align-items:center;gap:16px;padding:8px 8px 8px 22px;border-radius:999px;background:rgba(10,14,11,.86);border:1px solid rgba(37,224,101,.35);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.7);transition:transform .45s var(--ease);white-space:nowrap}
+.pill.on{transform:translate(-50%,0)}
+.pill small{display:block;font:500 10px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pill strong{font:700 16px/1.2 var(--title)}
+.pill .btn{min-height:46px;padding:0 22px;font-size:15px}
+
+/* ---------- modal ---------- */
+.modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(2,4,3,.84);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .2s}
+.modal[hidden]{display:none}
+.modal.on{opacity:1}
+.modal-box{position:relative;width:min(960px,100%);max-height:92vh;overflow:auto;border-radius:20px;border:1px solid var(--edge);background:#0c0f0d}
+.modal-box.sm{width:min(500px,100%);padding:32px 28px 28px}
+.modal-x{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.55);border:1px solid var(--edge);display:grid;place-items:center;font-size:22px}
+.modal-box video{width:100%;display:block;background:#000}
+.modal-box h3{font-size:24px;margin:14px 0 10px}
+.modal-box p{color:var(--muted);font-size:15px;line-height:1.65}
+.modal-box .btn{margin-top:20px;width:100%}
+.sum{display:grid;gap:10px;margin:16px 0}
+.sum li{display:flex;gap:10px;font-size:14px;color:#dfe2da}
+.sum .glyph{color:var(--green);width:17px;height:17px}
+
+/* ---------- reveal (static sections stay calm) ---------- */
+.js [data-r]{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+.js .hero [data-r]{transition-duration:.9s}
+.js .hero [data-r]:nth-child(2){transition-delay:.08s}
+.js .hero [data-r]:nth-child(3){transition-delay:.16s}
+.js .hero [data-r]:nth-child(4){transition-delay:.24s}
+.js .hero [data-r]:nth-child(5){transition-delay:.32s}
+.js .hero [data-r]:nth-child(6){transition-delay:.4s}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-grid,.split,.play,.teach,.buy{grid-template-columns:1fr}
+  .hero{min-height:auto;padding-top:104px}
+  .stage{margin:0 auto;width:min(84%,420px)}
+  .play .phone{margin:0 auto}
+  .nav-links .hide-md{display:none}
+}
+@media (max-width:680px){
+  body{font-size:16px}
+  .nav .wrap{height:62px}
+  .nav-links a:not(.btn){display:none}
+  .nav-links .btn{min-height:40px;padding:0 16px;font-size:14px}
+  .hero h1{font-size:clamp(38px,11vw,52px)}
+  .hero-ctas .btn{flex:1 1 100%}
+  .learn{grid-template-columns:1fr}
+  .note{grid-template-columns:96px 1fr;gap:16px;padding:18px}
+  .note img{width:96px}
+  .note b{font-size:24px}
+  .journey{padding-left:44px}
+  .journey .rail{left:11px}
+  .stop{padding:18px}
+  .stop .dot{left:-43px;width:20px;height:20px}
+  .totals{padding-left:0}
+  .creds{grid-template-columns:1fr}
+  .notify-row{flex-direction:column}
+  .notify-row .btn{width:100%}
+  .pill{left:12px;right:12px;bottom:12px;transform:translateY(140%);justify-content:space-between;padding-left:18px}
+  .pill.on{transform:none}
+  .pill strong{font-size:15px}
+  .pill .btn{padding:0 18px}
+  .medals img{width:60px;height:60px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .js [data-r]{opacity:1;transform:none}
+  .pen path{stroke-dashoffset:0}
+  .chart .c{opacity:1}
+  .chart .trend{stroke-dashoffset:0}
+}
+
+/* ---------- v5 additions ---------- */
+.stage .obj.wide{width:84%}
+.stage .chart{position:absolute;left:19%;top:16%;width:62%;opacity:.5}
+.vframe .vposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.55;-webkit-mask:radial-gradient(ellipse at 50% 45%,#000 40%,transparent 85%);mask:radial-gradient(ellipse at 50% 45%,#000 40%,transparent 85%)}
+.link{color:var(--green);font-weight:600}
+.learn li{grid-template-columns:72px 1fr}
+.learn img{width:72px;height:72px;filter:brightness(1.35) drop-shadow(0 0 4px rgba(67,242,124,.45))}
+@media (max-width:980px){
+  .hero-grid > .stage{width:min(66%,280px);margin:8px auto -10px}
+  .hero{padding-top:92px;padding-bottom:40px}
+}
+@media (max-width:680px){
+  .learn li{grid-template-columns:60px 1fr}
+  .learn img{width:60px;height:60px}
+}
+.stage .obj{height:auto}
+
+</style>
+<!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
+<script>
+/* ============ PAGE CONFIG — edit here ============
+   checkoutUrl : payment link. Empty = pre-launch mode ("Enrollment opens …" + Notify me).
+                 Set it only after a full payment-and-access test.
+   opensOn     : shown as "Enrollment opens <opensOn>".
+   notifyUrl   : endpoint that receives Notify-me sign-ups (JSON POST). Empty = opens an email to supportEmail.
+   videos      : trailer / mentor clip. Empty = "Coming soon".                                   */
+window.SZ = {
+  "checkoutUrl": "",
+  "opensOn": "January 2027",
+  "notifyUrl": "",
+  "refundUrl": "",
+  "supportEmail": "thestonkzz@gmail.com",
+  "videos": {
+    "trailer": "",
+    "mentor": "assets/mentor.mp4"
+  },
+  "posters": {
+    "mentor": "assets/mentor.webp"
+  },
+  "course": "Personal Finance Mastery",
+  "price": "₹2,999 + GST",
+  "final": "₹3,538.82",
+  "includes": [
+    "14 modules · 76 lessons, lifetime access",
+    "13 module games, a final assessment and a certificate of completion",
+    "In the Stonkzz School app: Android, iPhone and web"
+  ],
+  "check": "<svg class=\"glyph\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M20 6 9 17l-5-5\"/></svg>"
+};
+if(window.SZ.checkoutUrl) document.documentElement.classList.add('sz-live');
+</script>
+</head>
+<body>
+<a class="skip" href="#enroll">Skip to price and enrollment</a>
+<div class="atmos" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Stonkzz School, back to top"><img src="assets/logo.svg" alt="" width="27" height="34">Stonkzz <span>School</span></a>
+    <nav class="nav-links" aria-label="Page">
+      <a class="hide-md" href="#play">Try a game</a>
+      <a href="#curriculum">Curriculum</a>
+      <a href="#faq">FAQs</a>
+      <a class="btn btn-green btn-sm" href="#enroll" data-to-notify><span class="when-soon">Notify me</span><span class="when-live">Enroll now</span></a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+
+<!-- 1 · HERO (dynamic) -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label" data-r>Level 1 · Personal Finance Mastery</span>
+      <h1 data-r><span class="silver">From your first salary</span> <span class="pay">to your first financial <span class="pen">plan.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C 50 4, 120 4, 196 10"/></svg></span></span></h1>
+      <p class="lead" data-r>Budgeting, insurance, tax, credit, investing and goals, in the order life asks for them. Taught in simple Tamil.</p>
+      <div class="hero-ctas" data-r>
+        <a class="btn btn-green" href="#enroll" data-to-notify><span class="when-soon">Notify me when it opens</span><span class="when-live">Enroll now</span> <span class="arw">→</span></a>
+        <button type="button" class="btn btn-ghost" data-video="trailer" data-label="Personal Finance Mastery · trailer"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4"/></svg> Watch the trailer</button>
+      </div>
+      <div class="price-line" data-r><strong>₹2,999<em>+ GST</em></strong><span class="tag green" data-status>Enrollment opens January 2027</span></div>
+      <div class="facts" data-r><span>Tamil</span><span>14 modules</span><span>76 lessons</span><span>Lifetime access</span></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <img class="pattern" src="assets/ring.svg" alt="">
+      <div class="halo"></div><div class="ring"></div><div class="ring two"></div>
+      <div class="sparks"></div>
+      <img class="obj" src="assets/hero.webp" alt="" width="625" height="640">
+    </div>
+  </div>
+</section>
+
+<!-- 2 · THE PROBLEM + WHAT YOU'LL LEARN (static) -->
+<section class="sec" id="learn">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label" data-r>The problem</span>
+      <h2 data-r><span class="silver">Salary comes in.</span> <span class="pay">Decisions keep coming.</span></h2>
+    </div>
+    <div class="split">
+      <div data-r>
+        <div class="note">
+          <img src="assets/person.webp" alt="Ravi, illustrated as a portrait on a banknote" width="132" height="132">
+          <div><small>Sounds like you?</small><b>Ravi</b><p>First salary. Wants to start a SIP. Not sure where the month went.</p><span class="serial">SZ · PF 01 · 000412</span></div>
+        </div>
+        <ul class="qs">
+          <li><b>01</b>Where did the salary go, and how much should be left?</li>
+          <li><b>02</b>Is that insurance policy actually useful?</li>
+          <li><b>03</b>What does a credit score really affect?</li>
+          <li><b>04</b>How does a goal become a number you can save for?</li>
+        </ul>
+      </div>
+      <div data-r>
+        <p class="learn-h">What you'll be able to do</p>
+        <ul class="learn">
+          <li><img src="assets/i1.webp" alt="" width="64" height="64"><div><b>Plan your salary</b><span>A 50-30-20 budget you can review every month.</span></div></li>
+          <li><img src="assets/i2.webp" alt="" width="64" height="64"><div><b>Understand insurance</b><span>Term and health cover, and the trade-offs in a policy.</span></div></li>
+          <li><img src="assets/i3.webp" alt="" width="64" height="64"><div><b>Tax and credit</b><span>Indian tax basics, credit cards, debt and CIBIL.</span></div></li>
+          <li><img src="assets/i4.webp" alt="" width="64" height="64"><div><b>Time and money</b><span>Inflation, the Rule of 72 and compounding.</span></div></li>
+          <li><img src="assets/i5.webp" alt="" width="64" height="64"><div><b>Start investing</b><span>Asset classes, allocation and diversification.</span></div></li>
+          <li><img src="assets/i6.webp" alt="" width="64" height="64"><div><b>Plan your goals</b><span>Monthly targets, and your own FIRE number.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · PLAY A REAL MODULE GAME (dynamic) -->
+<section class="sec" id="play">
+  <div class="wrap play">
+    <div>
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="label" data-r>Try it</span>
+        <h2 data-r><span class="silver">Try a lesson.</span> <span class="pay">Right now.</span></h2>
+        <p class="lead" data-r>Every module ends in a game, not a dull quiz. This is the one after Module 2: put in a salary, split it 50-30-20 and print your budget card.</p>
+      </div>
+      <ul class="play-points" data-r>
+        <li><b>01</b>13 module games and a final assessment</li>
+        <li><b>02</b>Unlimited attempts, with the reason behind every answer</li>
+        <li><b>03</b>Score 60 out of 100 for your Stonkzz School certificate of completion</li>
+      </ul>
+      <div class="medals" data-r>
+        <img src="assets/m1.webp" alt="Budgeteer medal" width="76" height="76"><img src="assets/m2.webp" alt="Compounder medal" width="76" height="76"><img src="assets/m3.webp" alt="Know Your Number medal" width="76" height="76">
+        <span>A medal for every game you ace.</span>
+      </div>
+      <div class="after-play" role="status">
+        <p>That's one module of fourteen. The rest are waiting.</p>
+        <a class="btn btn-green btn-sm" href="#enroll" data-to-notify><span class="when-soon">Notify me</span><span class="when-live">Enroll now</span> <span class="arw">→</span></a>
+      </div>
+    </div>
+    <div class="phone" data-r>
+      <div class="screen">
+        <button type="button" class="poster" data-game="play/budget-builder/index.html?mode=play&amp;chrome=none&amp;theme=dark&amp;sound=0" data-title="Budget Builder, the Module 2 game from Personal Finance Mastery" aria-label="Play Budget Builder, the Module 2 game">
+          <img src="assets/game-poster.webp" alt="" width="390" height="760" loading="lazy">
+          <span class="cap"><span class="tag green" style="margin-bottom:10px">Tap to play</span><small>Module 2 game</small><b>Budget Builder</b></span>
+        </button>
+      </div>
+      <span class="loading">Loading the game…</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · THE JOURNEY (dynamic) -->
+<section class="sec" id="curriculum">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label" data-r>Curriculum</span>
+      <h2 data-r><span class="silver">Not a pile of topics.</span> <span class="pay">A useful order.</span></h2>
+      <p class="lead" data-r>14 modules, from everyday money to your FIRE number. 61 core lessons, 3 bonus lessons and 12 previews from Level 2. All available from day one.</p>
+    </div>
+    <div class="journey">
+      <div class="rail" aria-hidden="true"><i></i></div>
+      <article class="stop"><span class="dot"></span><div class="top"><span class="n">Stage 01 · Modules 0–2</span></div><h3>Money, income and habits</h3><p>What money is, banking, good and bad debt, salary budgeting and an emergency fund.</p><p class="out">Build a 50-30-20 budget for your own salary</p></article>
+      <article class="stop"><span class="dot"></span><div class="top"><span class="n">Stage 02 · Modules 3–4</span></div><h3>Inflation and compounding</h3><p>The time value of money, the Rule of 72, and why starting early matters.</p><p class="out">Work through simple time-and-growth calculations</p></article>
+      <article class="stop"><span class="dot"></span><div class="top"><span class="n">Stage 03 · Modules 5–6</span></div><h3>Protection and taxes</h3><p>Life and health insurance, Indian income tax, the regime choice and how investments are taxed.</p><p class="out">Know what to ask before you buy a financial product</p></article>
+      <article class="stop"><span class="dot"></span><div class="top"><span class="n">Stage 04 · Modules 7–9</span></div><h3>Investing foundations</h3><p>Saving versus investing, asset classes, allocation, diversification and rebalancing.</p><p class="out">See why the right mix depends on your goals and risk</p></article>
+      <article class="stop"><span class="dot"></span><div class="top"><span class="n">Stage 05 · Modules 10–11</span></div><h3>Goals, credit and debt</h3><p>Short, medium and long-term goals. Credit cards, billing cycles, CIBIL and getting out of debt.</p><p class="out">Turn a goal into a monthly saving number</p></article>
+      <article class="stop"><span class="dot"></span><div class="top"><span class="n">Stage 06 · Modules 12–13</span></div><h3>Independence and money psychology</h3><p>Financial independence (FIRE), why smart people make poor money decisions, and building emotional discipline.</p><p class="out">Calculate your own FIRE number and choose the path that fits your life</p></article>
+      <article class="stop bonus"><span class="dot"></span><div class="top"><span class="n">Bonus · 15 lessons</span></div><h3>Powerful Financial Habits, plus Level 2 previews</h3><p>The 1% Better Money System · Money Mistakes to Avoid in Your 20s and 30s · The Wealth Mindset That Changes Everything. Then 4 preview lessons each from Mutual Funds, Stock Market and Options.</p></article>
+    </div>
+    <div class="totals" data-r><span class="tag green">76 lessons</span><span class="tag">13 module games + final</span><span class="tag">Runtime <span class="tbd">X HOURS</span></span></div>
+  </div>
+</section>
+
+<!-- 5 · YOUR MENTOR (static) -->
+<section class="sec" id="mentor">
+  <div class="wrap teach">
+    <div>
+      <span class="label" data-r>Your mentor</span>
+      <h2 data-r style="font-size:clamp(34px,4.6vw,62px);margin:18px 0 18px"><span class="silver">Simple teaching.</span> <span class="pay">No shortcuts.</span></h2>
+      <p class="lead" data-r>Prasanna Priyan, founder of Stonkzz and Stonkzz School, explains money in plain Tamil, with Indian examples and the trade-offs left in. He teaches the reasoning, in the right order, so the decision stays yours.</p>
+      <p class="approach" data-r>No tips. No calls. <span>Just teaching.</span></p>
+    </div>
+    <div data-r>
+      <button type="button" class="vframe" data-video="mentor" data-label="Prasanna Priyan teaching">
+        <img class="vposter" src="assets/mentor.webp" alt="" loading="lazy"><span class="grid"></span><span class="slats"></span>
+        <span class="vtag tag">Real lesson clip</span>
+        <span class="playring" aria-hidden="true"></span>
+        <span class="vname">Prasanna Priyan · Founder &amp; mentor</span>
+      </button>
+      <div class="creds">
+        <div><small>Certified</small><b>NISM</b><p>Research Analyst (Series XV)</p></div>
+        <div><small>In Tamil</small><b>Every lesson</b><p>Simple Tamil, Indian examples</p></div>
+        <div><small>Free on</small><b>YouTube</b><p><a href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">Watch Stonkzz ↗</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PRICE + FAQ (static) -->
+<section class="sec" id="enroll">
+  <div class="wrap buy">
+    <div class="glass offer" data-r>
+      <img class="rosette" src="assets/rosette.svg" alt="" aria-hidden="true">
+      <span class="k">Level 1 · Personal Finance Mastery</span>
+      <h3><span class="silver">Start with a plan for the money you earn.</span></h3>
+      <div class="price">₹2,999<em>+ GST</em></div>
+      <p class="gst">18% GST (₹539.82) is added at payment.</p>
+      <ul class="incl">
+        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>14 modules and 76 lessons, in simple Tamil</span></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>13 module games, a final assessment and a certificate of completion <span class="tbd">VERIFY LIVE</span></span></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Lifetime access, including every future update</span></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Instant access in the Stonkzz School app: Android, iPhone and web</span></li>
+        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><a href="#" data-todo="refund" style="color:var(--green);font-weight:600">7-day refund policy</a> · support inside the app</span></li>
+      </ul>
+      <div class="final"><span>Final amount<small>incl. 18% GST</small></span><strong>₹3,538.82</strong></div>
+      <div class="when-live">
+        <a class="btn btn-green" style="width:100%" href="#" data-enroll>Enroll now <span class="arw">→</span></a>
+        <div class="secure"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="11" x="4" y="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> You'll see a summary before paying</div>
+      </div>
+      <div class="when-soon">
+        <div class="opens"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span data-status>Enrollment opens January 2027</span></div>
+        <form class="notify" data-notify novalidate>
+          <label for="nf-contact">Get a message when enrollment opens</label>
+          <div class="notify-row">
+            <div class="inbox"><input id="nf-contact" name="contact" type="text" inputmode="email" autocomplete="email" placeholder="Email or WhatsApp number" aria-describedby="nf-err nf-note"></div>
+            <button class="btn btn-green" type="submit">Notify me</button>
+          </div>
+          <span class="err" id="nf-err">Enter a valid email or a 10-digit mobile number.</span>
+          <span class="hint" id="nf-note">Used only to tell you when enrollment opens.</span>
+          <div class="nf-done" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="waitnote"><b>On the Stonkzz School waitlist?</b> Check your WhatsApp or email for your founding-learner early access.</div>
+    </div>
+    <div id="faq">
+      <span class="label" data-r>Questions</span>
+      <h2 data-r style="font-size:clamp(30px,3.6vw,48px);margin:16px 0 26px"><span class="silver">Good questions.</span> <span class="pay">Straight answers.</span></h2>
+      <div class="faq" data-r>
+        <details id="faq-beginner"><summary>I'm new to money. Is this for me?</summary><div class="a">Yes. It starts from the basics and builds up in order. No finance background needed.</div></details>
+        <details id="faq-tips"><summary>Do you give stock tips?</summary><div class="a">No. This course teaches money management. No tips, no trading calls, no personal investment advice.</div></details>
+        <details id="faq-phone"><summary>Can I learn on my phone?</summary><div class="a">Yes. Learn on the Stonkzz School app for Android or iPhone, or on the web, on up to 2 devices.</div></details>
+        <details id="faq-certificate"><summary>Do I get a certificate?</summary><div class="a">Yes. Score 60 out of 100 across the 13 module games and the final assessment for a Stonkzz School certificate of completion. Attempts are unlimited. It isn't a NISM, SEBI or other official qualification.</div></details>
+        <details id="faq-access"><summary>When can I start, and for how long?</summary><div class="a">Enrollment opens in January 2027. Once you've paid, log in to the app with the same phone number and start straight away. Access is lifetime, updates included.</div></details>
+        <details id="faq-refund"><summary>What's the final price? Can I get a refund?</summary><div class="a">₹2,999 + 18% GST = ₹3,538.82. There's no bundle at the moment. Refunds follow our <a href="#" data-todo="refund">7-day refund policy</a>.</div></details>
+      </div>
+      <p class="faq-more" data-r>Still have a question? Write to <a href="mailto:thestonkzz@gmail.com?subject=Question%20about%20Personal%20Finance%20Mastery">thestonkzz@gmail.com</a>, Monday to Saturday, 10 AM to 6 PM.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="row">
+      <div><a class="logo" href="#top"><img src="assets/logo.svg" alt="" width="27" height="34">Stonkzz <span>School</span></a><p>Financial education, explained simply in <span class="ta">தமிழ்</span>.</p></div>
+      <nav aria-label="Footer">
+        <a href="https://www.youtube.com/@stonkzz-bg" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://www.instagram.com/stonkzz._/" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="mailto:thestonkzz@gmail.com">Support</a>
+        <a href="#" data-todo="terms">Terms</a>
+        <a href="#" data-todo="privacy">Privacy</a>
+        <a href="#" data-todo="refund">Refund policy</a>
+      </nav>
+    </div>
+    <p class="disc">Educational content only. Nothing on this site is investment advice. No claims of guaranteed financial outcomes. © <span id="yr">2026</span> Stonkzz School</p>
+  </div>
+</footer>
+
+<div class="pill" aria-hidden="true">
+  <div><small>Personal Finance Mastery</small><strong>₹2,999 + GST</strong></div>
+  <a class="btn btn-green" href="#enroll" data-to-notify tabindex="-1"><span class="when-soon">Notify me</span><span class="when-live">Enroll now</span> <span class="arw">→</span></a>
+</div>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="Dialog"><div class="modal-box" id="modal-box"></div></div>
+<noscript><style>.js [data-r]{opacity:1!important;transform:none!important}</style></noscript>
+<script>
+(function(){
+  "use strict";
+  var C = window.SZ || {};
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && matchMedia('(pointer: fine)').matches;
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var live = !!C.checkoutUrl;
+  function track(ev, p){ try{ if(window.fbq) fbq('track', ev, p || {}); if(window.gtag) gtag('event', ev, p || {}); }catch(e){} }
+  track('ViewContent', {content_name: C.course, content_category: 'Course'});
+
+  /* ---------- reveal ---------- */
+  var rv = $$('[data-r]');
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else rv.forEach(function(el){ el.classList.add('in'); });
+
+  /* ---------- status text ---------- */
+  $$('[data-status]').forEach(function(el){ el.textContent = live ? 'Enrollment open' : 'Enrollment opens ' + (C.opensOn || 'soon'); });
+
+  /* ---------- hero: sparks + tilt (objects that react to you) ---------- */
+  var sparks = $('.sparks');
+  if(sparks && !reduce){
+    for(var i = 0; i < 16; i++){ var s = document.createElement('i'); s.style.left = (12 + Math.random() * 76) + '%'; s.style.animationDelay = (Math.random() * 7).toFixed(2) + 's'; s.style.animationDuration = (5 + Math.random() * 4).toFixed(2) + 's'; sparks.appendChild(s); }
+  }
+  var stage = $('.stage'), obj = $('.stage .obj');
+  if(stage && obj && fine && !reduce){
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+    function loop(){ cx += (tx - cx) * .08; cy += (ty - cy) * .08; obj.style.transform = 'perspective(800px) rotateY(' + (cx * 12).toFixed(2) + 'deg) rotateX(' + (-cy * 10).toFixed(2) + 'deg) translate3d(' + (cx * 10).toFixed(1) + 'px,' + (cy * 8).toFixed(1) + 'px,0)'; if(Math.abs(tx - cx) > .001 || Math.abs(ty - cy) > .001) raf = requestAnimationFrame(loop); else raf = null; }
+    addEventListener('pointermove', function(e){ tx = (e.clientX / innerWidth - .5) * 2; ty = (e.clientY / innerHeight - .5) * 2; if(!raf) raf = requestAnimationFrame(loop); }, {passive:true});
+    obj.style.animation = 'none';
+  }
+
+  /* ---------- stock hero: candles print one by one, trend draws ---------- */
+  var chart = $('.chart');
+  if(chart){
+    var cs = $$('.c', chart), trend = $('.trend', chart);
+    function play(){
+      cs.forEach(function(c){ c.classList.remove('on'); });
+      if(trend){ trend.classList.remove('on'); void trend.getBoundingClientRect(); }
+      cs.forEach(function(c, k){ setTimeout(function(){ c.classList.add('on'); }, reduce ? 0 : 160 * k); });
+      setTimeout(function(){ if(trend) trend.classList.add('on'); }, reduce ? 0 : 160 * cs.length * .55);
+    }
+    play(); if(!reduce) setInterval(play, 9000);
+  }
+
+  /* ---------- nav solid + progress + pill + journey ---------- */
+  var nav = $('.nav'), prog = $('.progress'), pill = $('.pill'), hero = $('.hero'), buy = $('#enroll');
+  var rail = $('.journey .rail i'), stops = $$('.journey .stop'), journey = $('.journey');
+  function onScroll(){
+    var d = document.documentElement, y = d.scrollTop || document.body.scrollTop, max = d.scrollHeight - d.clientHeight;
+    if(nav) nav.classList.toggle('solid', y > 30);
+    if(prog) prog.style.transform = 'scaleX(' + (max > 0 ? y / max : 0).toFixed(4) + ')';
+    if(pill && hero && buy){
+      var b = buy.getBoundingClientRect();
+      var on = hero.getBoundingClientRect().bottom < 80 && !(b.top < innerHeight * .9 && b.bottom > 0) && modal.hidden;
+      pill.classList.toggle('on', on); pill.setAttribute('aria-hidden', on ? 'false' : 'true');
+      $$('a,button', pill).forEach(function(el){ el.tabIndex = on ? 0 : -1; });
+    }
+    if(journey && rail){
+      var r = journey.getBoundingClientRect(), mid = innerHeight * .62;
+      var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      rail.parentNode.style.setProperty('--p', p.toFixed(4));
+      rail.style.transform = 'scaleY(' + p.toFixed(4) + ')';
+      stops.forEach(function(s){ s.classList.toggle('lit', s.getBoundingClientRect().top + 30 < mid); });
+    }
+  }
+  var tick = false;
+  addEventListener('scroll', function(){ if(!tick){ tick = true; requestAnimationFrame(function(){ tick = false; onScroll(); }); } }, {passive:true});
+  addEventListener('resize', onScroll);
+
+  /* ---------- modal ---------- */
+  var modal = $('#modal'), box = $('#modal-box'), last = null;
+  function open(html, sm){
+    last = document.activeElement; box.className = 'modal-box' + (sm ? ' sm' : '');
+    box.innerHTML = '<button class="modal-x" type="button" aria-label="Close">&times;</button>' + html;
+    modal.hidden = false; document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function(){ modal.classList.add('on'); });
+    $$('.modal-x,[data-close]', box).forEach(function(b){ b.addEventListener('click', close); });
+    var f = box.querySelectorAll('button,a[href],video'); (f[1] || f[0]).focus(); onScroll();
+  }
+  function close(){
+    var v = $('video', box); if(v){ try{ v.pause(); }catch(e){} }
+    modal.classList.remove('on'); setTimeout(function(){ modal.hidden = true; box.innerHTML = ''; onScroll(); }, 180);
+    document.body.style.overflow = ''; if(last) last.focus();
+  }
+  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){
+    if(modal.hidden) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'Tab'){ var f = box.querySelectorAll('button,a[href],video[controls]'); if(!f.length) return; var a = f[0], z = f[f.length - 1];
+      if(e.shiftKey && document.activeElement === a){ e.preventDefault(); z.focus(); } else if(!e.shiftKey && document.activeElement === z){ e.preventDefault(); a.focus(); } }
+  });
+  var mail = '<a class="link" style="color:var(--green);font-weight:600" href="mailto:' + C.supportEmail + '">' + C.supportEmail + '</a>';
+
+  /* ---------- videos ---------- */
+  $$('[data-video]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var key = b.getAttribute('data-video'), src = (C.videos || {})[key], label = b.getAttribute('data-label') || 'Video';
+      if(!src){ open('<span class="tag gold">Coming soon</span><h3>' + label + '</h3><p>The trailer is being finished and will be added here shortly.</p><button type="button" class="btn btn-white" data-close>Back to the page</button>', true); return; }
+      open('<video controls autoplay playsinline preload="metadata" src="' + src + '"' + (C.posters && C.posters[key] ? ' poster="' + C.posters[key] + '"' : '') + '></video>');
+      $('video', box).addEventListener('error', function(){
+        open('<span class="tag gold">Video unavailable</span><h3>This video didn\'t load.</h3><p>Check your connection and try again, or write to ' + mail + '.</p><button type="button" class="btn btn-green" data-close>Close</button>', true);
+      });
+      track('ViewContent', {content_name: C.course + ' – ' + label});
+    });
+  });
+
+  /* ---------- the real module game ---------- */
+  $$('[data-game]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var phone = b.closest('.phone'), scr = $('.screen', phone);
+      phone.classList.add('busy');
+      var f = document.createElement('iframe');
+      f.src = b.getAttribute('data-game'); f.title = b.getAttribute('data-title') || 'Course game'; f.setAttribute('allow', 'autoplay');
+      f.addEventListener('load', function(){ phone.classList.remove('busy'); });
+      scr.innerHTML = ''; scr.appendChild(f); f.focus();
+      track('ViewContent', {content_name: C.course + ' – game'});
+    });
+  });
+  var after = $('.after-play');
+  addEventListener('message', function(e){
+    var m = e.data; if(typeof m === 'string'){ try{ m = JSON.parse(m); }catch(x){ return; } }
+    if(!m || m.source !== 'stonkzz-game') return;
+    if(m.type === 'complete' || (m.type === 'exit' && m.reason === 'done')){ if(after) after.classList.add('on'); track('CompleteGame', {content_name: C.course}); }
+  });
+
+  /* ---------- enroll (live mode): summary before payment ---------- */
+  $$('[data-enroll]').forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.preventDefault(); track('InitiateCheckout', {content_name: C.course, currency: 'INR'});
+      var items = (C.includes || []).map(function(t){ return '<li>' + (C.check || '') + '<span>' + t + '</span></li>'; }).join('');
+      open('<span class="tag green">Step 1 of 2 · Review</span><h3>' + C.course + '</h3><ul class="sum">' + items + '</ul>' +
+        '<div class="final"><span>' + C.price + '<small>Final amount incl. 18% GST</small></span><strong>' + C.final + '</strong></div>' +
+        '<a class="btn btn-green" href="' + C.checkoutUrl + '">Continue to secure payment →</a>', true);
+    });
+  });
+
+  /* ---------- notify me ---------- */
+  $$('[data-notify]').forEach(function(f){
+    var inp = $('input', f), out = $('.nf-done', f), btn = $('button[type=submit]', f);
+    function parse(v){
+      v = v.trim();
+      if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return {type:'email', value:v};
+      var d = v.replace(/[\s\-()]/g, '').replace(/^(\+?91|0)(?=\d{10}$)/, '');
+      if(/^[6-9]\d{9}$/.test(d)) return {type:'phone', value:'+91' + d};
+      return null;
+    }
+    inp.addEventListener('input', function(){ if(f.classList.contains('bad') && parse(inp.value)){ f.classList.remove('bad'); inp.setAttribute('aria-invalid', 'false'); } });
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var p = parse(inp.value);
+      f.classList.toggle('bad', !p); inp.setAttribute('aria-invalid', p ? 'false' : 'true');
+      if(!p){ inp.focus(); return; }
+      if(!C.notifyUrl){
+        location.href = 'mailto:' + C.supportEmail + '?subject=' + encodeURIComponent('Notify me: ' + C.course) + '&body=' + encodeURIComponent('Please let me know when enrollment opens for ' + C.course + '.\nMy ' + (p.type === 'email' ? 'email' : 'WhatsApp number') + ': ' + p.value);
+        out.textContent = 'Your email app should open with the request ready to send. If it doesn\'t, write to ' + C.supportEmail + '.';
+        track('Lead', {content_name: C.course}); return;
+      }
+      btn.disabled = true; out.textContent = 'Saving…';
+      fetch(C.notifyUrl, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({contact:p.value, type:p.type, course:C.course, page:location.pathname, at:new Date().toISOString()})})
+        .then(function(r){ if(!r.ok) throw 0; out.textContent = 'Done. We\'ll message you when enrollment opens.'; f.reset(); track('Lead', {content_name: C.course}); })
+        .catch(function(){ out.textContent = 'That didn\'t go through. Please try again, or write to ' + C.supportEmail + '.'; })
+        .then(function(){ btn.disabled = false; });
+    });
+  });
+  /* any "notify" button jumps to the form and focuses it */
+  $$('[data-to-notify]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(live) return;
+      e.preventDefault(); var t = $('#enroll'); var y = t.getBoundingClientRect().top + scrollY - 70;
+      scrollTo({top: y, behavior: reduce ? 'auto' : 'smooth'});
+      setTimeout(function(){ var i = $('#nf-contact'); if(i) i.focus({preventScroll:true}); }, reduce ? 0 : 650);
+    });
+  });
+
+  /* ---------- pending policy pages ---------- */
+  $$('[data-todo]').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault();
+    var t = {terms:'Terms of use', privacy:'Privacy policy', refund:'Refund policy'}[a.getAttribute('data-todo')] || a.textContent;
+    open('<span class="tag gold">Being finalised</span><h3>' + t + '</h3><p>This page will be published before enrollment opens. For anything urgent, write to ' + mail + '.</p><button type="button" class="btn btn-white" data-close>Okay</button>', true); }); });
+
+  var yr = $('#yr'); if(yr) yr.textContent = new Date().getFullYear();
+  onScroll();
+})();
+
+</script>
+</body>
+</html>

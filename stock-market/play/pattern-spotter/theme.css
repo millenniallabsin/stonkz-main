@@ -1,0 +1,38 @@
+/* Stonkzz games: theme tokens.
+   This is the one file to change when the app's colours and fonts are decided.
+   Every game reads only these variables, so swapping values here reskins all of them.
+   The kit sets data-theme="light" or "dark" on <html> from the app's config. */
+:root{
+  /* surfaces */
+  --paper:#EEF1EA; --paper-hi:#F8FAF5; --paper-lo:#E0E6DC; --paper-ink:#FBFCF9;
+  /* text */
+  --ink:#0B2A1C; --ink-2:#40594C; --ink-3:#6E8378;
+  /* rules and borders */
+  --line:rgba(11,42,28,.14); --line-2:rgba(11,42,28,.30);
+  /* meaning: up = right / gain, down = wrong / loss, gold = money and rewards */
+  --up:#0E8A4A; --down:#C8352B; --gold:#8C6210; --foil:#D2A23A; --foil-hi:#F6E2A2; --foil-lo:#7A5409;
+  /* course colours */
+  --pf:#C27C0E; --sm:#0F8C82;
+  /* glows are only used in the dark theme */
+  --glow-up:none; --glow-gold:none; --glow-ink:none;
+  --veil:rgba(238,241,234,.88);
+  --shadow:0 18px 40px -22px rgba(11,42,28,.55);
+  /* type: display = headings, money = rupee figures, ui = everything else */
+  --display:"Bricolage Grotesque","Anek Latin",system-ui,sans-serif;
+  --money:"Rozha One","Bodoni Moda",Georgia,serif;
+  --ui:"Anek Latin","Segoe UI",system-ui,-apple-system,sans-serif;
+  /* shape */
+  --r:10px; --r-lg:16px;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --paper:#070C0A; --paper-hi:#0E1712; --paper-lo:#040706; --paper-ink:#13201A;
+  --ink:#EAF5EE; --ink-2:#A3B5AA; --ink-3:#6F8579;
+  --line:rgba(120,240,170,.13); --line-2:rgba(120,240,170,.28);
+  --up:#3BEA8A; --down:#FF5A57; --gold:#F5C451; --foil:#E2B23E; --foil-hi:#FFF0B8; --foil-lo:#8A6410;
+  --pf:#FFBE45; --sm:#3FE0C5;
+  --glow-up:0 0 14px rgba(59,234,138,.55); --glow-gold:0 0 16px rgba(245,196,81,.45); --glow-ink:0 0 12px rgba(59,234,138,.18);
+  --veil:rgba(7,12,10,.88);
+  --shadow:0 18px 50px -20px rgba(0,0,0,.85);
+  color-scheme:dark;
+}
