@@ -924,6 +924,139 @@ html:not(.js) .pcard{opacity:1;transform:none}
 }
 .pop-tr{--w:300px}.pop .w-small b{white-space:nowrap}
 
+/* ===== v10 · conversion flow ===== */
+/* hero: promise + at-a-glance card */
+.hero-x{min-height:100svh;display:flex;align-items:center;padding:110px 0 60px;overflow:visible;overflow-x:clip}
+.hx-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(30px,5vw,72px);align-items:center;width:100%}
+.hero-x h1{font-size:clamp(40px,5.4vw,74px);margin:0 0 22px;max-width:15ch}
+.hero-x .lead{max-width:46ch;margin:0 0 30px}
+.glance{padding:14px;border-radius:24px}
+.g-trailer{position:relative;display:block;width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:0;padding:0;cursor:pointer;background:#000}
+.g-trailer img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s,transform .6s var(--ease)}
+.g-trailer:hover img{opacity:.9;transform:scale(1.03)}
+.g-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:var(--g-ink);box-shadow:0 0 0 10px rgba(37,224,101,.18),0 0 40px rgba(37,224,101,.6)}
+.g-play .glyph{width:24px;height:24px;fill:currentColor;margin-left:3px}
+.g-cap{position:absolute;left:14px;bottom:12px;font:600 14px var(--body);color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+.g-rows{margin:6px 6px 2px;display:grid}
+.g-rows div{display:flex;justify-content:space-between;gap:16px;padding:12px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
+.g-rows div:last-child{border-bottom:0}
+.g-rows dt{color:var(--muted)}
+.g-rows dd{margin:0;text-align:right;color:var(--paper);font-weight:600}
+.g-rows div:first-child dd{font:800 22px/1 var(--title);color:var(--g-bright)}
+
+/* phone section: one fixed heading, a progress hint, short scroll */
+.ph-sec{height:320vh}
+.ph-head{position:absolute;z-index:6;left:0;right:0;top:88px;text-align:center;padding:0 20px;transition:opacity .4s,transform .4s var(--ease)}
+.ph-head h2{font-size:clamp(28px,3.6vw,48px);margin:0}
+.ph-head h2 .pay{display:inline}
+.ph-head.gone{opacity:0;transform:translateY(-14px);pointer-events:none}
+.ph-hint{position:absolute;z-index:6;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:12px;margin:0;font-size:14px;color:var(--muted);white-space:nowrap;transition:opacity .4s}
+.ph-hint.gone{opacity:0}
+.ph-prog{display:block;width:120px;height:4px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
+.ph-prog b{display:block;height:100%;width:0;background:var(--green);border-radius:4px}
+.ph-cam{top:calc(50% + 70px);height:760px;margin-top:-380px}
+.ph-cam .ph-wrap{--ph-h:560px}
+@media (max-width:900px){
+  .ph-sec{height:360vh}
+  .ph-head{top:84px}
+  .ph-head h2 .pay{display:block}
+  .ph-cam{top:calc(50% + 60px);height:680px;margin-top:-340px}
+  .ph-cam .ph-wrap{--ph-h:480px}
+  .ph-hint{bottom:16px;font-size:13px}
+  .ph-cta{bottom:56px}
+}
+
+/* the change: journey */
+.pfj{margin:0 auto}
+.pfj .stop{padding-right:120px}
+.pfj .n{font:700 15px/1 var(--body);letter-spacing:0;text-transform:none;color:var(--muted)}
+.pfj .stop.lit .n{color:var(--g-bright)}
+.pfj .j-art{position:absolute;right:20px;top:22px;width:80px;height:80px;filter:brightness(1.3) drop-shadow(0 0 4px rgba(67,242,124,.4));opacity:.9}
+.pfj .out{color:var(--muted);font-size:13.5px}
+.split{display:flex;gap:4px;margin:14px 0 4px;max-width:440px}
+.split span{flex:0 0 calc(var(--w) - 3px);display:flex;flex-direction:column;gap:2px;padding:9px 10px;border-radius:10px;background:rgba(37,224,101,.08);border:1px solid rgba(37,224,101,.2);font-size:12px;color:var(--muted)}
+.split span:last-child{background:rgba(37,224,101,.2);border-color:rgba(37,224,101,.5);color:#dff7e6}
+.split b{font:700 15px var(--title);color:var(--paper)}
+.j-note{text-align:center;margin:18px auto 0;max-width:60ch}
+.c-cta{display:flex;justify-content:center;margin-top:30px}
+
+/* syllabus: sphere with orbiting stages */
+.sph-wrap{display:flex;flex-direction:column;align-items:center;margin:0 auto 34px}
+.sph{position:relative;width:min(560px,92vw);aspect-ratio:1;touch-action:pan-y;cursor:grab;user-select:none}
+.sph:active{cursor:grabbing}
+.sph canvas{position:absolute;inset:0;width:100%;height:100%}
+.sph-mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;z-index:2}
+.sph-mid .hand{font-size:clamp(30px,3.6vw,44px);margin:0}
+.sph-mid b{display:block;font:800 clamp(20px,2.2vw,28px)/1.1 var(--title);letter-spacing:-.02em;margin-top:6px}
+.orbs{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;max-width:190px;padding:9px 13px 9px 9px;border-radius:14px;background:rgba(14,16,15,.9);border:1px solid rgba(37,224,101,.35);font:600 13.5px/1.25 var(--body);color:var(--paper);box-shadow:0 14px 30px rgba(0,0,0,.6);will-change:transform,opacity}
+.orb b{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--g-ink);font:600 11px var(--mono)}
+.sph-tip{margin:6px 0 0;font-size:13px;color:var(--muted2)}
+.stages-acc{max-width:820px;margin:0 auto;display:grid;gap:10px}
+.stg{border-radius:16px;background:var(--glass);border:1px solid var(--edge);transition:border-color .3s}
+.stg[open]{border-color:rgba(37,224,101,.4)}
+.stg summary{list-style:none;display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;padding:16px 18px;cursor:pointer}
+.stg summary::-webkit-details-marker{display:none}
+.sn{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(37,224,101,.14);color:var(--g-bright);font:600 12px var(--mono)}
+.stg.bonus .sn{background:rgba(226,178,62,.18);color:var(--gold-bright)}
+.st{font:700 17px/1.25 var(--title);letter-spacing:-.015em}
+.sm{font-size:13px;color:var(--muted)}
+.sb{padding:0 18px 16px 66px}
+.sb p{margin:0;color:var(--muted);font-size:15px;line-height:1.6}
+.sb .out{margin-top:8px;color:#dff7e6;font-size:14px}
+.sb .out:before{content:"→ ";color:var(--green);font-weight:700}
+.fit{max-width:980px;margin:44px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fit > div{padding:22px 24px;border-radius:18px;background:var(--glass);border:1px solid var(--edge)}
+.fit h3{font-size:19px;margin:0 0 12px}
+.fit ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.fit li{position:relative;padding-left:26px;font-size:15px;color:var(--muted);line-height:1.5}
+.fit-y li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.fit-n li:before{content:"✕";position:absolute;left:0;color:var(--r-bright);font-weight:700}
+
+/* testimonials (placeholders until real, approved quotes exist) */
+.tst{margin-top:clamp(60px,8vw,100px)}
+.tst-h{font-size:clamp(30px,3.4vw,44px);margin:0 0 22px;text-align:center}
+.tst-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tq{margin:0;padding:22px;border-radius:18px;border:1px dashed rgba(246,213,126,.45);background:rgba(246,213,126,.04)}
+.tq blockquote{margin:14px 0 14px;font-size:16px;line-height:1.55;color:var(--muted)}
+.tq figcaption{font-size:13px;color:var(--muted2)}
+
+/* enroll: card + what happens next */
+.buy2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start;max-width:1040px;margin:0 auto}
+.buy2 .offer .btn{margin-top:22px}
+.next h3{font-size:22px;margin:6px 0 18px}
+.next ol{list-style:none;margin:0;padding:0;counter-reset:nx;display:grid;gap:16px}
+.next li{position:relative;padding-left:48px}
+.next li:before{counter-increment:nx;content:counter(nx);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(37,224,101,.14);color:var(--g-bright);font:700 14px var(--title)}
+.next b{display:block;font-size:16px;margin-bottom:2px}
+.next span{font-size:14.5px;color:var(--muted)}
+.refund{margin:22px 0 0;font-size:14px;color:var(--muted)}
+.refund a{color:var(--green);font-weight:600}
+.pill small{font:600 12px var(--body);letter-spacing:0;text-transform:none;color:var(--muted)}
+
+@media (max-width:900px){
+  .hx-grid,.buy2,.fit{grid-template-columns:1fr}
+  .hero-x{padding-top:96px;min-height:auto}
+  .tst-grid{grid-template-columns:1fr}
+  .pfj .stop{padding-right:22px}
+  .pfj .j-art{width:56px;height:56px;top:16px;right:14px}
+  .pfj h3{padding-right:62px}
+  .orb{font-size:11.5px;max-width:132px;padding:6px 9px 6px 6px;gap:6px}
+  .orb b{width:20px;height:20px;font-size:9.5px}
+  .sb{padding-left:18px}
+  .sm{display:none}
+}
+/* no tracked, uppercase mono labels: plain sentence case instead */
+.ph-app small,.ph-h,.upi-top small,.s-meta small,.mod,.role,.tag,.ph-day{font-family:var(--body);letter-spacing:0;text-transform:none}
+.ph-app small{font-size:.72em;font-weight:500}
+.ph-h{font-size:.72em;font-weight:600;color:var(--muted)}
+.upi-top small,.s-meta small{font-size:12.5px;font-weight:500}
+.mod{font-size:11.5px;font-weight:600;padding:5px 9px}
+.role{font-size:15px;font-weight:500;color:var(--muted)}
+.tag{font-size:12.5px;font-weight:600}
+.ph-day{font-weight:700}
+.sph{width:min(680px,94vw)}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -1266,31 +1399,74 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
   }
   function caps(list, p){ var shown = false; list.forEach(function(t){ var a = t.getAttribute('data-p').split(','), on = !shown && p >= +a[0] && p < +a[1]; if(on) shown = true; t.classList.toggle('on', on); }); }
 
-  /* ---------- one month, told inside the phone; answers pop out around it ---------- */
+  /* ---------- one month inside the phone; then the camera pulls back as each question pops out ---------- */
   var ph = $('#month'), phUpdate = function(){};
   if(ph){
     var cam = $('.ph-cam', ph), pwrap = $('.ph-wrap', ph), nts = $$('.nt', ph).sort(function(x, y){ return +x.dataset.i - +y.dataset.i; }), pops = $$('.pop', ph);
     var bal = $('[data-bal]', ph), dte = $('[data-date]', ph), mbar = $('[data-mbar]', ph), pcta = $('.ph-cta', ph);
+    var phead = $('.ph-head', ph), hint = $('.ph-hint', ph), pbar = $('.ph-prog b', ph);
     var days = [1, 2, 5, 7, 10, 12, 12, 15, 19, 22, 25];
-    var fit = function(){ var m = innerWidth <= 900, bw = m ? 390 : 1440, bh = m ? 772 : 828; cam.style.setProperty('--fit', Math.min(1.08, innerWidth / bw, (innerHeight - 72) / bh).toFixed(3)); };
+    var fit = function(){ var m = innerWidth <= 900, bw = m ? 390 : 1440, bh = m ? 680 : 760; cam.style.setProperty('--fit', Math.min(1.08, innerWidth / bw, (innerHeight - (m ? 130 : 150)) / bh).toFixed(3)); };
     fit(); addEventListener('resize', fit);
     phUpdate = function(){
       var p = pgOf(ph), n = 0, spent = 0, mob = innerWidth <= 900;
-      nts.forEach(function(el, i){ var on = i === 0 || p >= .04 + (i - 1) * .038; el.classList.toggle('in', on); if(on){ n = i; spent += +(el.dataset.amt || 0); } });
+      nts.forEach(function(el, i){ var on = i === 0 || p >= .03 + (i - 1) * .041; el.classList.toggle('in', on); if(on){ n = i; spent += +(el.dataset.amt || 0); } });
       bal.textContent = '₹' + fmt(35000 - spent); bal.classList.toggle('low', spent > 28000);
       dte.textContent = days[n] + ' Nov'; dte.classList.toggle('late', n >= 7);
       mbar.style.width = (days[n] / 30 * 100).toFixed(1) + '%';
-      var z = clamp((p - .42) / .07);
-      cam.style.setProperty('--zoom', ((mob ? 1.12 : 1.22) - (mob ? .12 : .22) * z).toFixed(3));
-      pwrap.style.setProperty('--tilt', (12 * (1 - clamp(p / .05))).toFixed(2) + 'deg');
+      var z = clamp((p - .43) / .37), z0 = mob ? 1.1 : 1.16;
+      cam.style.setProperty('--zoom', (z0 - (z0 - 1) * z).toFixed(3));
+      pwrap.style.setProperty('--tilt', (10 * (1 - clamp(p / .04))).toFixed(2) + 'deg');
       var last = -1;
-      pops.forEach(function(el, i){ var on = p >= .47 + i * .075; el.classList.toggle('out', on); if(on){ last = i; playCard(el); } });
+      pops.forEach(function(el, i){ var on = p >= .46 + i * .08; el.classList.toggle('out', on); if(on){ last = i; playCard(el); } });
       pops.forEach(function(el, i){ el.classList.toggle('back', mob && i < last); });
-      pwrap.style.setProperty('--turn', (last < 0 ? 0 : (last % 2 ? -6 : 6)).toFixed(1) + 'deg');
-      pcta.classList.toggle('on', p >= .82 && p < .96);
-      var out = clamp((p - .92) / .08);
-      cam.style.opacity = (1 - out).toFixed(3);
+      pwrap.style.setProperty('--turn', (last < 0 ? 0 : (last % 2 ? -7 : 7)).toFixed(1) + 'deg');
+      phead.classList.toggle('gone', p >= .44);
+      hint.classList.toggle('gone', p >= .84);
+      pbar.style.width = (clamp(p / .84) * 100).toFixed(1) + '%';
+      pcta.classList.toggle('on', p >= .84 && p < .97);
+      cam.style.opacity = (1 - clamp((p - .93) / .07)).toFixed(3);
     };
+  }
+
+  /* ---------- syllabus sphere: dots on a sphere, the 6 stages orbit it; drag to spin ---------- */
+  var sp = $('[data-sphere]');
+  if(sp){
+    var cv2 = $('canvas', sp), ctx = cv2.getContext('2d'), orbs = $$('.orb', sp), N2 = 420, P = [], rot = 0, vel = reduce ? 0 : .0045, intro = reduce ? 1 : 0, seen = false, raf = 0, drag = null;
+    for(var i2 = 0; i2 < N2; i2++){ var y2 = 1 - (i2 / (N2 - 1)) * 2, r2 = Math.sqrt(1 - y2 * y2), t2 = i2 * 2.39996; P.push([Math.cos(t2) * r2, y2, Math.sin(t2) * r2]); }
+    var W2 = 0, dpr = Math.min(2, devicePixelRatio || 1);
+    var size = function(){ W2 = sp.clientWidth; cv2.width = W2 * dpr; cv2.height = W2 * dpr; };
+    size(); addEventListener('resize', size);
+    var frame = function(){
+      if(!drag){ rot += vel; vel += ((vel < 0 ? -.0045 : .0045) - vel) * .02; } if(seen && intro < 1) intro = Math.min(1, intro + .02);
+      var R = W2 * .3, cx = W2 / 2, cy = W2 / 2, tilt = .38, ct = Math.cos(tilt), st = Math.sin(tilt);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W2, W2);
+      var g = ctx.createRadialGradient(cx - R * .3, cy - R * .3, R * .1, cx, cy, R * 1.3); g.addColorStop(0, 'rgba(37,224,101,.16)'); g.addColorStop(1, 'rgba(37,224,101,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.25, 0, 7); ctx.fill();
+      var cr = Math.cos(rot), sr = Math.sin(rot);
+      for(var k = 0; k < N2; k++){
+        var q = P[k], x = q[0] * cr + q[2] * sr, z = -q[0] * sr + q[2] * cr, y = q[1] * ct - z * st; z = q[1] * st + z * ct;
+        var a = (z + 1) / 2; ctx.fillStyle = 'rgba(67,242,124,' + (.08 + a * .55).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(cx + x * R, cy + y * R, .8 + a * 1.4, 0, 7); ctx.fill();
+      }
+      var ox = Math.min(R * 1.42, W2 / 2 - (W2 < 420 ? 64 : 92)), oy = W2 < 480 ? R * 1.12 : R * 1.42 * st * 1.15;
+      ctx.strokeStyle = 'rgba(37,224,101,.28)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(cx, cy, ox, oy, 0, 0, 7); ctx.stroke();
+      var e = 1 - Math.pow(1 - intro, 3);
+      orbs.forEach(function(o, j){
+        var ang = rot * 1.4 + j * Math.PI / 3, zz = Math.sin(ang), x = cx + Math.cos(ang) * ox * e, y = cy + zz * oy * e;
+        var sc = .78 + (zz + 1) * .14, op = (.35 + (zz + 1) * .325) * e;
+        o.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%) scale(' + sc.toFixed(3) + ')';
+        o.style.opacity = op.toFixed(3); o.style.zIndex = zz > 0 ? 3 : 1;
+      });
+      raf = requestAnimationFrame(frame);
+    };
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ seen = true; if(!raf) raf = requestAnimationFrame(frame); } else { cancelAnimationFrame(raf); raf = 0; } }); }, {threshold:.15}).observe(sp);
+    } else { seen = true; frame(); }
+    sp.addEventListener('pointerdown', function(e){ drag = {x:e.clientX, r:rot, t:performance.now()}; sp.setPointerCapture(e.pointerId); });
+    sp.addEventListener('pointermove', function(e){ if(!drag) return; var dx = e.clientX - drag.x; rot = drag.r + dx * .008; });
+    var up = function(e){ if(!drag) return; var dt = Math.max(16, performance.now() - drag.t), dx = e.clientX - drag.x; vel = reduce ? 0 : Math.max(-.03, Math.min(.03, dx * .008 / dt * 16 * .3)) || .0045; if(Math.abs(vel) < .003) vel = .0045 * (vel < 0 ? -1 : 1); drag = null; };
+    sp.addEventListener('pointerup', up); sp.addEventListener('pointercancel', up);
   }
 
   /* ---------- the money tree: coins fall, then leaves and coins grow back ---------- */
