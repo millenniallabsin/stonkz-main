@@ -1094,6 +1094,37 @@ html:not(.js) .pcard{opacity:1;transform:none}
 .ph-sec{height:420vh}
 @media (max-width:900px){.ph-sec{height:460vh}}
 
+/* ===== v12 · client-review fixes ===== */
+/* stage boxes show they open */
+.stg summary{grid-template-columns:34px 1fr auto 28px}
+.pl{position:relative;width:28px;height:28px;border-radius:50%;border:1px solid rgba(37,224,101,.45);transition:transform .3s var(--ease),background .3s}
+.pl:before,.pl:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:var(--g-bright)}
+.pl:after{transform:rotate(90deg);transition:transform .3s var(--ease)}
+.stg[open] .pl{background:rgba(37,224,101,.15);transform:rotate(180deg)}
+.stg[open] .pl:after{transform:rotate(0deg)}
+.stg summary:hover .pl{background:rgba(37,224,101,.12)}
+/* fit heading */
+.fit-h{text-align:center;font-size:clamp(30px,3.6vw,48px);margin:clamp(56px,7vw,88px) 0 22px}
+.fit{margin-top:0}
+/* journey: rail runs dot to dot and ends in a gold coin */
+.pfj .stop.gold-stop .dot.coin-dot{width:34px;height:34px;left:-59px;top:19px;display:grid;place-items:center;font:800 16px/1 var(--title);color:#3a2700;background:radial-gradient(circle at 35% 30%,#FFF1C2,#F6D57E 35%,#E2B23E 65%,#A8781A);border:2px solid #FFE7A3;box-shadow:0 0 0 5px var(--night),0 0 26px rgba(246,213,126,.9)}
+/* game: true phone width, scaled into the frame */
+.phone .screen iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;max-width:none}
+.phone .poster:after{background:none}
+/* spacing */
+#enroll{padding-bottom:clamp(40px,5vw,64px)}
+#faq-sec{padding-top:clamp(40px,5vw,64px)}
+#syllabus .c-cta{margin-top:26px}
+@media (max-width:900px){
+  .stg summary{grid-template-columns:30px 1fr 26px;gap:12px}
+  .pl{width:26px;height:26px}
+  .pfj .stop.gold-stop .dot.coin-dot{left:-50px;top:17px}
+  /* end of the phone story: cards stack in the centre */
+  .pop-l,.pop-tl,.pop-br,.pop-r,.pop-tr{--px:0px;--ry:0deg}
+  .pop-l{--py:40px}.pop-r{--py:60px}.pop-tl{--py:80px}.pop-tr{--py:100px}.pop-br{--py:120px}
+  .ph-scene{perspective-origin:50% 55%}
+}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -1287,7 +1318,7 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       <article class="stop"><span class="dot"></span><img class="j-art" src="assets/map1.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Month 3</span></div><h3>An emergency fund that's real</h3><p>₹21,000 set aside. The next hospital bill or job gap doesn't go on a credit card.</p><p class="out">Stage 1 · Money, income and habits</p></article>
       <article class="stop"><span class="dot"></span><img class="j-art" src="assets/i2.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Month 6</span></div><h3>Your family is covered</h3><p>Term and health insurance chosen because you understand them, not because someone sold them to you.</p><p class="out">Stage 3 · Protection and taxes</p></article>
       <article class="stop"><span class="dot"></span><img class="j-art" src="assets/i3.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Year 1</span></div><h3>No card debt, less tax, a first SIP</h3><p>The card is paid in full every month, tax is planned before March, and your first investment is running.</p><p class="out">Stages 3 to 5 · Taxes, investing, credit</p></article>
-      <article class="stop gold-stop"><span class="dot"></span><img class="j-art" src="assets/map5.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Year 5 · The goal</span></div><h3>Financial stability</h3><p>Savings that keep growing, family protected, no bad debt, and a number on every goal: the house, the wedding, the day work becomes optional.</p><p class="out">Stage 6 · Independence and money psychology</p></article>
+      <article class="stop gold-stop"><span class="dot coin-dot">₹</span><img class="j-art" src="assets/map5.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Year 5 · The goal</span></div><h3>Financial stability</h3><p>Savings that keep growing, family protected, no bad debt, and a number on every goal: the house, the wedding, the day work becomes optional.</p><p class="out">Stage 6 · Independence and money psychology</p></article>
     </div>
     <p class="fine j-note" data-r>Figures are an example based on a ₹35,000 take-home salary. Your numbers will be your own.</p>
     <div class="c-cta" data-r><a class="btn btn-green" href="#enroll" data-enroll>Start with Month 1 · ₹2,999 <span class="arw">→</span></a></div>
@@ -1310,7 +1341,8 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       </div>
       <p class="sph-tip">Drag to spin</p>
     </div>
-    <div class="stages-acc" data-r><details class="stg" open><summary><span class="sn">01</span><span class="st">Money, income and habits</span><span class="sm">Modules 0–2</span></summary><div class="sb"><p>Banking, good and bad debt, a salary budget, an emergency fund.</p><p class="out">Outline your own monthly money plan</p></div></details><details class="stg"><summary><span class="sn">02</span><span class="st">Inflation and compounding</span><span class="sm">Modules 3–4</span></summary><div class="sb"><p>Time value of money, the Rule of 72, and why starting early matters.</p><p class="out">Work out what time does to your money</p></div></details><details class="stg"><summary><span class="sn">03</span><span class="st">Protection and taxes</span><span class="sm">Modules 5–6</span></summary><div class="sb"><p>Life and health insurance, Indian income tax, how investments are taxed.</p><p class="out">Know what to ask before you buy a policy</p></div></details><details class="stg"><summary><span class="sn">04</span><span class="st">Investing foundations</span><span class="sm">Modules 7–9</span></summary><div class="sb"><p>Saving vs investing, asset classes, allocation, diversification.</p><p class="out">Match an investment to a goal and a risk level</p></div></details><details class="stg"><summary><span class="sn">05</span><span class="st">Goals, credit and debt</span><span class="sm">Modules 10–11</span></summary><div class="sb"><p>Goal planning, credit cards, CIBIL, and getting out of debt.</p><p class="out">Turn a goal into a monthly saving number</p></div></details><details class="stg"><summary><span class="sn">06</span><span class="st">Independence and money psychology</span><span class="sm">Modules 12–13</span></summary><div class="sb"><p>FIRE, why smart people make poor money choices, discipline.</p><p class="out">Calculate your own FIRE number</p></div></details><details class="stg bonus"><summary><span class="sn">+</span><span class="st">Bonus and Level 2 previews</span><span class="sm">15 lessons</span></summary><div class="sb"><p>Powerful Financial Habits (3 lessons), plus 12 preview lessons from Mutual Funds, Stock Market and Options.</p></div></details></div>
+    <div class="stages-acc" data-r><details class="stg" open><summary><span class="sn">01</span><span class="st">Money, income and habits</span><span class="sm">Modules 0–2</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Banking, good and bad debt, a salary budget, an emergency fund.</p><p class="out">Outline your own monthly money plan</p></div></details><details class="stg"><summary><span class="sn">02</span><span class="st">Inflation and compounding</span><span class="sm">Modules 3–4</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Time value of money, the Rule of 72, and why starting early matters.</p><p class="out">Work out what time does to your money</p></div></details><details class="stg"><summary><span class="sn">03</span><span class="st">Protection and taxes</span><span class="sm">Modules 5–6</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Life and health insurance, Indian income tax, how investments are taxed.</p><p class="out">Know what to ask before you buy a policy</p></div></details><details class="stg"><summary><span class="sn">04</span><span class="st">Investing foundations</span><span class="sm">Modules 7–9</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Saving vs investing, asset classes, allocation, diversification.</p><p class="out">Match an investment to a goal and a risk level</p></div></details><details class="stg"><summary><span class="sn">05</span><span class="st">Goals, credit and debt</span><span class="sm">Modules 10–11</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Goal planning, credit cards, CIBIL, and getting out of debt.</p><p class="out">Turn a goal into a monthly saving number</p></div></details><details class="stg"><summary><span class="sn">06</span><span class="st">Independence and money psychology</span><span class="sm">Modules 12–13</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>FIRE, why smart people make poor money choices, discipline.</p><p class="out">Calculate your own FIRE number</p></div></details><details class="stg bonus"><summary><span class="sn">+</span><span class="st">Bonus and Level 2 previews</span><span class="sm">15 lessons</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Powerful Financial Habits (3 lessons), plus 12 preview lessons from Mutual Funds, Stock Market and Options.</p></div></details></div>
+    <h2 class="fit-h" data-r><span class="silver">Is this course</span> <span class="pay">for you?</span></h2>
     <div class="fit" data-r>
       <div class="fit-y"><h3>A good fit if you…</h3><ul><li>are earning your first salary, or want to finally plan what to do with it</li><li>want budgeting, insurance and basic investing explained properly</li><li>learn best in simple Tamil, with Indian examples</li></ul></div>
       <div class="fit-n"><h3>Probably not if you…</h3><ul><li>want today's stock tip or a trading signal</li><li>are looking for quick income or guaranteed returns</li><li>already have a solid plan and only want advanced portfolio theory</li></ul></div>
@@ -1346,7 +1378,6 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       <div class="screen">
         <button type="button" class="poster" data-game="play/budget-builder/index.html?mode=play&amp;chrome=none&amp;theme=dark&amp;sound=0" data-title="Budget Builder, the Module 2 game from Personal Finance Mastery" aria-label="Play Budget Builder, the Module 2 game">
           <img src="assets/game-poster.webp" alt="" width="390" height="760" loading="lazy">
-          <span class="cap"><span class="tag green" style="margin-bottom:10px">Tap to play</span><small>Module 2 game</small><b>Budget Builder</b></span>
         </button>
       </div>
       <span class="loading">Loading the game…</span>
@@ -1673,6 +1704,10 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
   /* ---------- nav solid + progress + pill + journey ---------- */
   var nav = $('.nav'), prog = $('.progress'), pill = $('.pill'), hero = $('.hero'), buy = $('#enroll');
   var rail = $('.journey .rail i'), stops = $$('.journey .stop'), journey = $('.journey');
+  function railFit(){ if(!journey || !stops.length) return; var R = $('.rail', journey), d0 = $('.dot', stops[0]), d1 = $('.dot', stops[stops.length - 1]); if(!R || !d0) return;
+    var jr = journey.getBoundingClientRect(), a = d0.getBoundingClientRect(), z = d1.getBoundingClientRect();
+    R.style.top = (a.top + a.height / 2 - jr.top) + 'px'; R.style.bottom = 'auto'; R.style.height = (z.top + z.height / 2 - a.top - a.height / 2) + 'px'; }
+  railFit(); addEventListener('resize', railFit); addEventListener('load', railFit);
   function onScroll(){
     var d = document.documentElement, y = d.scrollTop || document.body.scrollTop, max = d.scrollHeight - d.clientHeight;
     if(nav) nav.classList.toggle('solid', y > 30);
@@ -1763,18 +1798,24 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
     });
   });
 
-  /* ---------- the real module game ---------- */
+  /* ---------- the real module game: loads by itself near view, drawn at true phone width and scaled into the frame ---------- */
+  var GW = 390;
+  function fitGame(scr){ var f = $('iframe', scr); if(!f) return; var k = scr.clientWidth / GW; f.style.width = GW + 'px'; f.style.height = (scr.clientHeight / k) + 'px'; f.style.transform = 'scale(' + k.toFixed(4) + ')'; }
+  function loadGame(b, focus){
+    if(b.dataset.loaded) return; b.dataset.loaded = 1;
+    var phone = b.closest('.phone'), scr = $('.screen', phone);
+    phone.classList.add('busy');
+    var f = document.createElement('iframe');
+    f.src = b.getAttribute('data-game'); f.title = b.getAttribute('data-title') || 'Course game'; f.setAttribute('allow', 'autoplay'); f.setAttribute('scrolling', 'no');
+    f.addEventListener('load', function(){ phone.classList.remove('busy'); });
+    scr.innerHTML = ''; scr.appendChild(f); fitGame(scr); if(focus) f.focus();
+    track('ViewContent', {content_name: C.course + ' – game'});
+  }
   $$('[data-game]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var phone = b.closest('.phone'), scr = $('.screen', phone);
-      phone.classList.add('busy');
-      var f = document.createElement('iframe');
-      f.src = b.getAttribute('data-game'); f.title = b.getAttribute('data-title') || 'Course game'; f.setAttribute('allow', 'autoplay');
-      f.addEventListener('load', function(){ phone.classList.remove('busy'); });
-      scr.innerHTML = ''; scr.appendChild(f); f.focus();
-      track('ViewContent', {content_name: C.course + ' – game'});
-    });
+    b.addEventListener('click', function(){ loadGame(b, true); });
+    if('IntersectionObserver' in window){ var gio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ loadGame(b, false); gio.disconnect(); } }, {rootMargin:'300px 0px'}); gio.observe(b); }
   });
+  addEventListener('resize', function(){ $$('.phone .screen').forEach(fitGame); });
   var after = $('.after-play');
   addEventListener('message', function(e){
     var m = e.data; if(typeof m === 'string'){ try{ m = JSON.parse(m); }catch(x){ return; } }

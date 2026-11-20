@@ -1094,6 +1094,37 @@ html:not(.js) .pcard{opacity:1;transform:none}
 .ph-sec{height:420vh}
 @media (max-width:900px){.ph-sec{height:460vh}}
 
+/* ===== v12 · client-review fixes ===== */
+/* stage boxes show they open */
+.stg summary{grid-template-columns:34px 1fr auto 28px}
+.pl{position:relative;width:28px;height:28px;border-radius:50%;border:1px solid rgba(37,224,101,.45);transition:transform .3s var(--ease),background .3s}
+.pl:before,.pl:after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:var(--g-bright)}
+.pl:after{transform:rotate(90deg);transition:transform .3s var(--ease)}
+.stg[open] .pl{background:rgba(37,224,101,.15);transform:rotate(180deg)}
+.stg[open] .pl:after{transform:rotate(0deg)}
+.stg summary:hover .pl{background:rgba(37,224,101,.12)}
+/* fit heading */
+.fit-h{text-align:center;font-size:clamp(30px,3.6vw,48px);margin:clamp(56px,7vw,88px) 0 22px}
+.fit{margin-top:0}
+/* journey: rail runs dot to dot and ends in a gold coin */
+.pfj .stop.gold-stop .dot.coin-dot{width:34px;height:34px;left:-59px;top:19px;display:grid;place-items:center;font:800 16px/1 var(--title);color:#3a2700;background:radial-gradient(circle at 35% 30%,#FFF1C2,#F6D57E 35%,#E2B23E 65%,#A8781A);border:2px solid #FFE7A3;box-shadow:0 0 0 5px var(--night),0 0 26px rgba(246,213,126,.9)}
+/* game: true phone width, scaled into the frame */
+.phone .screen iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;max-width:none}
+.phone .poster:after{background:none}
+/* spacing */
+#enroll{padding-bottom:clamp(40px,5vw,64px)}
+#faq-sec{padding-top:clamp(40px,5vw,64px)}
+#syllabus .c-cta{margin-top:26px}
+@media (max-width:900px){
+  .stg summary{grid-template-columns:30px 1fr 26px;gap:12px}
+  .pl{width:26px;height:26px}
+  .pfj .stop.gold-stop .dot.coin-dot{left:-50px;top:17px}
+  /* end of the phone story: cards stack in the centre */
+  .pop-l,.pop-tl,.pop-br,.pop-r,.pop-tr{--px:0px;--ry:0deg}
+  .pop-l{--py:40px}.pop-r{--py:60px}.pop-tl{--py:80px}.pop-tr{--py:100px}.pop-br{--py:120px}
+  .ph-scene{perspective-origin:50% 55%}
+}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -1577,6 +1608,10 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
   /* ---------- nav solid + progress + pill + journey ---------- */
   var nav = $('.nav'), prog = $('.progress'), pill = $('.pill'), hero = $('.hero'), buy = $('#enroll');
   var rail = $('.journey .rail i'), stops = $$('.journey .stop'), journey = $('.journey');
+  function railFit(){ if(!journey || !stops.length) return; var R = $('.rail', journey), d0 = $('.dot', stops[0]), d1 = $('.dot', stops[stops.length - 1]); if(!R || !d0) return;
+    var jr = journey.getBoundingClientRect(), a = d0.getBoundingClientRect(), z = d1.getBoundingClientRect();
+    R.style.top = (a.top + a.height / 2 - jr.top) + 'px'; R.style.bottom = 'auto'; R.style.height = (z.top + z.height / 2 - a.top - a.height / 2) + 'px'; }
+  railFit(); addEventListener('resize', railFit); addEventListener('load', railFit);
   function onScroll(){
     var d = document.documentElement, y = d.scrollTop || document.body.scrollTop, max = d.scrollHeight - d.clientHeight;
     if(nav) nav.classList.toggle('solid', y > 30);
@@ -1667,18 +1702,24 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
     });
   });
 
-  /* ---------- the real module game ---------- */
+  /* ---------- the real module game: loads by itself near view, drawn at true phone width and scaled into the frame ---------- */
+  var GW = 390;
+  function fitGame(scr){ var f = $('iframe', scr); if(!f) return; var k = scr.clientWidth / GW; f.style.width = GW + 'px'; f.style.height = (scr.clientHeight / k) + 'px'; f.style.transform = 'scale(' + k.toFixed(4) + ')'; }
+  function loadGame(b, focus){
+    if(b.dataset.loaded) return; b.dataset.loaded = 1;
+    var phone = b.closest('.phone'), scr = $('.screen', phone);
+    phone.classList.add('busy');
+    var f = document.createElement('iframe');
+    f.src = b.getAttribute('data-game'); f.title = b.getAttribute('data-title') || 'Course game'; f.setAttribute('allow', 'autoplay'); f.setAttribute('scrolling', 'no');
+    f.addEventListener('load', function(){ phone.classList.remove('busy'); });
+    scr.innerHTML = ''; scr.appendChild(f); fitGame(scr); if(focus) f.focus();
+    track('ViewContent', {content_name: C.course + ' – game'});
+  }
   $$('[data-game]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var phone = b.closest('.phone'), scr = $('.screen', phone);
-      phone.classList.add('busy');
-      var f = document.createElement('iframe');
-      f.src = b.getAttribute('data-game'); f.title = b.getAttribute('data-title') || 'Course game'; f.setAttribute('allow', 'autoplay');
-      f.addEventListener('load', function(){ phone.classList.remove('busy'); });
-      scr.innerHTML = ''; scr.appendChild(f); f.focus();
-      track('ViewContent', {content_name: C.course + ' – game'});
-    });
+    b.addEventListener('click', function(){ loadGame(b, true); });
+    if('IntersectionObserver' in window){ var gio = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ loadGame(b, false); gio.disconnect(); } }, {rootMargin:'300px 0px'}); gio.observe(b); }
   });
+  addEventListener('resize', function(){ $$('.phone .screen').forEach(fitGame); });
   var after = $('.after-play');
   addEventListener('message', function(e){
     var m = e.data; if(typeof m === 'string'){ try{ m = JSON.parse(m); }catch(x){ return; } }
