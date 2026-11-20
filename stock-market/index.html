@@ -1221,6 +1221,107 @@ html:not(.js) .pcard{opacity:1;transform:none}
 }
 .sx-plan ol{gap:.75em}.sx-plan li{padding:.95em .9em .95em 2.7em}.sx-plan h3{font-size:1.6em;margin-bottom:1.2em}.sx-verdict{margin-top:1.2em;padding:.95em 1em}
 
+/* ===== Stock v2 · review round ===== */
+/* hero: two-line headline across, then copy + a bigger trailer */
+.hero-s .wrap{display:block}
+.hero-s h1{max-width:none;font-size:clamp(30px,4.7vw,68px);margin:0 0 clamp(24px,3vw,36px)}
+.hero-s h1 span{display:block;white-space:nowrap}
+.hero-s .hx-grid{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:center}
+.hero-s .hx-vid{aspect-ratio:16/9}
+@media (max-width:900px){.hero-s h1{font-size:clamp(25px,6.6vw,40px)}}
+
+/* dashboard → phone arrives from depth → end card arrives in front */
+.sx-phone{filter:blur(var(--pb,0px))}
+.sx-end{position:absolute;z-index:8;left:50%;top:50%;width:min(860px,92vw);text-align:center;transform:translate(-50%,-50%) translateZ(var(--ez,-1400px));opacity:var(--eo,0);pointer-events:none}
+.sx-end.on{pointer-events:auto}
+.sx-end h2{font-size:clamp(30px,4vw,58px);margin:0 0 22px}
+.sx-end h2 .pay{display:block}
+
+/* self-drawing candle chart */
+.ch-sec{position:relative;height:300vh}
+.ch-stick{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
+.ch-wrap{width:100%;padding-top:60px}
+.ch-head{margin-bottom:18px}
+.ch-head h2{font-size:clamp(30px,3.8vw,52px)}
+.ch-box{position:relative;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid var(--edge);padding:14px 14px 30px 34px}
+.ch-svg{display:block;width:100%;height:min(42vh,400px);overflow:visible}
+.ch-grid{stroke:rgba(255,255,255,.06);stroke-width:1;fill:none}
+.cd{opacity:0;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.2);transition:opacity .25s,transform .35s var(--ease)}
+.cd.on{opacity:1;transform:none}
+.cd.up line{stroke:#43F27C}.cd.up rect{fill:#25E065}
+.cd.dn line{stroke:#FF6E6E}.cd.dn rect{fill:#FF4747}
+.cd line{stroke-width:1.4}
+.mk{opacity:0;transition:opacity .35s}
+.mk.on{opacity:1}
+.mk line{stroke:rgba(67,242,124,.6);stroke-width:1;stroke-dasharray:3 3}
+.mk circle{fill:#0b0e0c;stroke:var(--green);stroke-width:2}
+.mk text{font:700 10px var(--mono);fill:var(--g-bright);text-anchor:middle}
+.mk.cur circle{fill:var(--green)}.mk.cur text{fill:var(--g-ink)}
+.mk.gold circle{fill:url(#none);fill:#E2B23E;stroke:#FFE7A3}.mk.gold text{fill:#3a2700;font-size:12px}.mk.gold line{stroke:rgba(246,213,126,.7)}
+.ch-y{position:absolute;left:10px;top:50%;transform:translateY(-50%) rotate(-90deg);transform-origin:left center;font-size:12px;color:var(--muted2);margin-left:6px}
+.ch-x{position:absolute;right:16px;bottom:8px;font-size:12px;color:var(--muted2)}
+.mcs{position:relative;min-height:122px;margin-top:16px}
+.mc{position:absolute;inset:0 auto auto 0;width:100%;padding:16px 20px;border-radius:16px;background:var(--glass);border:1px solid rgba(37,224,101,.35);opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s var(--ease)}
+.mc.on{opacity:1;transform:none}
+.mc h3{margin:2px 0 6px;font-size:21px}
+.mc p:last-child{margin:0;color:var(--muted);font-size:15px}
+.mc.gold{border-color:rgba(226,178,62,.6);background:linear-gradient(180deg,rgba(226,178,62,.14),rgba(226,178,62,.03))}
+.mc.gold h3{background:linear-gradient(100deg,#FFF1C2,#F6D57E 40%,#E2B23E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mc.gold .nm{color:var(--gold-bright)}
+.ch-note{text-align:center;margin:10px 0 0}
+
+/* syllabus: hint above the stages, fit heading on one line */
+.acc-tip{text-align:center;margin:0 0 12px;color:var(--muted);font-size:14.5px}
+.stock-market .fit-h .pay{display:inline}
+
+/* a more realistic phone for the game */
+.stock-market .play{align-items:center}
+.stock-market .phone{width:min(360px,84vw);aspect-ratio:9/19;border-radius:54px;padding:11px;background:linear-gradient(145deg,#3a3f3c,#141615 45%,#2a2e2c);border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 0 0 2px #050606,inset 0 0 0 3px rgba(255,255,255,.08),0 50px 100px rgba(0,0,0,.9),0 0 80px rgba(37,224,101,.1)}
+.stock-market .phone:before{content:"";position:absolute;right:-3px;top:24%;width:3px;height:12%;border-radius:0 3px 3px 0;background:linear-gradient(90deg,#2b2f2d,#4a504c)}
+.stock-market .phone:after{content:"";position:absolute;left:-3px;top:20%;width:3px;height:16%;border-radius:3px 0 0 3px;background:linear-gradient(270deg,#2b2f2d,#4a504c);box-shadow:0 -46px 0 -0px #3a3f3c}
+.stock-market .phone .screen{border-radius:44px;background:#000}
+.stock-market .phone .screen:before{content:"";position:absolute;z-index:5;left:50%;top:10px;transform:translateX(-50%);width:30%;height:26px;border-radius:20px;background:#000;box-shadow:0 0 0 1px rgba(255,255,255,.04)}
+
+/* price as a banknote-style card */
+.buy-note{grid-template-columns:1fr;max-width:980px}
+.bnote{perspective:1200px}
+.bn-in{position:relative;overflow:hidden;border-radius:22px;padding:clamp(20px,3vw,34px);background:radial-gradient(120% 90% at 85% 40%,rgba(37,224,101,.16),transparent 60%),repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 9px),linear-gradient(160deg,#0f1a13,#0a0d0b 60%,#10150f);border:1px solid rgba(226,178,62,.55);box-shadow:inset 0 0 0 7px #0a0d0b,inset 0 0 0 8px rgba(226,178,62,.35),0 40px 90px rgba(0,0,0,.85);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s var(--ease)}
+.bn-rose{position:absolute;right:-60px;top:50%;width:380px;transform:translateY(-50%);opacity:.18;pointer-events:none;animation:spin 90s linear infinite}
+.bn-top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.bn-brand{display:inline-flex;align-items:center;gap:8px;font:700 15px var(--title)}
+.bn-serial{font:600 13px var(--mono);letter-spacing:.06em;color:var(--gold-bright)}
+.bn-mid{position:relative;display:grid;grid-template-columns:1fr 150px;gap:20px;align-items:center}
+.bn-k{margin:0 0 4px;font-size:14px;color:var(--g-bright);font-weight:600}
+.bnote h3{font-size:clamp(22px,2.4vw,30px);margin:0 0 14px}
+.bn-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.bn-list li{position:relative;padding-left:20px;font-size:14.5px;color:#dfe8e2}
+.bn-list li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.bn-wm{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(226,178,62,.4);background:radial-gradient(circle,rgba(226,178,62,.12),transparent 70%)}
+.bn-wm img{width:56px;opacity:.55;filter:grayscale(.3)}
+.bn-bot{position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:22px;padding-top:18px;border-top:1px dashed rgba(226,178,62,.35)}
+.bn-den{text-align:right}
+.bn-den small{display:block;font-size:13px;color:var(--muted)}
+.bn-den b{font:800 clamp(44px,5.4vw,72px)/1 var(--title);letter-spacing:-.04em;background:linear-gradient(100deg,#FFF1C2,#F6D57E 40%,#E2B23E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bn-sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.07) 48%,rgba(246,213,126,.1) 50%,transparent 56%);animation:sheen 5.5s ease-in-out infinite;pointer-events:none}
+@keyframes sheen{0%{transform:translateX(-35%)}60%,100%{transform:translateX(35%)}}
+.buy-note .next ol{grid-template-columns:repeat(3,1fr);display:grid}
+.buy-note .next{margin-top:10px}
+@media (max-width:900px){
+  .ch-sec{height:280vh}
+  .ch-svg{height:34vh}
+  .ch-box{padding:10px 8px 26px 26px}
+  .mcs{min-height:150px}
+  .bn-mid{grid-template-columns:1fr}
+  .bn-wm{display:none}
+  .bn-list{grid-template-columns:1fr}
+  .bn-bot{flex-direction:column-reverse;align-items:stretch}
+  .bn-bot .btn{width:100%}
+  .bn-den{text-align:left}
+  .buy-note .next ol{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.ch-sec{height:auto}.ch-stick{position:relative;height:auto}.bn-sheen,.bn-rose{animation:none}}
+@media (max-width:900px){.hero-s .hx-grid{grid-template-columns:1fr}}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -1257,7 +1358,7 @@ window.SZ = {
 if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList.add('sz-live');
 </script>
 </head>
-<body>
+<body class="stock-market">
 <a class="skip" href="#enroll">Skip to price and enrollment</a>
 <div class="atmos" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
 
@@ -1276,22 +1377,24 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
 
 <main id="top">
 
-<!-- 1 · HERO: the promise, the price, the trailer -->
-<section class="hero hero-x" id="hero">
-  <div class="wrap hx-grid">
-    <div class="hx-copy">
-      <h1 data-r><span class="silver">Go beyond buying a stock.</span> <span class="pay">Learn how to evaluate one.</span></h1>
-      <p class="lead" data-r>How the market works, how to study a business, how to read a chart and how to manage risk. Taught in simple Tamil, step by step.</p>
-      <div class="hero-ctas" data-r>
-        <a class="btn btn-green" href="#enroll" data-enroll>Enroll now · ₹4,999 <span class="arw">→</span></a>
-        <a class="btn btn-ghost" href="#syllabus">See the syllabus</a>
+<!-- 1 · HERO: two-line promise, then copy + a big trailer -->
+<section class="hero hero-x hero-s" id="hero">
+  <div class="wrap">
+    <h1 data-r><span class="silver">Go beyond buying a stock.</span> <span class="pay">Learn how to evaluate one.</span></h1>
+    <div class="hx-grid">
+      <div class="hx-copy">
+        <p class="lead" data-r>How the market works, how to study a business, how to read a chart and how to manage risk. Taught in simple Tamil, step by step.</p>
+        <div class="hero-ctas" data-r>
+          <a class="btn btn-green" href="#enroll" data-enroll>Enroll now · ₹4,999 <span class="arw">→</span></a>
+          <a class="btn btn-ghost" href="#syllabus">See the syllabus</a>
+        </div>
+        <p class="hx-facts" data-r>15 modules · 81 lessons · Simple Tamil · Lifetime access</p>
       </div>
-      <p class="hx-facts" data-r>15 modules · 81 lessons · Simple Tamil · Lifetime access</p>
-    </div>
-    <div class="hx-vid" data-r>
-      <video data-trailer data-seg="14,16.8" src="assets/mentor.mp4#t=14" poster="assets/trailer-poster.jpg" autoplay muted playsinline preload="auto" aria-label="A to Z of the Stock Market trailer"></video>
-      <button type="button" class="hx-sound" data-unmute aria-label="Turn sound on">Tap for sound</button>
-      <span class="tbd hx-tbd">TRAILER PENDING · lesson clip shown</span>
+      <div class="hx-vid" data-r>
+        <video data-trailer data-seg="14,16.8" src="assets/mentor.mp4#t=14" poster="assets/trailer-poster.jpg" autoplay muted playsinline preload="auto" aria-label="A to Z of the Stock Market trailer"></video>
+        <button type="button" class="hx-sound" data-unmute aria-label="Turn sound on">Tap for sound</button>
+        <span class="tbd hx-tbd">TRAILER PENDING · lesson clip shown</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1344,7 +1447,7 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
           </div>
         </div>
       </div>
-      <div class="ph-end sx-end">
+      <div class="sx-end">
         <h2><span class="silver">Same market. Now you have a process.</span> <span class="pay">That's what the course builds.</span></h2>
         <a class="btn btn-green" href="#enroll" data-enroll>Build yours · ₹4,999 <span class="arw">→</span></a>
       </div>
@@ -1352,19 +1455,24 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
   </div>
 </section>
 
-<!-- 3 · THE CHANGE: the research note you'll be able to write -->
-<section class="sec" id="change">
-  <div class="wrap">
-    <div class="c-head">
-      <h2 data-r><span class="silver">By the end, you can write this</span> <span class="pay">for any stock.</span></h2>
-      <p class="lead" data-r>A short, honest note on a company before a single rupee goes in. Here's what goes into it, stage by stage.</p>
+<!-- 3 · THE CHANGE: a candle chart that draws itself, one stage at a time -->
+<section class="ch-sec" id="change">
+  <div class="ch-stick">
+    <div class="wrap ch-wrap">
+      <div class="c-head ch-head">
+        <h2><span class="silver">Every stage builds on the last.</span> <span class="pay">Watch it add up.</span></h2>
+      </div>
+      <div class="ch-box">
+        <svg class="ch-svg" viewBox="0 0 1000 420" preserveAspectRatio="none" aria-hidden="true">
+          <path class="ch-grid" d="M0 105H1000M0 210H1000M0 315H1000"/>
+          <g class="cd up" data-k="0"><line x1="25.0" y1="360.6" x2="25.0" y2="390.0"/><rect x="20.0" y="369.4" width="9.9" height="8.6"/></g><g class="cd up" data-k="1"><line x1="40.4" y1="352.7" x2="40.4" y2="378.4"/><rect x="35.5" y="361.0" width="9.9" height="8.4"/></g><g class="cd up" data-k="2"><line x1="55.9" y1="340.0" x2="55.9" y2="370.4"/><rect x="51.0" y="348.3" width="9.9" height="12.7"/></g><g class="cd up" data-k="3"><line x1="71.4" y1="340.3" x2="71.4" y2="354.8"/><rect x="66.5" y="344.9" width="9.9" height="3.4"/></g><g class="cd up" data-k="4"><line x1="86.9" y1="319.8" x2="86.9" y2="354.9"/><rect x="81.9" y="330.8" width="9.9" height="14.1"/></g><g class="cd up" data-k="5"><line x1="102.4" y1="303.4" x2="102.4" y2="343.2"/><rect x="97.4" y="316.0" width="9.9" height="14.8"/></g><g class="cd dn" data-k="6"><line x1="117.9" y1="306.7" x2="117.9" y2="328.0"/><rect x="112.9" y="316.0" width="9.9" height="6.8"/></g><g class="cd up" data-k="7"><line x1="133.3" y1="311.3" x2="133.3" y2="327.1"/><rect x="128.4" y="319.8" width="9.9" height="2.9"/></g><g class="cd up" data-k="8"><line x1="148.8" y1="301.3" x2="148.8" y2="323.9"/><rect x="143.9" y="307.2" width="9.9" height="12.6"/></g><g class="cd up" data-k="9"><line x1="164.3" y1="291.1" x2="164.3" y2="318.5"/><rect x="159.4" y="298.8" width="9.9" height="8.4"/></g><g class="cd up" data-k="10"><line x1="179.8" y1="281.7" x2="179.8" y2="307.1"/><rect x="174.8" y="291.2" width="9.9" height="7.6"/></g><g class="cd up" data-k="11"><line x1="195.3" y1="278.0" x2="195.3" y2="297.5"/><rect x="190.3" y="285.8" width="9.9" height="5.4"/></g><g class="cd up" data-k="12"><line x1="210.8" y1="272.9" x2="210.8" y2="297.1"/><rect x="205.8" y="285.6" width="9.9" height="2.0"/></g><g class="cd up" data-k="13"><line x1="226.2" y1="274.2" x2="226.2" y2="291.4"/><rect x="221.3" y="280.9" width="9.9" height="4.7"/></g><g class="cd up" data-k="14"><line x1="241.7" y1="265.3" x2="241.7" y2="291.5"/><rect x="236.8" y="269.8" width="9.9" height="11.1"/></g><g class="cd dn" data-k="15"><line x1="257.2" y1="258.4" x2="257.2" y2="279.9"/><rect x="252.3" y="269.8" width="9.9" height="2.9"/></g><g class="cd dn" data-k="16"><line x1="272.7" y1="261.4" x2="272.7" y2="287.9"/><rect x="267.7" y="272.7" width="9.9" height="11.4"/></g><g class="cd up" data-k="17"><line x1="288.2" y1="259.9" x2="288.2" y2="292.1"/><rect x="283.2" y="271.8" width="9.9" height="12.3"/></g><g class="cd up" data-k="18"><line x1="303.7" y1="263.9" x2="303.7" y2="276.3"/><rect x="298.7" y="271.3" width="9.9" height="2.0"/></g><g class="cd up" data-k="19"><line x1="319.1" y1="254.7" x2="319.1" y2="277.5"/><rect x="314.2" y="265.4" width="9.9" height="5.9"/></g><g class="cd up" data-k="20"><line x1="334.6" y1="244.5" x2="334.6" y2="277.7"/><rect x="329.7" y="251.2" width="9.9" height="14.2"/></g><g class="cd up" data-k="21"><line x1="350.1" y1="242.4" x2="350.1" y2="257.2"/><rect x="345.2" y="247.3" width="9.9" height="3.9"/></g><g class="cd up" data-k="22"><line x1="365.6" y1="229.0" x2="365.6" y2="258.2"/><rect x="360.6" y="233.3" width="9.9" height="13.9"/></g><g class="cd up" data-k="23"><line x1="381.1" y1="211.8" x2="381.1" y2="241.1"/><rect x="376.1" y="220.6" width="9.9" height="12.8"/></g><g class="cd up" data-k="24"><line x1="396.6" y1="210.0" x2="396.6" y2="225.5"/><rect x="391.6" y="220.3" width="9.9" height="2.0"/></g><g class="cd dn" data-k="25"><line x1="412.1" y1="215.5" x2="412.1" y2="234.5"/><rect x="407.1" y="220.3" width="9.9" height="6.6"/></g><g class="cd up" data-k="26"><line x1="427.5" y1="208.5" x2="427.5" y2="239.4"/><rect x="422.6" y="214.7" width="9.9" height="12.2"/></g><g class="cd up" data-k="27"><line x1="443.0" y1="204.9" x2="443.0" y2="226.4"/><rect x="438.1" y="211.4" width="9.9" height="3.2"/></g><g class="cd up" data-k="28"><line x1="458.5" y1="191.9" x2="458.5" y2="222.8"/><rect x="453.5" y="199.2" width="9.9" height="12.3"/></g><g class="cd up" data-k="29"><line x1="474.0" y1="188.8" x2="474.0" y2="211.8"/><rect x="469.0" y="193.5" width="9.9" height="5.7"/></g><g class="cd up" data-k="30"><line x1="489.5" y1="175.1" x2="489.5" y2="204.1"/><rect x="484.5" y="181.2" width="9.9" height="12.2"/></g><g class="cd up" data-k="31"><line x1="505.0" y1="164.3" x2="505.0" y2="185.7"/><rect x="500.0" y="170.8" width="9.9" height="10.5"/></g><g class="cd up" data-k="32"><line x1="520.4" y1="147.7" x2="520.4" y2="176.7"/><rect x="515.5" y="156.6" width="9.9" height="14.1"/></g><g class="cd dn" data-k="33"><line x1="535.9" y1="149.5" x2="535.9" y2="170.5"/><rect x="531.0" y="156.6" width="9.9" height="6.0"/></g><g class="cd dn" data-k="34"><line x1="551.4" y1="154.5" x2="551.4" y2="183.0"/><rect x="546.5" y="162.6" width="9.9" height="11.4"/></g><g class="cd up" data-k="35"><line x1="566.9" y1="166.3" x2="566.9" y2="179.2"/><rect x="561.9" y="171.8" width="9.9" height="2.3"/></g><g class="cd up" data-k="36"><line x1="582.4" y1="159.1" x2="582.4" y2="177.8"/><rect x="577.4" y="170.1" width="9.9" height="2.0"/></g><g class="cd up" data-k="37"><line x1="597.9" y1="147.2" x2="597.9" y2="182.3"/><rect x="592.9" y="157.5" width="9.9" height="12.6"/></g><g class="cd up" data-k="38"><line x1="613.3" y1="132.8" x2="613.3" y2="169.2"/><rect x="608.4" y="145.0" width="9.9" height="12.5"/></g><g class="cd up" data-k="39"><line x1="628.8" y1="131.2" x2="628.8" y2="149.8"/><rect x="623.9" y="138.8" width="9.9" height="6.3"/></g><g class="cd up" data-k="40"><line x1="644.3" y1="111.5" x2="644.3" y2="144.7"/><rect x="639.4" y="123.9" width="9.9" height="14.9"/></g><g class="cd up" data-k="41"><line x1="659.8" y1="113.0" x2="659.8" y2="135.0"/><rect x="654.8" y="119.1" width="9.9" height="4.8"/></g><g class="cd dn" data-k="42"><line x1="675.3" y1="112.7" x2="675.3" y2="130.4"/><rect x="670.3" y="119.1" width="9.9" height="5.9"/></g><g class="cd dn" data-k="43"><line x1="690.8" y1="120.6" x2="690.8" y2="138.7"/><rect x="685.8" y="125.0" width="9.9" height="7.8"/></g><g class="cd up" data-k="44"><line x1="706.2" y1="114.5" x2="706.2" y2="142.1"/><rect x="701.3" y="125.9" width="9.9" height="7.0"/></g><g class="cd up" data-k="45"><line x1="721.7" y1="102.7" x2="721.7" y2="131.5"/><rect x="716.8" y="114.6" width="9.9" height="11.2"/></g><g class="cd up" data-k="46"><line x1="737.2" y1="93.2" x2="737.2" y2="122.4"/><rect x="732.3" y="99.4" width="9.9" height="15.2"/></g><g class="cd up" data-k="47"><line x1="752.7" y1="79.5" x2="752.7" y2="106.5"/><rect x="747.7" y="84.9" width="9.9" height="14.6"/></g><g class="cd up" data-k="48"><line x1="768.2" y1="73.1" x2="768.2" y2="91.9"/><rect x="763.2" y="78.1" width="9.9" height="6.8"/></g><g class="cd up" data-k="49"><line x1="783.7" y1="63.7" x2="783.7" y2="87.7"/><rect x="778.7" y="76.2" width="9.9" height="2.0"/></g><g class="cd up" data-k="50"><line x1="799.1" y1="62.2" x2="799.1" y2="81.2"/><rect x="794.2" y="71.2" width="9.9" height="5.0"/></g><g class="cd up" data-k="51"><line x1="814.6" y1="64.6" x2="814.6" y2="83.1"/><rect x="809.7" y="68.6" width="9.9" height="2.6"/></g><g class="cd dn" data-k="52"><line x1="830.1" y1="56.2" x2="830.1" y2="80.1"/><rect x="825.2" y="68.6" width="9.9" height="7.5"/></g><g class="cd up" data-k="53"><line x1="845.6" y1="62.2" x2="845.6" y2="86.4"/><rect x="840.6" y="70.3" width="9.9" height="5.8"/></g><g class="cd up" data-k="54"><line x1="861.1" y1="47.0" x2="861.1" y2="74.8"/><rect x="856.1" y="59.7" width="9.9" height="10.6"/></g><g class="cd up" data-k="55"><line x1="876.6" y1="42.1" x2="876.6" y2="71.5"/><rect x="871.6" y="52.5" width="9.9" height="7.2"/></g><g class="cd up" data-k="56"><line x1="892.1" y1="38.2" x2="892.1" y2="63.3"/><rect x="887.1" y="48.2" width="9.9" height="4.3"/></g><g class="cd up" data-k="57"><line x1="907.5" y1="39.8" x2="907.5" y2="58.1"/><rect x="902.6" y="46.7" width="9.9" height="2.0"/></g><g class="cd up" data-k="58"><line x1="923.0" y1="33.4" x2="923.0" y2="54.2"/><rect x="918.1" y="44.9" width="9.9" height="2.0"/></g><g class="cd up" data-k="59"><line x1="938.5" y1="30.0" x2="938.5" y2="53.8"/><rect x="933.5" y="41.5" width="9.9" height="3.4"/></g><g class="cd dn" data-k="60"><line x1="954.0" y1="34.3" x2="954.0" y2="56.8"/><rect x="949.0" y="41.5" width="9.9" height="6.3"/></g><g class="cd dn" data-k="61"><line x1="969.5" y1="43.3" x2="969.5" y2="63.4"/><rect x="964.5" y="47.8" width="9.9" height="6.1"/></g>
+          <g class="mk" data-k="8" data-j="0"><line x1="148.8" y1="297.3" x2="148.8" y2="289.3"/><circle cx="148.8" cy="279.3" r="11"/><text x="148.8" y="283.3">01</text></g><g class="mk" data-k="19" data-j="1"><line x1="319.1" y1="250.7" x2="319.1" y2="242.7"/><circle cx="319.1" cy="232.7" r="11"/><text x="319.1" y="236.7">02</text></g><g class="mk" data-k="30" data-j="2"><line x1="489.5" y1="171.1" x2="489.5" y2="163.1"/><circle cx="489.5" cy="153.1" r="11"/><text x="489.5" y="157.1">03</text></g><g class="mk" data-k="41" data-j="3"><line x1="659.8" y1="109.0" x2="659.8" y2="101.0"/><circle cx="659.8" cy="91.0" r="11"/><text x="659.8" y="95.0">04</text></g><g class="mk" data-k="51" data-j="4"><line x1="814.6" y1="60.6" x2="814.6" y2="52.6"/><circle cx="814.6" cy="42.6" r="11"/><text x="814.6" y="46.6">05</text></g><g class="mk gold" data-k="60" data-j="5"><line x1="954.0" y1="30.3" x2="954.0" y2="22.3"/><circle cx="954.0" cy="12.3" r="11"/><text x="954.0" y="16.3">₹</text></g>
+        </svg>
+        <span class="ch-y">Your skill</span><span class="ch-x">Stage 1 → your own system</span>
+      </div>
+      <div class="mcs" aria-live="polite"><article class="mc" data-j="0"><p class="nm">Stage 01 · Modules 0–3</p><h3>Market foundations</h3><p>Orders, accounts, charges and exchanges, before you place a single trade.</p></article><article class="mc" data-j="1"><p class="nm">Stage 02 · Modules 4–6</p><h3>Fundamental analysis</h3><p>Read a P&L, balance sheet and cash flow. Check ROE, ROCE and what you are really paying.</p></article><article class="mc" data-j="2"><p class="nm">Stage 03 · Modules 7–10</p><h3>Technical analysis</h3><p>Trends, support and resistance, candles and patterns, and the limits of every indicator.</p></article><article class="mc" data-j="3"><p class="nm">Stage 04 · Modules 11–12</p><h3>Price action and risk</h3><p>Position size, stop-loss and reward to risk, worked out before you buy.</p></article><article class="mc" data-j="4"><p class="nm">Stage 05 · Modules 13–14</p><h3>Psychology and your system</h3><p>Fear, greed and revenge trades, plus the checklist and journal that keep you honest.</p></article><article class="mc gold" data-j="5"><p class="nm">Bonus · Bonus · 4 walkthroughs</p><h3>Your own system</h3><p>One stock studied end to end, plus one trade that worked and one that didn't.</p></article></div>
+      <p class="fine ch-note">An illustration of how the course builds, not a price chart or a promise of returns.</p>
     </div>
-    <div class="rnote glass" data-r>
-      <div class="rn-top"><span>Stock evaluation</span><b>Example Ltd</b><em>Illustration, not a recommendation</em></div>
-      <ol class="rn-list"><li class="nr" data-r><span class="nk">✓</span><div><p class="nm">Stage 01 · Modules 0–3</p><h3>Market foundations</h3><p>Know how orders, accounts, charges and exchanges actually work before you place one.</p></div></li><li class="nr" data-r><span class="nk">✓</span><div><p class="nm">Stage 02 · Modules 4–6</p><h3>The business</h3><p>Read a P&L, balance sheet and cash flow. Check ROE, ROCE and what you are really paying.</p></div></li><li class="nr" data-r><span class="nk">✓</span><div><p class="nm">Stage 03 · Modules 7–10</p><h3>The chart</h3><p>Trends, support and resistance, candles and patterns, and the limits of every indicator.</p></div></li><li class="nr" data-r><span class="nk">✓</span><div><p class="nm">Stage 04 · Modules 11–12</p><h3>The risk</h3><p>Position size, stop-loss and reward to risk, worked out before you buy, not after.</p></div></li><li class="nr" data-r><span class="nk">✓</span><div><p class="nm">Stage 05 · Modules 13–14</p><h3>You</h3><p>Fear, greed and revenge trades, plus a checklist and journal that keep you honest.</p></div></li></ol>
-      <div class="rn-end"><span class="nk gold">₹</span><div><p class="nm">Bonus · 4 real walkthroughs</p><h3>Your own system</h3><p>One stock studied end to end, fundamentals and chart together, plus one trade that worked and one that didn't.</p></div></div>
-    </div>
-    <div class="c-cta" data-r><a class="btn btn-green" href="#enroll" data-enroll>Learn the full process · ₹4,999 <span class="arw">→</span></a></div>
   </div>
 </section>
 
@@ -1377,13 +1485,14 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       <p class="lead" data-r>Most people learn the market backwards: a tip first, then a loss, then a chart. This course starts with how the market works, then the business, then the chart, then the risk.</p>
     </div>
     <div class="sph-wrap" data-r>
-      <div class="sph" data-sphere>
+      <div class="sph" data-sphere="lines">
         <canvas aria-hidden="true"></canvas>
         <div class="sph-mid"><p class="hand">What you'll cover</p><b>5 stages · 15 modules</b></div>
         <div class="orbs" aria-hidden="true"><span class="orb" data-k="0"><b>01</b>Market foundations</span><span class="orb" data-k="1"><b>02</b>Fundamental analysis</span><span class="orb" data-k="2"><b>03</b>Technical analysis</span><span class="orb" data-k="3"><b>04</b>Price action and risk</span><span class="orb" data-k="4"><b>05</b>Psychology and your system</span><span class="orb" data-k="5"><b>+</b>Real walkthroughs</span></div>
       </div>
       <p class="sph-tip">Drag to spin</p>
     </div>
+    <p class="acc-tip" data-r>Tap any stage to see what's inside ↓</p>
     <div class="stages-acc" data-r><details class="stg" open><summary><span class="sn">01</span><span class="st">Market foundations</span><span class="sm">Modules 0–3</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Shares, IPOs, NSE and BSE, NIFTY and Sensex, order types, demat setup, charges.</p><p class="out">Know the tools and language of Indian markets</p></div></details><details class="stg"><summary><span class="sn">02</span><span class="st">Fundamental analysis</span><span class="sm">Modules 4–6</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Business models, moats, SWOT and promoters. Annual reports, ratios and intrinsic value.</p><p class="out">Run a structured stock evaluation checklist</p></div></details><details class="stg"><summary><span class="sn">03</span><span class="st">Technical analysis</span><span class="sm">Modules 7–10</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Timeframes, trends, support and resistance, candlesticks, patterns, RSI and MACD.</p><p class="out">Spot and explain patterns on practice charts</p></div></details><details class="stg"><summary><span class="sn">04</span><span class="st">Price action and risk</span><span class="sm">Modules 11–12</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Market structure, breakouts and fake-outs, position sizing, the 1% rule, stop-loss.</p><p class="out">Size a trade so one loss can't sink you</p></div></details><details class="stg"><summary><span class="sn">05</span><span class="st">Psychology and your system</span><span class="sm">Modules 13–14</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>Fear, greed, revenge trading. Checklists, journals, backtesting and paper trading.</p><p class="out">A written, testable process instead of tips</p></div></details><details class="stg bonus"><summary><span class="sn">+</span><span class="st">Bonus: real walkthroughs</span><span class="sm">4 lessons</span><i class="pl" aria-hidden="true"></i></summary><div class="sb"><p>A full fundamental analysis of a real Indian stock, a technical walkthrough from a blank chart, combining both, and an honest look at one trade that worked and one that failed.</p></div></details></div>
     <h2 class="fit-h" data-r><span class="silver">Is this course</span> <span class="pay">for you?</span></h2>
     <div class="fit" data-r>
@@ -1421,7 +1530,6 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       <div class="screen">
         <button type="button" class="poster" data-game="play/pattern-spotter/index.html?mode=play&amp;chrome=none&amp;theme=dark&amp;sound=0" data-title="Pattern Spotter, the Module 9 game from A to Z of the Stock Market" aria-label="Play Pattern Spotter, the Module 9 game">
           <img src="assets/game-poster.webp" alt="" width="390" height="760" loading="lazy">
-          <span class="cap"><span class="tag green" style="margin-bottom:10px">Tap to play</span><small>Module 9 game · practice charts, not real stocks</small><b>Pattern Spotter</b></span>
         </button>
       </div>
       <span class="loading">Loading the game…</span>
@@ -1462,22 +1570,33 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
     <div class="c-head">
       <h2 data-r><span class="silver">One price.</span> <span class="pay">Everything included.</span></h2>
     </div>
-    <div class="buy2">
-    <div class="glass offer" data-r>
-      <img class="rosette" src="assets/rosette.svg" alt="" aria-hidden="true">
-      <h3><span class="silver">Learn the market the right way round.</span></h3>
-      <div class="price">₹4,999</div>
-      <ul class="incl">
-        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>15 modules and 81 lessons, in simple Tamil</span></li>
-        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>14 module games, a final assessment and a certificate of completion <span class="tbd">VERIFY LIVE</span></span></li><li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>4 real walkthroughs, fundamentals and charts together</span></li>
-        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Lifetime access, including every future update</span></li>
-        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Learn in the Stonkzz School app on Android, iPhone or the web</span></li>
-        <li><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><a href="#" data-todo="refund" style="color:var(--green);font-weight:600">7-day refund policy</a> · support inside the app</span></li>
-      </ul>
-      <a class="btn btn-green" style="width:100%" href="#enroll" data-enroll>Enroll now <span class="arw">→</span></a>
-      <div class="secure"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="11" x="4" y="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Secure payment · start straight after</div>
-    </div>
-
+    <div class="buy2 buy-note">
+      <div class="bnote" data-r data-tilt>
+        <div class="bn-in">
+          <img class="bn-rose" src="assets/rosette.svg" alt="" aria-hidden="true">
+          <div class="bn-top"><span class="bn-brand"><img src="assets/logo.svg" alt="" width="18" height="22">Stonkzz School</span><span class="bn-serial">SZ 015 081 4999</span></div>
+          <div class="bn-mid">
+            <div>
+              <p class="bn-k">A to Z of the Stock Market</p>
+              <h3><span class="silver">Learn the market the right way round.</span></h3>
+              <ul class="bn-list">
+                <li>15 modules, 81 lessons in simple Tamil</li>
+                <li>14 module games and a final assessment <span class="tbd">VERIFY LIVE</span></li>
+                <li>4 real walkthroughs, fundamentals and charts together</li>
+                <li>Certificate of completion</li>
+                <li>Lifetime access, every future update</li>
+                <li>Android, iPhone and web</li>
+              </ul>
+            </div>
+            <div class="bn-wm" aria-hidden="true"><img src="assets/logo.svg" alt=""></div>
+          </div>
+          <div class="bn-bot">
+            <a class="btn btn-green" href="#enroll" data-enroll>Enroll now <span class="arw">→</span></a>
+            <div class="bn-den"><small>One price, lifetime</small><b>₹4,999</b></div>
+          </div>
+          <i class="bn-sheen" aria-hidden="true"></i>
+        </div>
+      </div>
       <div class="next" data-r>
         <h3>What happens after you pay</h3>
         <ol>
@@ -1660,28 +1779,56 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
     sfit(); addEventListener('resize', sfit); addEventListener('load', sfit);
     sxUpdate = function(){
       var p = pgOf(sx), mob = innerWidth <= 900;
-      panels.forEach(function(el, i){ el.classList.toggle('in', p >= .02 + i * .06); el.classList.toggle('shake', p < .38); });
-      var back = clamp((p - .36) / .12);
-      sdash.style.setProperty('--dz', (-520 * back).toFixed(0) + 'px');
-      sdash.style.setProperty('--dop', (1 - .8 * back).toFixed(3));
+      panels.forEach(function(el, i){ el.classList.toggle('in', p >= .02 + i * .05); el.classList.toggle('shake', p < .3); });
+      /* camera pulls back from the dashboard */
+      var back = clamp((p - .28) / .14);
+      sdash.style.setProperty('--dz', (-900 * back).toFixed(0) + 'px');
+      sdash.style.setProperty('--dop', (1 - .78 * back).toFixed(3));
       sdash.style.setProperty('--dtx', (6 * (1 - back) + 4).toFixed(2) + 'deg');
       sdash.style.setProperty('--dty', ((mob ? 0 : -8) * (1 - back)).toFixed(2) + 'deg');
       sx.classList.toggle('far', back > .5);
-      var ph2 = clamp((p - .38) / .1);
-      sphone.style.setProperty('--pop', ph2.toFixed(3));
-      sphone.style.setProperty('--pz', (-400 + 520 * ph2).toFixed(0) + 'px');
-      sphone.style.setProperty('--ps', (.6 + .4 * ph2).toFixed(3));
-      var near = mob ? 120 : 160, far = mob ? -120 : -160, z = clamp((p - .3) / .55);
-      scam.style.setProperty('--cz', (near + (far - near) * z).toFixed(1) + 'px');
-      ORDER.forEach(function(pi, k){ var on = p >= .46 + k * .07; panels[pi].classList.toggle('gone', on); rows[k].classList.toggle('on', on); });
-      verdict.classList.toggle('on', p >= .82);
-      shead.classList.toggle('gone', p >= .36);
-      shint.classList.toggle('gone', p >= .86);
-      sbar.style.width = (clamp(p / .86) * 100).toFixed(1) + '%';
-      send.classList.toggle('on', p >= .86 && p < .985);
-      scam.style.opacity = (1 - clamp((p - .95) / .05)).toFixed(3);
+      /* the phone flies in from deep in the scene, then later recedes and blurs */
+      var arr = clamp((p - .36) / .14), ae = 1 - Math.pow(1 - arr, 3), leave = clamp((p - .8) / .08);
+      sphone.style.setProperty('--pop', (ae * (1 - .65 * leave)).toFixed(3));
+      sphone.style.setProperty('--pz', (-2600 + 2700 * ae - 900 * leave).toFixed(0) + 'px');
+      sphone.style.setProperty('--ps', '1');
+      sphone.style.setProperty('--pb', (6 * leave).toFixed(1) + 'px');
+      scam.style.setProperty('--cz', '0px');
+      ORDER.forEach(function(pi, k){ var on = p >= .5 + k * .055; panels[pi].classList.toggle('gone', on); rows[k].classList.toggle('on', on); });
+      verdict.classList.toggle('on', p >= .76);
+      /* the course line arrives in front */
+      var ein = clamp((p - .82) / .08), ee = 1 - Math.pow(1 - ein, 3);
+      send.style.setProperty('--ez', (-1600 + 1600 * ee).toFixed(0) + 'px');
+      send.style.setProperty('--eo', ee.toFixed(3));
+      send.classList.toggle('on', ee > .6 && p < .985);
+      shead.classList.toggle('gone', p >= .28);
+      shint.classList.toggle('gone', p >= .82);
+      sbar.style.width = (clamp(p / .82) * 100).toFixed(1) + '%';
+      scam.style.opacity = (1 - clamp((p - .96) / .04)).toFixed(3);
+      send.style.opacity = '';
     };
   }
+
+  /* ---------- stock: the candle chart draws itself as you scroll; each stage card takes its turn ---------- */
+  var ch = $('#change.ch-sec'), chUpdate = function(){};
+  if(ch){
+    var cds = $$('.cd', ch), mks = $$('.mk', ch), mcs2 = $$('.mc', ch);
+    chUpdate = function(){
+      var p = pgOf(ch), n = Math.round(clamp((p - .04) / .82) * cds.length), cur = -1;
+      cds.forEach(function(c, i){ c.classList.toggle('on', i < n); });
+      mks.forEach(function(m, j){ var on = +m.dataset.k < n; m.classList.toggle('on', on); if(on) cur = j; });
+      mks.forEach(function(m, j){ m.classList.toggle('cur', j === cur); });
+      mcs2.forEach(function(c, j){ c.classList.toggle('on', j === (cur < 0 ? 0 : cur)); });
+    };
+  }
+
+  /* banknote card: gentle tilt toward the pointer */
+  $$('[data-tilt]').forEach(function(el){
+    if(reduce || matchMedia('(hover:none)').matches) return;
+    var inner = el.firstElementChild;
+    el.addEventListener('pointermove', function(e){ var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; inner.style.setProperty('--ry', (x * 8).toFixed(2) + 'deg'); inner.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg'); });
+    el.addEventListener('pointerleave', function(){ inner.style.setProperty('--ry', '0deg'); inner.style.setProperty('--rx', '0deg'); });
+  });
 
   /* stock research note: ticks land as each row comes into view */
   var nrs = $$('.nr');
@@ -1708,6 +1855,12 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       var g = ctx.createRadialGradient(cx - R * .3, cy - R * .3, R * .1, cx, cy, R * 1.3); g.addColorStop(0, 'rgba(37,224,101,.16)'); g.addColorStop(1, 'rgba(37,224,101,0)');
       ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, R * 1.25, 0, 7); ctx.fill();
       var cr = Math.cos(rot), sr = Math.sin(rot);
+      if(sp.dataset.sphere === 'lines'){
+        var proj = function(q){ var x = q[0] * cr + q[2] * sr, z = -q[0] * sr + q[2] * cr, y = q[1] * ct - z * st; z = q[1] * st + z * ct; return [cx + x * R, cy + y * R, z]; };
+        var seg = function(pts){ for(var m = 1; m < pts.length; m++){ var a1 = pts[m - 1], b1 = pts[m], zz = (a1[2] + b1[2]) / 2; ctx.strokeStyle = 'rgba(67,242,124,' + (.06 + (zz + 1) / 2 * .5).toFixed(3) + ')'; ctx.lineWidth = .6 + (zz + 1) / 2 * .9; ctx.beginPath(); ctx.moveTo(a1[0], a1[1]); ctx.lineTo(b1[0], b1[1]); ctx.stroke(); } };
+        for(var la = -75; la <= 75; la += 15){ var ring = []; for(var lo = 0; lo <= 360; lo += 8){ var A = la * Math.PI / 180, B = lo * Math.PI / 180; ring.push(proj([Math.cos(A) * Math.cos(B), Math.sin(A), Math.cos(A) * Math.sin(B)])); } seg(ring); }
+        for(var lo2 = 0; lo2 < 180; lo2 += 15){ var mer = []; for(var la2 = 0; la2 <= 360; la2 += 8){ var A2 = la2 * Math.PI / 180, B2 = lo2 * Math.PI / 180; mer.push(proj([Math.cos(A2) * Math.cos(B2), Math.sin(A2), Math.cos(A2) * Math.sin(B2)])); } seg(mer); }
+      } else
       for(var k = 0; k < N2; k++){
         var q = P[k], x = q[0] * cr + q[2] * sr, z = -q[0] * sr + q[2] * cr, y = q[1] * ct - z * st; z = q[1] * st + z * ct;
         var a = (z + 1) / 2; ctx.fillStyle = 'rgba(67,242,124,' + (.08 + a * .55).toFixed(3) + ')';
@@ -1804,7 +1957,7 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       pill.classList.toggle('on', on); pill.classList.toggle('off', ['#cover', '#month', '#noise'].some(function(sel){ var el = $(sel); if(!el) return false; var cr = el.getBoundingClientRect(); return cr.top < innerHeight * .5 && cr.bottom > innerHeight * .5; })); pill.setAttribute('aria-hidden', on ? 'false' : 'true');
       $$('a,button', pill).forEach(function(el){ el.tabIndex = on ? 0 : -1; });
     }
-    lmUpdate(); phUpdate(); treeUpdate(); cvUpdate(); sxUpdate();
+    lmUpdate(); phUpdate(); treeUpdate(); cvUpdate(); sxUpdate(); chUpdate();
     if(journey && rail){
       var r = journey.getBoundingClientRect(), mid = innerHeight * .62;
       var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
