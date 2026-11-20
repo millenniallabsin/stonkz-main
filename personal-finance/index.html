@@ -906,7 +906,7 @@ html:not(.js) .pcard{opacity:1;transform:none}
   .act2 .tlab .a2{display:inline-block}
   .tlab.l{right:calc(100% + 10px)}.tlab.r{left:calc(100% + 10px)}
 }
-.pcard.pop.on:not(.out){opacity:0;transform:translate(-50%,-50%) translate3d(0,0,-500px) scale(.35)}
+
 .ph-sec{overflow-x:clip}
 .tree-grid{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr)}
 .tree-art{padding:0 clamp(90px,9vw,130px)}
@@ -1057,6 +1057,43 @@ html:not(.js) .pcard{opacity:1;transform:none}
 .ph-day{font-weight:700}
 .sph{width:min(680px,94vw)}
 
+/* ===== v11 · hero trailer, camera pull-back, gold goal ===== */
+.hx-vid{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--edge);background:#000;aspect-ratio:16/10;box-shadow:0 40px 90px rgba(0,0,0,.8),0 0 80px rgba(37,224,101,.12)}
+.hx-vid video{display:block;width:100%;height:100%;object-fit:cover}
+.hx-sound{position:absolute;right:12px;bottom:12px;border:1px solid rgba(255,255,255,.25);background:rgba(7,7,8,.65);backdrop-filter:blur(8px);color:#fff;font:600 13px var(--body);padding:8px 12px;border-radius:99px;cursor:pointer}
+.hx-sound.off{display:none}
+.hx-tbd{position:absolute;left:12px;top:12px}
+.hx-facts{margin:20px 0 0;font-size:14.5px;color:var(--muted)}
+
+/* camera: close on the phone, then it pulls back; each answer flies past the lens, holds centre stage, then settles around the phone */
+.ph-scene{perspective:1600px;perspective-origin:50% 50%}
+.ph-cam{transform:scale(var(--fit,1)) translateZ(var(--cz,0px))}
+.pcard.pop{transition:transform 1s cubic-bezier(.2,.75,.2,1),opacity .55s,filter .5s}
+.pcard.pop,.pcard.pop.on:not(.out):not(.feat){opacity:0;transform:translate(-50%,-50%) translate3d(calc(var(--px) * 1.6),calc(var(--py) * 1.6),1100px) rotateY(var(--ry,0deg))}
+.pcard.pop.feat{opacity:1;z-index:20;transform:translate(-50%,-50%) translate3d(0,0,calc(320px - var(--cz,0px))) scale(1.06);box-shadow:0 50px 120px rgba(0,0,0,.95),0 0 0 1px rgba(37,224,101,.35),0 0 70px rgba(37,224,101,.18)}
+.pcard.pop.out{opacity:1}
+.ph-end{position:absolute;z-index:8;left:0;right:0;top:84px;text-align:center;padding:0 20px;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s var(--ease);pointer-events:none}
+.ph-end.on{opacity:1;transform:none;pointer-events:auto}
+.ph-end h2{font-size:clamp(26px,3.2vw,42px);margin:0 0 16px}
+.ph-end h2 .pay{display:inline}
+@media (max-width:900px){
+  .pcard.pop.feat{transform:translate(-50%,-50%) translate3d(0,0,calc(260px - var(--cz,0px))) scale(1)}
+  .ph-end h2 .pay{display:block}
+  .ph-end{top:80px}
+}
+
+/* the goal: gold */
+.pfj .stop.gold-stop{border-color:rgba(226,178,62,.55);background:linear-gradient(180deg,rgba(226,178,62,.12),rgba(226,178,62,.03));box-shadow:0 0 50px rgba(226,178,62,.12),inset 0 1px 0 rgba(246,213,126,.25)}
+.pfj .stop.gold-stop .dot,.pfj .stop.gold-stop.lit .dot{border-color:var(--gold-bright);background:var(--gold);box-shadow:0 0 0 5px var(--night),0 0 22px rgba(246,213,126,.85)}
+.pfj .stop.gold-stop h3{background:linear-gradient(100deg,#FFF1C2,#F6D57E 40%,#E2B23E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pfj .stop.gold-stop .n,.pfj .stop.gold-stop.lit .n{color:var(--gold-bright)}
+.pfj .stop.gold-stop .out{color:#f3e2b0}
+.pfj .stop.gold-stop .out:before{color:var(--gold-bright)}
+.pfj .stop.gold-stop .j-art{filter:sepia(1) saturate(3) hue-rotate(-10deg) brightness(1.25) drop-shadow(0 0 6px rgba(246,213,126,.5))}
+.journey.green.pfj .rail i{background:linear-gradient(180deg,var(--g-dark),var(--green) 60%,var(--gold-bright))}
+.ph-sec{height:420vh}
+@media (max-width:900px){.ph-sec{height:460vh}}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -1122,20 +1159,13 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
         <a class="btn btn-green" href="#enroll" data-enroll>Enroll now · ₹2,999 <span class="arw">→</span></a>
         <a class="btn btn-ghost" href="#syllabus">See the syllabus</a>
       </div>
+      <p class="hx-facts" data-r>14 modules · 76 lessons · Simple Tamil · Lifetime access</p>
     </div>
-    <aside class="glass glance" data-r>
-      <button type="button" class="g-trailer" data-video="trailer" data-label="Personal Finance Mastery · trailer">
-        <img src="assets/mentor.webp" alt="" width="1100" height="894">
-        <span class="g-play"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4"/></svg></span><span class="g-cap">Watch the course trailer</span>
-      </button>
-      <dl class="g-rows">
-        <div><dt>Price</dt><dd>₹2,999</dd></div>
-        <div><dt>Course</dt><dd>14 modules, 76 lessons</dd></div>
-        <div><dt>Language</dt><dd>Simple Tamil</dd></div>
-        <div><dt>Access</dt><dd>Lifetime, on Android, iPhone and web</dd></div>
-        <div><dt>Teacher</dt><dd>Prasanna Priyan, NISM Series XV</dd></div>
-      </dl>
-    </aside>
+    <div class="hx-vid" data-r>
+      <video data-trailer data-seg="4,6.6" src="assets/mentor.mp4#t=4" poster="assets/trailer-poster.jpg" autoplay muted playsinline preload="auto" aria-label="Personal Finance Mastery trailer"></video>
+      <button type="button" class="hx-sound" data-unmute aria-label="Turn sound on">Tap for sound</button>
+      <span class="tbd hx-tbd">TRAILER PENDING · lesson clip shown</span>
+    </div>
   </div>
 </section>
 
@@ -1234,7 +1264,10 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
               </article>
         
       </div>
-      <a class="btn btn-green ph-cta" href="#enroll" data-enroll>Get the answers · ₹2,999 <span class="arw">→</span></a>
+      <div class="ph-end">
+        <h2><span class="silver">Every one of these has an answer.</span> <span class="pay">It's in the course.</span></h2>
+        <a class="btn btn-green" href="#enroll" data-enroll>See the answers · ₹2,999 <span class="arw">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -1254,7 +1287,7 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
       <article class="stop"><span class="dot"></span><img class="j-art" src="assets/map1.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Month 3</span></div><h3>An emergency fund that's real</h3><p>₹21,000 set aside. The next hospital bill or job gap doesn't go on a credit card.</p><p class="out">Stage 1 · Money, income and habits</p></article>
       <article class="stop"><span class="dot"></span><img class="j-art" src="assets/i2.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Month 6</span></div><h3>Your family is covered</h3><p>Term and health insurance chosen because you understand them, not because someone sold them to you.</p><p class="out">Stage 3 · Protection and taxes</p></article>
       <article class="stop"><span class="dot"></span><img class="j-art" src="assets/i3.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Year 1</span></div><h3>No card debt, less tax, a first SIP</h3><p>The card is paid in full every month, tax is planned before March, and your first investment is running.</p><p class="out">Stages 3 to 5 · Taxes, investing, credit</p></article>
-      <article class="stop"><span class="dot"></span><img class="j-art" src="assets/map5.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Year 5</span></div><h3>A goal with a number on it</h3><p>A house, a wedding, freedom from a job you don't like. You know the amount, the date and the monthly figure.</p><p class="out">Stage 6 · Independence and money psychology</p></article>
+      <article class="stop gold-stop"><span class="dot"></span><img class="j-art" src="assets/map5.webp" alt="" width="80" height="80" loading="lazy"><div class="top"><span class="n">Year 5 · The goal</span></div><h3>Financial stability</h3><p>Savings that keep growing, family protected, no bad debt, and a number on every goal: the house, the wedding, the day work becomes optional.</p><p class="out">Stage 6 · Independence and money psychology</p></article>
     </div>
     <p class="fine j-note" data-r>Figures are an example based on a ₹35,000 take-home salary. Your numbers will be your own.</p>
     <div class="c-cta" data-r><a class="btn btn-green" href="#enroll" data-enroll>Start with Month 1 · ₹2,999 <span class="arw">→</span></a></div>
@@ -1499,35 +1532,49 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
   }
   function caps(list, p){ var shown = false; list.forEach(function(t){ var a = t.getAttribute('data-p').split(','), on = !shown && p >= +a[0] && p < +a[1]; if(on) shown = true; t.classList.toggle('on', on); }); }
 
-  /* ---------- one month inside the phone; then the camera pulls back as each question pops out ---------- */
+  /* ---------- one month inside the phone; then the camera pulls back and each answer flies past it ---------- */
   var ph = $('#month'), phUpdate = function(){};
   if(ph){
     var cam = $('.ph-cam', ph), pwrap = $('.ph-wrap', ph), nts = $$('.nt', ph).sort(function(x, y){ return +x.dataset.i - +y.dataset.i; }), pops = $$('.pop', ph);
-    var bal = $('[data-bal]', ph), dte = $('[data-date]', ph), mbar = $('[data-mbar]', ph), pcta = $('.ph-cta', ph);
+    var bal = $('[data-bal]', ph), dte = $('[data-date]', ph), mbar = $('[data-mbar]', ph), pend = $('.ph-end', ph);
     var phead = $('.ph-head', ph), hint = $('.ph-hint', ph), pbar = $('.ph-prog b', ph);
     var days = [1, 2, 5, 7, 10, 12, 12, 15, 19, 22, 25];
     var fit = function(){ var m = innerWidth <= 900, bw = m ? 390 : 1440, bh = m ? 680 : 760; cam.style.setProperty('--fit', Math.min(1.08, innerWidth / bw, (innerHeight - (m ? 130 : 150)) / bh).toFixed(3)); };
     fit(); addEventListener('resize', fit);
+    var T0 = .36, STEP = .095;   /* answers: one every STEP of scroll, after the messages */
     phUpdate = function(){
       var p = pgOf(ph), n = 0, spent = 0, mob = innerWidth <= 900;
-      nts.forEach(function(el, i){ var on = i === 0 || p >= .03 + (i - 1) * .041; el.classList.toggle('in', on); if(on){ n = i; spent += +(el.dataset.amt || 0); } });
+      nts.forEach(function(el, i){ var on = i === 0 || p >= .02 + (i - 1) * .034; el.classList.toggle('in', on); if(on){ n = i; spent += +(el.dataset.amt || 0); } });
       bal.textContent = '₹' + fmt(35000 - spent); bal.classList.toggle('low', spent > 28000);
       dte.textContent = days[n] + ' Nov'; dte.classList.toggle('late', n >= 7);
       mbar.style.width = (days[n] / 30 * 100).toFixed(1) + '%';
-      var z = clamp((p - .43) / .37), z0 = mob ? 1.1 : 1.16;
-      cam.style.setProperty('--zoom', (z0 - (z0 - 1) * z).toFixed(3));
+      /* camera: close during the messages, then a steady pull-back */
+      var z = clamp((p - (T0 - .02)) / (T0 + STEP * pops.length - (T0 - .02))), ze = z < .5 ? 2 * z * z : 1 - Math.pow(-2 * z + 2, 2) / 2;
+      var near = mob ? 180 : 260, far = mob ? -260 : -380;
+      cam.style.setProperty('--cz', (near + (far - near) * ze).toFixed(1) + 'px');
       pwrap.style.setProperty('--tilt', (10 * (1 - clamp(p / .04))).toFixed(2) + 'deg');
       var last = -1;
-      pops.forEach(function(el, i){ var on = p >= .46 + i * .08; el.classList.toggle('out', on); if(on){ last = i; playCard(el); } });
-      pops.forEach(function(el, i){ el.classList.toggle('back', mob && i < last); });
+      pops.forEach(function(el, i){
+        var t = T0 + i * STEP, shown = p >= t, feat = shown && p < t + STEP * .72;
+        el.classList.toggle('feat', feat); el.classList.toggle('out', shown && !feat);
+        if(shown){ last = i; playCard(el); }
+      });
+      pops.forEach(function(el, i){ el.classList.toggle('back', mob && el.classList.contains('out')); });
       pwrap.style.setProperty('--turn', (last < 0 ? 0 : (last % 2 ? -7 : 7)).toFixed(1) + 'deg');
-      phead.classList.toggle('gone', p >= .44);
-      hint.classList.toggle('gone', p >= .84);
-      pbar.style.width = (clamp(p / .84) * 100).toFixed(1) + '%';
-      pcta.classList.toggle('on', p >= .84 && p < .97);
-      cam.style.opacity = (1 - clamp((p - .93) / .07)).toFixed(3);
+      var endAt = T0 + STEP * pops.length;
+      phead.classList.toggle('gone', p >= T0 - .01);
+      hint.classList.toggle('gone', p >= endAt);
+      pbar.style.width = (clamp(p / endAt) * 100).toFixed(1) + '%';
+      pend.classList.toggle('on', p >= endAt && p < .985);
+      cam.style.opacity = (1 - clamp((p - .95) / .05)).toFixed(3);
     };
   }
+
+  /* hero trailer: sound on demand */
+  var tv0 = $('[data-trailer]'), seg = tv0 && tv0.dataset.seg ? tv0.dataset.seg.split(',').map(Number) : null;
+  if(tv0 && seg){ var toStart = function(){ if(tv0.muted && (tv0.currentTime < seg[0] || tv0.currentTime > seg[1])) tv0.currentTime = seg[0]; }; tv0.addEventListener('loadedmetadata', toStart); tv0.addEventListener('play', toStart); if(tv0.readyState >= 1) toStart(); tv0.addEventListener('timeupdate', function(){ if(tv0.muted && tv0.currentTime >= seg[1]) { tv0.currentTime = seg[0]; tv0.play(); } }); tv0.addEventListener('ended', function(){ if(tv0.muted){ tv0.currentTime = seg[0]; tv0.play(); } }); }
+  $$('[data-unmute]').forEach(function(b){ b.addEventListener('click', function(){ var v = $('[data-trailer]'); if(!v) return; v.muted = false; v.controls = true; v.currentTime = seg ? seg[0] : 0; v.play(); b.classList.add('off'); }); });
+  if(reduce){ var tv = $('[data-trailer]'); if(tv){ tv.removeAttribute('autoplay'); tv.pause(); tv.controls = true; } }
 
   /* ---------- syllabus sphere: dots on a sphere, the 6 stages orbit it; drag to spin ---------- */
   var sp = $('[data-sphere]');
