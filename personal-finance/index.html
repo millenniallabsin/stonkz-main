@@ -1322,6 +1322,52 @@ html:not(.js) .pcard{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.ch-sec{height:auto}.ch-stick{position:relative;height:auto}.bn-sheen,.bn-rose{animation:none}}
 @media (max-width:900px){.hero-s .hx-grid{grid-template-columns:1fr}}
 
+/* ===== Stock v3 · corrections ===== */
+/* hero: smaller headline, bigger video, aligned */
+.hero-s h1{font-size:clamp(28px,3.6vw,52px)}
+.hero-s .hx-grid{grid-template-columns:minmax(0,.66fr) minmax(0,1.34fr);gap:clamp(24px,4vw,56px);align-items:center}
+.hero-s .lead{font-size:clamp(16px,1.25vw,18px)}
+@media (max-width:900px){.hero-s .hx-grid{grid-template-columns:1fr}}
+
+/* chart: green candles only, HTML markers with readable labels */
+.cd line{stroke:#43F27C}.cd rect{fill:#25E065}
+.ch-plot{position:relative}
+.mks{position:absolute;inset:0;pointer-events:none}
+.mkh{position:absolute;opacity:0;transform:translate(-50%,0);transition:opacity .35s}
+.mkh.on{opacity:1}
+.mk-stem{position:absolute;left:50%;bottom:6px;width:1px;height:46px;border-left:1px dashed rgba(67,242,124,.6)}
+.mk-chip{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:6px 11px 6px 6px;border-radius:999px;background:#0d110f;border:1px solid rgba(37,224,101,.45);font:600 13px var(--body);color:var(--paper);box-shadow:0 10px 24px rgba(0,0,0,.6)}
+.mk-chip b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--green);color:var(--g-ink);font:700 11px var(--mono)}
+.mkh.lft .mk-chip{left:auto;right:-14px;transform:none}
+.mkh:nth-child(even) .mk-stem{height:96px}
+.mkh:nth-child(even) .mk-chip{bottom:102px}
+.mkh.cur .mk-chip{border-color:var(--g-bright);box-shadow:0 0 0 3px rgba(37,224,101,.18),0 10px 24px rgba(0,0,0,.6)}
+.mkh.gold .mk-chip{border-color:rgba(246,213,126,.7)}
+.mkh.gold .mk-chip b{background:radial-gradient(circle at 35% 30%,#FFF1C2,#F6D57E 35%,#E2B23E 65%,#A8781A);color:#3a2700;font-family:var(--title);font-size:13px}
+.mkh.gold .mk-stem{border-color:rgba(246,213,126,.7)}
+.ch-svg{height:min(46vh,430px)}
+@media (max-width:900px){
+  .mk-chip{font-size:0;gap:0;padding:3px}
+  .mk-chip b{width:22px;height:22px;font-size:10px}
+  .mkh.lft .mk-chip{right:-11px}
+  .mk-stem{height:22px}.mk-chip{bottom:28px}
+  .mkh:nth-child(even) .mk-stem{height:22px}.mkh:nth-child(even) .mk-chip{bottom:28px}
+}
+
+/* noise scene: dashboard blurs out fully and recedes slowly; phone arrives from the camera side */
+.sx-dash{filter:blur(var(--db,0px))}
+.sx-sec.far .sx-dash{filter:blur(var(--db,0px))}
+.sx-p.gone{opacity:0;transform:scale(.96);transition:opacity .5s}
+.sx-end{left:0;right:0;width:auto;margin:0 auto;max-width:900px;padding:0 20px;transform:translateY(-50%) translateZ(var(--ez,-1400px))}
+/* chart labels: alternate above / below the line so none collide */
+.mkh:nth-child(even) .mk-stem{height:46px}.mkh:nth-child(even) .mk-chip{bottom:52px}
+.mkh.dn .mk-stem{bottom:auto;top:calc(var(--lo,0px) + 6px);height:64px}
+.mkh.dn .mk-chip{bottom:auto;top:calc(var(--lo,0px) + 70px)}
+@media (max-width:900px){.mkh.dn .mk-stem{height:22px}.mkh.dn .mk-chip{top:calc(var(--lo,0px) + 28px)}}
+.ch-plot{--chh:min(46vh,430px)}
+@media (max-width:900px){.ch-plot{--chh:34vh}}
+.ch-box{padding-top:44px}
+
 </style>
 <!-- Meta Pixel / GA4: paste the base snippet here. The page fires ViewContent, Lead (Notify me) and InitiateCheckout (Enroll) automatically. -->
 <script>
@@ -1814,28 +1860,28 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
     sxUpdate = function(){
       var p = pgOf(sx), mob = innerWidth <= 900;
       panels.forEach(function(el, i){ el.classList.toggle('in', p >= .02 + i * .05); el.classList.toggle('shake', p < .3); });
-      /* camera pulls back from the dashboard */
-      var back = clamp((p - .28) / .14);
-      sdash.style.setProperty('--dz', (-900 * back).toFixed(0) + 'px');
-      sdash.style.setProperty('--dop', (1 - .78 * back).toFixed(3));
-      sdash.style.setProperty('--dtx', (6 * (1 - back) + 4).toFixed(2) + 'deg');
-      sdash.style.setProperty('--dty', ((mob ? 0 : -8) * (1 - back)).toFixed(2) + 'deg');
-      sx.classList.toggle('far', back > .5);
-      /* the phone flies in from deep in the scene, then later recedes and blurs */
-      var arr = clamp((p - .36) / .14), ae = 1 - Math.pow(1 - arr, 3), leave = clamp((p - .8) / .08);
-      sphone.style.setProperty('--pop', (ae * (1 - .65 * leave)).toFixed(3));
-      sphone.style.setProperty('--pz', (-2600 + 2700 * ae - 900 * leave).toFixed(0) + 'px');
+      /* the dashboard slowly blurs out and sinks back */
+      var back = clamp((p - .26) / .2), be = back * back * (3 - 2 * back);
+      sdash.style.setProperty('--dz', (-700 * be).toFixed(0) + 'px');
+      sdash.style.setProperty('--dop', (1 - .82 * be).toFixed(3));
+      sdash.style.setProperty('--db', (12 * be).toFixed(1) + 'px');
+      sdash.style.setProperty('--dtx', (6 * (1 - be) + 4).toFixed(2) + 'deg');
+      sdash.style.setProperty('--dty', ((mob ? 0 : -8) * (1 - be)).toFixed(2) + 'deg');
+      /* the phone comes in from the camera side: big and close, then settles in front of the blurred dashboard */
+      var arr = clamp((p - .4) / .12), ae = 1 - Math.pow(1 - arr, 3), leave = clamp((p - .8) / .08), le = leave * leave * (3 - 2 * leave);
+      sphone.style.setProperty('--pop', (clamp(arr * 2.2) * (1 - .7 * le)).toFixed(3));
+      sphone.style.setProperty('--pz', (1250 * (1 - ae) - 900 * le).toFixed(0) + 'px');
       sphone.style.setProperty('--ps', '1');
-      sphone.style.setProperty('--pb', (6 * leave).toFixed(1) + 'px');
+      sphone.style.setProperty('--pb', (10 * le).toFixed(1) + 'px');
       scam.style.setProperty('--cz', '0px');
-      ORDER.forEach(function(pi, k){ var on = p >= .5 + k * .055; panels[pi].classList.toggle('gone', on); rows[k].classList.toggle('on', on); });
+      ORDER.forEach(function(pi, k){ var on = p >= .53 + k * .045; panels[pi].classList.toggle('gone', on); rows[k].classList.toggle('on', on); });
       verdict.classList.toggle('on', p >= .76);
       /* the course line arrives in front */
       var ein = clamp((p - .82) / .08), ee = 1 - Math.pow(1 - ein, 3);
       send.style.setProperty('--ez', (-1600 + 1600 * ee).toFixed(0) + 'px');
       send.style.setProperty('--eo', ee.toFixed(3));
       send.classList.toggle('on', ee > .6 && p < .985);
-      shead.classList.toggle('gone', p >= .28);
+      shead.classList.toggle('gone', p >= .26);
       shint.classList.toggle('gone', p >= .82);
       sbar.style.width = (clamp(p / .82) * 100).toFixed(1) + '%';
       scam.style.opacity = (1 - clamp((p - .96) / .04)).toFixed(3);
@@ -1846,7 +1892,7 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
   /* ---------- stock: the candle chart draws itself as you scroll; each stage card takes its turn ---------- */
   var ch = $('#change.ch-sec'), chUpdate = function(){};
   if(ch){
-    var cds = $$('.cd', ch), mks = $$('.mk', ch), mcs2 = $$('.mc', ch);
+    var cds = $$('.cd', ch), mks = $$('.mkh', ch), mcs2 = $$('.mc', ch);
     chUpdate = function(){
       var p = pgOf(ch), n = Math.round(clamp((p - .04) / .82) * cds.length), cur = -1;
       cds.forEach(function(c, i){ c.classList.toggle('on', i < n); });
@@ -1988,7 +2034,7 @@ if(window.SZ.checkoutUrl || window.SZ.buyNow) document.documentElement.classList
     if(pill && hero && buy){
       var b = buy.getBoundingClientRect();
       var gate = hero; var on = gate.getBoundingClientRect().bottom < 80 && !(b.top < innerHeight * .9 && b.bottom > 0) && modal.hidden;
-      pill.classList.toggle('on', on); pill.classList.toggle('off', ['#cover', '#month', '#noise'].some(function(sel){ var el = $(sel); if(!el) return false; var cr = el.getBoundingClientRect(); return cr.top < innerHeight * .5 && cr.bottom > innerHeight * .5; })); pill.setAttribute('aria-hidden', on ? 'false' : 'true');
+      pill.classList.toggle('on', on); pill.classList.toggle('off', ['#cover', '#month', '#noise', '#change'].some(function(sel){ var el = $(sel); if(!el) return false; var cr = el.getBoundingClientRect(); return cr.top < innerHeight * .5 && cr.bottom > innerHeight * .5; })); pill.setAttribute('aria-hidden', on ? 'false' : 'true');
       $$('a,button', pill).forEach(function(el){ el.tabIndex = on ? 0 : -1; });
     }
     lmUpdate(); phUpdate(); treeUpdate(); cvUpdate(); sxUpdate(); chUpdate();
